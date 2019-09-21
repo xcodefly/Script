@@ -25,11 +25,7 @@ Declare function HolmerTransfer
 Declare function Rendezvous {}
 Declare Function fx_closedApp_Time
 {   
-    set closedApp to lexicon().
-    until False{
-
-    }
-    Return closedApp.
+    
 }
 Declare function Dock {}
 Declare function ExeNode {
