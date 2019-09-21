@@ -66,7 +66,7 @@ Declare function ExeNode {
         //throttle is 100% until there is less than 1 second of time left to burn
         //when there is less than 1 second - decrease the throttle linearly
         set tset to min(nd:deltav:mag/maxAcc, 1).
-        if nd:deltaV:mag<1
+        if nd:deltaV:mag<5
         {
             lock steering to dv0.
         }
