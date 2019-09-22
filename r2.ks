@@ -25,6 +25,10 @@ Declare function HolmerTransfer
 Declare function Rendezvous {}
 Declare Function fx_closedApp_Time
 {   
+    parameter orbit1.
+    parameter orbit2.
+    set closed_approach to lexicon().
+    
     
 }
 Declare function Dock {}
