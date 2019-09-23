@@ -24,10 +24,12 @@ Declare function AdjustClosedApproach
     nodeLex:add("n0",testNode).
     if target:orbit:semiMajorAxis>ship:orbit:semiMajorAxis
     {
-         nodeLex:add("step",10).
+         nodeLex:add("step",20).
+         set testNode:eta to eta:apoapsis+2.
     }else
     {
-        nodeLex:add("step",-10).
+        nodeLex:add("step",-20).
+        set testNode:eta to eta:periapsis+2.
     }
     
     set nodeLex to tuneNode(nodeLex).
@@ -45,7 +47,7 @@ declare function tuneNode
     set testNode to nodeLex:n0.
     add testNode.
     set dis_Now to (positionat(ship,time:seconds+testNode:eta)-positionat(target,time:seconds+testNode:eta+testNode:orbit:period)):mag.
-    until dis_Now<1000 or Abs(nodeLex:step)<0.5
+    until dis_Now<1000 or Abs(nodeLex:step)<0.1
     {
         set testNode:prograde to testNode:prograde+nodeLex:step.
         set dis_next to (positionat(ship,time:seconds+testNode:eta)-positionat(target,time:seconds+testNode:eta+testNode:orbit:period)):mag.
@@ -55,14 +57,14 @@ declare function tuneNode
         } else
         {
             set testNode:prograde to testNode:prograde-nodeLex:step.
-            set nodeLex:step to -nodeLex:step/1.3.
+            set nodeLex:step to -nodeLex:step/1.7.
         }
         
         print round(dis_Now)+"     " at (0,1).
         print round(dis_next)+"     " at (0,2).
        
         print round(nodeLex:step,5)+ "     " at (0,3).
-        wait 0.
+        //wait .
     }
     wait 0.1.
     return nodeLex.
