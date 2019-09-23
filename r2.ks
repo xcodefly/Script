@@ -139,6 +139,7 @@ Declare function Rendezvous {
 Declare function Dock {
     lock steering to target:position.
     Print "hello".
+    Print "This is just test.".
 
 }
 
