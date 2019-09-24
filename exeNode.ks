@@ -1,3 +1,4 @@
+
 set nd to nextnode.
 clearscreen.
 //print out node's basic parameters - ETA and deltaV
@@ -65,7 +66,7 @@ Print "Pointing north. (5s)".
 wait 5.
 
 unlock steering. 
-
+sas on.
 
 //we no longer need the maneuver node
 remove nd.
