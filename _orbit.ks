@@ -3,6 +3,15 @@
 run "r2.ks".
 
 Clearscreen.
+
+declare function adjust_apoapsis
+{
+
+}
+Declare function adjust_periapsis
+{
+    
+}
 Declare function adjust_Orbit{
     // Two burns to do transfer. One at periapsis and next at Apoapsis.
     Parameter new_Apoapsis.
