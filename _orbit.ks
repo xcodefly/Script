@@ -15,6 +15,7 @@ declare function adjust_Periapsis
     add nd.
     
 }
+
 Declare function adjust_Apoapsis
 {
     parameter new_periapsis to target:periapsis.
@@ -31,7 +32,7 @@ Declare function adjust_Apoapsis
 
 
 
-}
+
 
 Declare function orbit_Hud
 {
@@ -48,7 +49,7 @@ Declare function orbit_Hud
 
 }
 
-orbit_hud().
+
 
 
 
