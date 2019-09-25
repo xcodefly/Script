@@ -6,24 +6,35 @@ Clearscreen.
 
 declare function adjust_Periapsis
 {
-    parameter new_apoapsis to target:apoapsis.
+    
+    parameter new_periapsis to target:periapsis.
+    local rA to body:radius +ship:apoapsis.
+    local rP to body:radius + ship:periapsis.
+    local rP_new to body:radius+new_periapsis.
    
-    Local vA to ((2*body:mass*constant:g)*ship:periapsis/(ship:apoapsis*(ship:apoapsis+ship:periapsis)))^0.5.
-    Local vA_new to ((2*body:mass*constant:g)*ship:periapsis/(new_Apoapsis*(new_Apoapsis+ship:periapsis)))^0.5.
+    
+   
+    Local vA to ((2*body:mass*constant:g)*rP/(rA*(rA+rP)))^0.5.
+    Local vA_new to ((2*body:mass*constant:g)*rP_new/(rA*(rA+rP_new)))^0.5.
     Local delta_pro to vA_new-va.
-    Local nd to node(time:seconds+eta:apoapsis,0,0,deltaPro).
+    Local nd to node(time:seconds+eta:apoapsis,0,0,delta_Pro).
     add nd.
     
 }
 
 Declare function adjust_Apoapsis
 {
-    parameter new_periapsis to target:periapsis.
-    local vP to ((2*body:mass*constant:g)*ship:apoapsis/(ship:apoapsis*(ship:apoapsis+ship:periapsis)))^0.5.
+    parameter new_apoapsis to target:apoapsis.
 
-    Local vp_new to ((2*body:mass*constant:g)*ship:periapsis/(new_Apoapsis*(new_Apoapsis+ship:periapsis)))^0.5.
+    local rA to body:radius +ship:apoapsis.
+    local rP to body:radius + ship:periapsis.
+    local rA_new to body:radius+new_Apoapsis.
+
+
+    Local vP to ((2*body:mass*constant:g)*rA/(rP*(rA+rP)))^0.5.
+    Local vp_new to ((2*body:mass*constant:g)*rA_new/(rP*(rA_New+rP)))^0.5.
     Local delta_pro to vP_new-vP.
-    local nd to node(time:seconds+eta:Periapsis,0,0,deltaPro).
+    local nd to node(time:seconds+eta:Periapsis,0,0,delta_Pro).
     add nd.
 }
     
