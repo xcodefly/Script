@@ -40,6 +40,15 @@ Declare function adjust_Apoapsis
     
 
 // 
+declare function target_orbit_info{
+    until gear
+    {
+        set target_anomaly to constant:degToRad*target:orbit:trueanomaly.
+        set e to target:orbit:eccentricity.
+        print " Target Anomaly : " + round(target_anomaly,2).
+        set E_anomaly to arccos(e-cos(target_anomaly/(1+))
+    }
+}
 
 
 

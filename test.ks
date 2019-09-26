@@ -7,9 +7,10 @@ gear off.
 until hasnode=false{
     remove nextnode.
 }
-adjust_apoapsis(200000).
-exenode().
-adjust_Periapsis(199000).
-exenode().
+//adjust_apoapsis(200000).
 //exenode().
+//adjust_Periapsis(199000).
+//exenode().
+//exenode().
+target_orbit_info().
 
