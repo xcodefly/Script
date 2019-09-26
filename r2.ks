@@ -38,7 +38,59 @@ Declare function createCloseApp_Node
    
 }
 
+declare function find_closed_app{
+    // This function will find the closed approach.
+    Local testtime to CloseApp_orbit.   // start of current postion.
+    Local timeStep to 50.
+    set closed_app to  distanceAt(testtime).
+    // Finding the best orbit
+    
+    until abs(timestep)<1
+    {
+        
+        if distanceAt(testtime+timeStep)<closed_app
+        {
+            set testtime to testtime+timeStep.
+            set closed_app to DistanceAt(testtime).
+        }else{
+            set timeStep to -timeStep/2.
+        }
 
+        if testtime<time:seconds{
+            set testtime to testtime+ship:orbit:period.
+            set timeStep to -50.
+
+            Print " xx at " at (0,4).
+        }
+
+    }
+    
+
+    warpto (testtime).
+    print "     Time : " + round(testtime-time:seconds).
+    print " Distance : " +Round(DistanceAt(testtime)).
+    local dispNode to node(testTime,0,0,0).
+    add dispNode.
+
+
+}
+Declare function CloseApp_orbit{
+    Local testTime to time:seconds.
+    until False{
+        if distanceAt(testtime)>distanceAt(testtime+ship:orbit:period)
+        {
+            set testtime to testtime+ship:orbit:period.
+        }
+        else{
+            break.
+        }
+    }
+    return testTime.
+}
+declare function DistanceAt{
+    Parameter testTime.
+    return (positionat(ship,testtime)-positionat(target,testtime)):mag/1000.
+}   
 declare function tuneNode_closeApp
 {
     parameter nodeLex.
