@@ -7,11 +7,10 @@ clearscreen.
 until hasnode=false{
     remove nextnode.
 }
-
-//adjust_Periapsis().
+//adjust_apoapsis(200000).
 //exenode().
-find_closed_app().
-
-//createCloseApp_Node().
+//adjust_Periapsis(199000).
 //exenode().
+//exenode().
+target_orbit_info().
 
