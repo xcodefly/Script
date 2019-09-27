@@ -43,10 +43,25 @@ Declare function adjust_Apoapsis
 declare function target_orbit_info{
     until gear
     {
-        set target_anomaly to constant:degToRad*target:orbit:trueanomaly.
+        set v to target:orbit:trueanomaly.
         set e to target:orbit:eccentricity.
-        print " Target Anomaly : " + round(target_anomaly,2).
-        set E_anomaly to arccos(e-cos(target_anomaly/(1+))
+        print " Target Anomaly : " + round(v,1) + "  " at (0,2).
+        set E_v to arccos((e+cos(v))/(1+e*cos(v))).
+        print " eccentric Anomaly : " + round(E_v,1) + "  " at (0,3).
+        if v<180
+        {
+            set M to (E_v*Constant:degToRad-e*Sin(E_v))*constant:radToDeg.
+        
+        }
+        else 
+        {
+            set M to 360 - (E_v*Constant:degToRad-e*Sin(E_v))*constant:radToDeg.
+        }
+        print " Mean Anomaly : " + round(M,1) + "   " at (0,4).
+        set t_periapsis to target:orbit:period/360*(360-M).
+        print " Time to Periapsis : " + Round(t_periapsis,1)+" " at (0,5).
+        print " target Period : " + round(target:orbit:period) + "  " at (0,6).
+        
     }
 }
 
