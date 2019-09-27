@@ -12,5 +12,5 @@ until hasnode=false{
 //adjust_Periapsis(199000).
 //exenode().
 //exenode().
-target_orbit_info().
+print " Target periapsis : " + Round(target_periapsis_eta()).
 
