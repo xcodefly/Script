@@ -77,9 +77,9 @@ declare function find_closed_app{
 Declare function CloseApp_orbit{
     Local testTime to time:seconds.
     until False{
-        if distanceAt(testtime)>distanceAt(testtime+ship:orbit:period)
+        if distanceAt(testTime)>distanceAt(testtime+ship:orbit:period)
         {
-            set testtime to testtime+ship:orbit:period.
+            set testTime to testtime+ship:orbit:period.
         }
         else{
             break.
