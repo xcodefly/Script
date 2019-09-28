@@ -229,6 +229,7 @@ Declare function ExeNode {
             lock throttle to 0.
             break.
         }
+        wait 0.
     }
     unlock throttle.
     remove nd.

@@ -20,6 +20,7 @@ declare function adjust_Periapsis
     Local nd to node(time:seconds+eta:apoapsis,0,0,delta_Pro).
     add nd.
     
+    
 }
 
 Declare function adjust_Apoapsis
@@ -51,8 +52,6 @@ Declare function WarpTo_optimal_Periapsis_orbit
         {
             if target_positionAt(eta:periapsis+ship:orbit:period*counter)>0 and target_positionAt(eta:periapsis+(Counter+1)*ship:orbit:period)<0
             {
-                
-                
                 break.
             }
             else 
@@ -66,8 +65,6 @@ Declare function WarpTo_optimal_Periapsis_orbit
         {
             if target_positionAt(eta:periapsis+ship:orbit:period*counter)<0 and target_positionAt(eta:periapsis+(Counter+1)*ship:orbit:period)>0
             {
-                
-                
                 break.
             }
             else 
@@ -75,14 +72,44 @@ Declare function WarpTo_optimal_Periapsis_orbit
                 set counter to counter+1.
             }
         }
-        
     }
-    return (time:seconds+eta:periapsis+ship:orbit:period*counter-30).
-
-    
+    return (time:seconds+eta:periapsis+ship:orbit:period*counter-ship:orbit:period/2).
 }
 
 
+Declare function WarpTo_optimal_Apoapsis_orbit
+{   
+    set Counter to 0.
+        
+    if target:orbit:SemiMajorAxis>ship:orbit:SemiMajorAxis
+    {   
+        until false
+        {
+            if target_positionAt(eta:periapsis+ship:orbit:period/2+ship:orbit:period*counter)>0 and target_positionAt(eta:periapsis+ship:Orbit:period/2+(Counter+1)*ship:orbit:period)<0
+            {
+                break.
+            }
+            else 
+            {
+                set counter to counter+1.
+            }
+        }
+    }else{
+        
+        until false
+        {
+            if target_positionAt(eta:periapsis+ship:period/2+ship:orbit:period*counter)<0 and target_positionAt(eta:periapsis+ship:period/2+(Counter+1)*ship:orbit:period)>0
+            {
+                break.
+            }
+            else 
+            {
+                set counter to counter+1.
+            }
+        }
+    }
+    return (time:seconds+eta:periapsis+ship:orbit:period*counter-ship:orbit:period/2).
+}
 Declare function Periapsis_closedApp_Burn
 {
     set tt to WarpTo_optimal_Periapsis_orbit().
@@ -90,11 +117,15 @@ Declare function Periapsis_closedApp_Burn
     wait until time:seconds>tt.
     Print " Next step.".
     set next to target_orbit_info().
-    set next_Period to next:eta_periapsis-eta:periapsis.
-    if next_period<0
+    if target:orbit:semimajorAxis>ship:orbit:semimajorAxis
     {
-        set next_period to next_period+target:orbit:period.
+       set next_Period to next:eta_periapsis-eta:periapsis+target:orbit:period.
+    }else
+    {
+       set next_period to next:eta_periapsis-eta:periapsis+target:orbit:period.
     }
+   // set next_Period to next:eta_periapsis-eta:periapsis.
+   
     //print next_period.
     set current_period to ship:orbit:period.
     set current_SemiMajorAxis to ship:orbit:semimajorAxis.
@@ -103,14 +134,52 @@ Declare function Periapsis_closedApp_Burn
     print " Current Period "+ Round(current_Period).
     print " NExt Period " +  Round(Next_Period).
     print next_semiMajorAxis.
-    print next_apoapsis.
+    print " Next Apoapsis " + next_apoapsis.
    
     adjust_Apoapsis(next_apoapsis).
     exenode.
     // Keplers third law P^2 pro to A^3
+    adjust_apoapsis(target:apoapsis).
+    exenode.
 
     
 }
+
+Declare function Apoapsis_closedApp_Burn
+{
+    set tt to WarpTo_optimal_Apoapsis_orbit().
+    warpto (tt).
+    wait until time:seconds>tt.
+    Print " Next step.".
+    set next to target_orbit_info().
+    if target:orbit:semimajorAxis>ship:orbit:semimajorAxis
+    {
+       set next_Period to next:eta_periapsis -eta:periapsis+target:orbit:period.
+    }else
+    {
+       set next_period to next:eta_periapsis-eta:periapsis+target:orbit:period.
+    }
+   // set next_Period to next:eta_periapsis-eta:periapsis.
+   
+    //print next_period.
+    set current_period to ship:orbit:period.
+    set current_SemiMajorAxis to ship:orbit:semimajorAxis.
+    set next_semiMajorAxis to (current_SemiMajorAxis^3*((next_Period/current_period)^2))^(1/3).
+    set Next_apoapsis to next_semiMajorAxis*2-(ship:periapsis+body:radius)-body:radius.
+    print " Current Period "+ Round(current_Period).
+    print " NExt Period " +  Round(Next_Period).
+    print next_semiMajorAxis.
+    print " Next Apoapsis " + next_apoapsis.
+   
+    adjust_Apoapsis(next_apoapsis).
+    exenode.
+    // Keplers third law P^2 pro to A^3
+    adjust_apoapsis(target:apoapsis).
+    exenode.
+
+    
+}
+
 
 
 
