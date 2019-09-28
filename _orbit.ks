@@ -1,6 +1,6 @@
 // The function in this library are used for orbit adjustments for the ship.
 // Fx. setOrbit (Parameter AP, Pe, )
-run "r2.ks".
+Run "_targetPlus.ks".
 
 Clearscreen.
 
@@ -38,50 +38,28 @@ Declare function adjust_Apoapsis
     add nd.
 }
     
-Declare function target_periapsis_eta
-{
-    set v to target:orbit:trueanomaly.
-    set e to target:orbit:eccentricity.
-    set E_v to arccos((e+cos(v))/(1+e*cos(v))).
-    if v<180
-        {
-            set M to (E_v*Constant:degToRad-e*Sin(E_v))*constant:radToDeg.
-        
-        }
-        else 
-        {
-            set M to 360 - (E_v*Constant:degToRad-e*Sin(E_v))*constant:radToDeg.
-        }
-        set t_periapsis to target:orbit:period/360*(360-M).
-        return t_periapsis.
 
-}
-
-// 
-declare function target_orbit_info{
-    until gear
+// This function to find the optimal orbit to adjust orbit. 
+// assuming your either periaps or apoapsis heigh is withing 1000 feet. // Roughly.
+Declare function optimal_seconds_burn_position
+{   
+    Local BestBurnOrbit to 0.
+    if abs(target:apoapsis/1000-ship:apoapsis/1000)<1
     {
-        set v to target:orbit:trueanomaly.
-        set e to target:orbit:eccentricity.
-        print " Target Anomaly : " + round(v,1) + "  " at (0,2).
-        set E_v to arccos((e+cos(v))/(1+e*cos(v))).
-        print " eccentric Anomaly : " + round(E_v,1) + "  " at (0,3).
-        if v<180
-        {
-            set M to (E_v*Constant:degToRad-e*Sin(E_v))*constant:radToDeg.
-        
-        }
-        else 
-        {
-            set M to 360 - (E_v*Constant:degToRad-e*Sin(E_v))*constant:radToDeg.
-        }
-        print " Mean Anomaly : " + round(M,1) + "   " at (0,4).
-        set t_periapsis to target:orbit:period/360*(360-M).
-        print " Time to Periapsis : " + Round(t_periapsis,1)+" " at (0,5).
-        print " target Period : " + round(target:orbit:period) + "  " at (0,6).
-        
+        print " Closed Apoapsis ".
+    } else if abs(target:Periapsis/1000-ship:Periapsis/1000)<1
+    {
+        print " Closed Periapsis ".
     }
+
 }
+Declare function optimal_second_Burn_time
+{
+    Local Parameter burnPoint.
+    local OrbitCount to 0.
+   
+}
+
 
 
 
