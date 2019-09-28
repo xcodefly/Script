@@ -183,6 +183,35 @@ Declare function Apoapsis_closedApp_Burn
     
 }
 
+Declare function matchOrbit
+{
+    if target:orbit:semiMajorAxis>ship:orbit:semiMajorAxis{
+        adjust_apoapsis(target:apoapsis).
+        exenode().
+        Apoapsis_closedApp_Burn().
+    }
+    else
+    {
+        adjust_periapsis(target:periapsis).
+        exenode().
+        Periapsis_closedApp_Burn().
+    }
+
+}
+declare function match_Phase{
+    // Mostly circular, so it is easy to move the periapsis
+    if target:orbit:semiMajorAxis>ship:orbit:semiMajorAxis
+    {
+        adjust_periapsis(ship:apoapsis-500).
+    }else{
+        adjust_apoapsis(ship:periapsis+500).
+    }
+    exenode().
+    set x to target_orbit_info().
+    set x to x:eta_periapsis.
+    
+
+}
 
 
 
