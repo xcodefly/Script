@@ -24,13 +24,26 @@ Declare function target_periapsis_eta
 
 }
 
-declare function target_meanAnomalyAt
+declare function target_positionAt
 {
-    Local Parameter setTime.
-    set a to target_Orbit_info.
-    Local X to setTime-a:ETA_periapsis.
-    Local M to a:MeanAnomaly.
-    Print M.
+    Parameter testTime.
+    Local shipV to velocityat(ship,testtime+time:seconds):orbit:normalized.
+    local shipP to positionAt(ship,testtime+time:seconds).
+    Local TargetP to positionat(target,testtime+time:seconds).
+    set targetPosition to targetP-shipP.
+    set targetDistance to 0.
+    if vdot(shipV,targetPosition)<0
+    {
+        set targetDistance to targetPosition:mag*-1.
+
+    }else
+    {
+         set targetDistance to targetPosition:mag.
+    }
+ //   Print round(targetDistance).
+    Return targetDistance.
+    
+
 }
 
 declare function target_orbit_info{

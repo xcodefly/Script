@@ -15,5 +15,6 @@ until hasnode=false{
 //exenode().
 //exenode().
 //print " Target periapsis : " + Round(target_periapsis_eta()).
-target_meanAnomalyAt(eta:periapsis).
+Periapsis_closedApp_Burn().
+
 
