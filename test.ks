@@ -16,9 +16,10 @@ until hasnode=false{
 //exenode().
 //print " Target periapsis : " + Round(target_periapsis_eta()).
 if target:orbit:semiMajorAxis>ship:orbit:semiMajorAxis{
-    //adjust_apoapsis(target:apoapsis).
-    //exenode().
+    adjust_apoapsis(target:apoapsis).
+    exenode().
     Apoapsis_closedApp_Burn().
+ 
     
 }
 else

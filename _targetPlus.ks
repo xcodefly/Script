@@ -60,18 +60,16 @@ declare function target_orbit_info{
         set M to 360 - (E_v*Constant:degToRad-e*Sin(E_v))*constant:radToDeg.
     }
     set t_periapsis to target:orbit:period/360*(360-M).
-    if t_periapsis-target:orbit:period/2<time:seconds
+    set t_apoapsis to t_periapsis-target:orbit:period/2.
+    if t_apoapsis<0
     {
-        set t_apoapsis to t_periapsis+target:orbit:period/2.
-    }
-    else
-    {
-        set t_apoapsis to t_periapsis-target:orbit:period/2.
+        set t_apoapsis to t_apoapsis+target:orbit:period.
     }
     
     set Target_Info to lexicon().
     target_Info:add("ETA_periapsis",t_periapsis).
     target_info:add("ETA_apoapsis",t_apoapsis).
     target_info:add("MeanAnomaly",M).
+
     return target_info.
 }
