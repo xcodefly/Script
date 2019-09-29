@@ -208,19 +208,22 @@ declare function match_Phase{
     }
     exenode().
     set x to target_orbit_info().
-    set x to x:eta_periapsis.
-    
+   
+    orbit_hud().
 
 }
 
-
+Declare function Match_inclination
+{
+    
+}
 
 Declare function orbit_Hud
 {
     
     Print "  Target Semi Major Axis : " + Round(setSemiMajAxis) +"   " at (0,2).
     Print " Current Semi Major Axis : " + Round(CurrentSemiMajAxis) +"   " at (0,3).
-    Print "                     LAN : " + round(ship:orbit:lan,1) +"   "at (0,4).
+    Print "               Ship  LAN : " + round(ship:orbit:lan,1) +"   "at (0,4).
     Print "            Eccentricity : " + Round (ship:orbit:eccentricity,3) +"   "at (0,5).
     print "           True Anomaly  : " + Round (ship:orbit:trueAnomaly,1) +"   " at (0,6).
 

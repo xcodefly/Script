@@ -8,7 +8,8 @@ clearscreen.
 until hasnode=false{
     remove nextnode.
 }
-match_Phase().
+ set a to  target_Inclination_fx().
+ print a.
 //matchOrbit().
 
 

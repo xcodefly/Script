@@ -3,7 +3,7 @@
 // Vector function
 
 // Hud Display.
-
+run "r2.ks".
 // variables.
 sas off.
 lock myOrbitNormal to -vcrs(ship:position-ship:body:position,ship:velocity:orbit):normalized.
@@ -45,7 +45,7 @@ declare Function hud_ANDN
 function EccAnomT {
     set  ec to ship:orbit:eccentricity.   //eccentricity
     declare parameter T.    //True anomaly
-    local tanE2 is  sqrt((1-ec)/(1+ec))	* tan(T/2).                    // tan(E/2)
+    local       tanE2 is  sqrt((1-ec)/(1+ec))	* tan(T/2).                    // tan(E/2)
         
     return 2 * arctan(tanE2).
 }
@@ -91,16 +91,15 @@ Declare function test
 }
 
 
-until Gear
-{
+
     alignOrbit().
     hud_ANDN().
     vec_help().
  //   ascNodeTime(0).
   //  ascNodeTime(anNodeAnomaly,5).
    test().
-    wait 0.01.
-}
+   exenode().
+  
 
 declare function alignOrbit
 {

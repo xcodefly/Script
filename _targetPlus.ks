@@ -73,3 +73,32 @@ declare function target_orbit_info{
 
     return target_info.
 }
+
+Declare function target_Inclination_fx{
+    // Find the angle between two orbits
+    // take the normal of the orbi and crsproduct it 
+
+        Local Target_node to lexicon().
+        Local ship_normal to vcrs(ship:velocity:orbit,ship:position-body:position):normalized.
+        Local target_normal to vcrs(target:velocity:orbit,target:position-body:position):normalized.
+        Local angle to vang(ship_normal,target_normal).
+     //   print "Orbit Angle : "+Round(angle,2) +"  " at (0,1).
+        Local ANDN to vcrs(ship_normal,target_normal).
+        local ship_position_5 to positionat(ship,time:seconds-0.5).
+        if vang(ship:position-body:position,andn)<vang(ship_position_5-body:position,andn)
+        {
+            set ascNode to vang(ship:position-body:position,andn).
+            set desNode to ascNode+180.
+        }else
+        {
+            set ascNode to 360-vang(ship:position-body:position,andn).
+            set desNode to ascNode-180.
+        }
+        target_node:add("ascNode",ascNode).
+        target_node:add("desNode",desNode).
+        return target_node.
+    // Find true anomaly to the target
+
+    // Find time to That using eccentrcity anomaly and then mean anomaly.
+
+}
