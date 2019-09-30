@@ -8,8 +8,9 @@ clearscreen.
 until hasnode=false{
     remove nextnode.
 }
- set a to  target_Inclination_fx().
- print a.
+ set aa to  target_Inclination_Match().
+ print aa.
+ exenode().
 //matchOrbit().
 
 
