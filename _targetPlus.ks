@@ -82,7 +82,7 @@ Declare function target_Inclination_Match{
         Local ship_normal to vcrs(ship:velocity:orbit,ship:position-body:position):normalized.
         Local target_normal to vcrs(target:velocity:orbit,target:position-body:position):normalized.
         Local dAngle to vang(ship_normal,target_normal).
-     //   print "Orbit Angle : "+Round(angle,2) +"  " at (0,1).
+        //   print "Orbit Angle : "+Round(angle,2) +"  " at (0,1).
         Local ANDN to vcrs(ship_normal,target_normal).
         local ship_position_5 to positionat(ship,time:seconds-0.5).
         if vang(ship:position-body:position,andn)<vang(ship_position_5-body:position,andn)
@@ -103,19 +103,10 @@ Declare function target_Inclination_Match{
         target_node:add("eta_des_Node",Round(etatrueAnomaly(Asc_true_anomaly+180),1)).
         // check where to add the node
         // adjust inclination at slower speed.
-        
-        
         // Asc Node TrueAnomaly will be ascNode+trueAnomaly.
-
         inclinationNode(target_node,ship_normal).
-
-
-
-
-        
         return target_node.
     // Find true anomaly to the target
-
     // Find time to That using eccentrcity anomaly and then mean anomaly.
 
 }
@@ -133,7 +124,6 @@ function EccAnomaly {
     Local parameter v_anomaly.    //True anomaly
     set  ec to ship:orbit:eccentricity.   //eccentricity
     local   ecc_anomaly is  sqrt((1-ec)/(1+ec))	* tan(v_anomaly/2).                    // tan(E/2)
-        
     return 2 * arctan(ecc_anomaly).
 }
 
@@ -147,7 +137,6 @@ function MeanAnomaly
 Declare Function etaMeanAnomaly{
     Local Parameter M.
     Local u to sqrt(constant:G*Body:mass/ship:orbit:semiMajorAxis^3).
-
     Return M*constant:degToRad/u+eta:periapsis.
 }
 
@@ -156,7 +145,6 @@ Function inclinationNode
     local Parameter inc_node.
     local Parameter normal.
     Local adj_node to node(time:seconds,0,0,0).
-       
     if velocityat(ship,inc_node:eta_asc_node):orbit:mag<velocityAt(ship,inc_node:eta_des_node):orbit:mag
     {
         set dV to -2*velocityAt(ship,time:seconds+inc_node:eta_asc_node):orbit:mag*sin(inc_node:dAngle/2).
@@ -166,7 +154,7 @@ Function inclinationNode
         set dV to 2*velocityAt(ship,time:seconds+inc_node:eta_asc_node):orbit:mag*sin(inc_node:dAngle/2).
         set nodeTime to time:seconds+inc_node:eta_des_node.
     }
-    
     Local adj_node to node(nodeTime,0,dV,0).
     add adj_node.
 }
+
