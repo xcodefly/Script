@@ -10,7 +10,7 @@ set dTurn to 0.
 set ship_Pitch to 0.
 set turnrate to 0.
 set pInput to 0.
-set targetSpeed to 130.
+set targetSpeed to 300.
 set p_control to 0.
 set targetAlt to ship:altitude.
 set targetVS to 1.
@@ -20,15 +20,16 @@ lock hdg to CompassHDG().
 
 // Vertial and Horizontal modes
 set vModeList to list(" PITCH","    VS","   ALT","   IAS").
-set vmode to 0.
-set nModeList to List("Roll","HDG","Nav","App").
-set vModeValue to List(3,10,0,0).
+set vmode to 1.
+set vModeValue to List(3,0,0,0).
+set nModeList to List("Roll"," HDG"," Nav"," App").
+set nnode to 0.
 set setThrottle to 0.
 set cursor to 0.
 // Auto Pilot 
 
-set autoPilot to False.
-set autoThrottle to False.
+set autoPilot to True.
+set autoThrottle to True.
 
 //SET altPID to pidLoop()
 set vMax to 15.
@@ -40,8 +41,8 @@ if availableThrust<1
 }
 
 // PID controllers to control 
-SET speedControl to pidLoop(0.088,0.005,0.011,0,1).
-set pitchControl to pidLoop(0.19,0.015,0.079,-1,1).
+SET speedControl to pidLoop(0.088,0.007,0.011,0,1).
+set pitchControl to pidLoop(0.045,0.01,0.053,-1,1).
 set rollcontrol to PidLoop(0.1,0.01,0.05,-0.5,0.5).
 
 
@@ -55,7 +56,9 @@ Declare function hud
     Print "        Auto Throttle [X] : "+autoThrottle + " ["+Round(setThrottle*100)+"]    " at (0,1). 
       
     Print "_______________________________________" at (0,2).
-    Print "   " + vmodeList[vmode]+" : "+VmodeValue[vmode] + "   " at (0,3).
+    Print "   " + vmodeList[vmode]+" : "+VmodeValue[vmode] + "   "  at (0,3).
+    print " " + nModeList[nmode] + "  " at (20,3).
+
    // Printing HUD modes
     set x to 0.
     until x=vmodeList:length
@@ -143,6 +146,7 @@ Declare function Pitch_Control
     else if vMode=1
     {
         set pInput to pitchControl:update(time:seconds,verticalSpeed).
+      
     }
     else if vMode=2
     {
