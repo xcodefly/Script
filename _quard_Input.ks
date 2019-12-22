@@ -1,6 +1,6 @@
 // All the inputs are accpted here.
 
-Declare Function userInput
+Declare Function userInput_Basic
 {
     Local Parameter inputControl.
     if terminal:input:haschar 
@@ -16,18 +16,19 @@ Declare Function userInput
         }
         else if ch = "a"
         {
-            set inputControl:bank to  inputControl:bank-1.
+            set inputControl:bank to  max(-25,inputControl:bank-1).
         } 
         else if ch = "d"
         {
-            set inputControl:bank to  inputControl:bank+1.
+            set inputControl:bank to  min(25,inputControl:bank+1).
+
         }else if ch = "w"
         {
-            set inputControl:pitch to  inputControl:pitch-1.
+            set inputControl:pitch to  Max(-30,inputControl:pitch-1).
         } 
         else if ch = "s"
         {
-            set inputControl:pitch to  inputControl:pitch+1.
+            set inputControl:pitch to  min(30,inputControl:pitch+1).
         }else if ch = "q"
         {
             set inputControl:HDG to  inputControl:HDG-1.

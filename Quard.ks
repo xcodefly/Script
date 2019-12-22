@@ -36,11 +36,12 @@ shipAtt:add("HDG",0).
 // Main Loop
 Until gear
 {
-    quard_Power(shipAtt,shipTarget).
+    quard_Basic(shipAtt,shipTarget).
+    userInput_Basic(shipTarget).
+
     quard_HUD(shipATT,shipTarget).
-    userInput(shipTarget).
     update_att().
-    wait 0.01.
+    wait 0.04.
 }
 
 Declare Function update_Att

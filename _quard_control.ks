@@ -11,10 +11,10 @@ set mainRPM to list(0,0,0,0).
 set rpm to 0.
 
 
-set rpmPID to pidLoop(10,	5,	50,	0,460).
-set pitchPID to pidLoop(2,	0.1,	1,	-20,20).
-set bankPID to pidLoop(2,	0.1,	1,	-20,20).
-set hdgPID to pidLoop(3,	0.1,	1,	-20,20).
+set rpmPID to pidLoop(15,	7,	    50,  0,460).
+set pitchPID to pidLoop(1.5,	0.2,	1,	-20,20).
+set bankPID to pidLoop(2,	0.2,	1,	-20,20).
+set hdgPID to pidLoop(3,	0.2,	1,	-20,20).
 // PID loops to control Speed and attitude
 rotor_torque(20).
 Declare function rotor_torque
@@ -26,7 +26,7 @@ Declare function rotor_torque
     }
 }
 
-Declare function quard_Power
+Declare function quard_Basic
 {
     Parameter _shipAtt.
     Parameter _shipControl.
@@ -48,15 +48,15 @@ Declare function _alt
    
     Parameter targetALT.
     
-    set rpmPID:setPoint to 0.
-    set x to ship:altitude-targetALT.
+    set rpmPID:setPoint to targetAlt.
+    set x to min(1,max(-5,ship:altitude-targetALT)).
   //  set autoThrottle to climbPID:update(time:seconds,ship:VerticalSpeed).
-    set rpm to rpmPID:update(time:seconds,x).
+    set rpm to rpmPID:update(time:seconds,altitude).
     set mainRPM[0] to rpm.
     set mainRPM[1] to rpm.
     set mainRPM[2] to rpm.
     set mainRPM[3] to rpm.
-  //  print rpm.
+   print round(x,1)+"    " at (0,8).
     
  }
 
