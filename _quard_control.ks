@@ -16,7 +16,7 @@ set pitchPID to pidLoop(2,	0.1,	1,	-20,20).
 set bankPID to pidLoop(2,	0.1,	1,	-20,20).
 set hdgPID to pidLoop(3,	0.1,	1,	-20,20).
 // PID loops to control Speed and attitude
-rotor_torque().
+rotor_torque(20).
 Declare function rotor_torque
 {
    
