@@ -9,7 +9,12 @@ set engList to Engine_ClockWise().
 
 set mainRPM to list(0,0,0,0).
 set rpm to 0.
-set rpmPID to pidLoop(10	1,	1,	0,460).
+
+
+set rpmPID to pidLoop(10,	5,	50,	0,460).
+set pitchPID to pidLoop(2,	0.1,	1,	-20,20).
+set bankPID to pidLoop(2,	0.1,	1,	-20,20).
+set hdgPID to pidLoop(3,	0.1,	1,	-20,20).
 // PID loops to control Speed and attitude
 rotor_torque().
 Declare function rotor_torque
