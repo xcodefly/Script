@@ -26,6 +26,10 @@ declare function Engine_ClockWise
             set sortedList[3] to e.
 
         }
+        else{
+            Print "Missing Engines".
+            Wait 1.
+        }
     }
     
    

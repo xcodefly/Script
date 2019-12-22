@@ -36,10 +36,7 @@
 					{
                        
                         set desiredAlt to desiredAlt+1.
-                       
-						
-						
-					}
+                    }
                      if ch = "n"
 					{
 					    
