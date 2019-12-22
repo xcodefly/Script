@@ -38,8 +38,10 @@ Until gear
 {
     quard_Basic(shipAtt,shipTarget).
     userInput_Basic(shipTarget).
+    hud_Basic(shipATT,shipTarget).
 
-    quard_HUD(shipATT,shipTarget).
+
+    
     update_att().
     wait 0.04.
 }

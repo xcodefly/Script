@@ -99,9 +99,9 @@ declare function _HDG
         set updateHDG to updateHDG+360.
     }
     
-    print "targetHDG+360: "+round(targetHDG+360,1)+" curr " + Round(currentHDG+360) at (5,5).
+  //  print "targetHDG+360: "+round(targetHDG+360,1)+" curr " + Round(currentHDG+360) at (5,5).
 
-    print "targetHDG+360: "+round(updateHDG) at (5,6).
+  //  print "targetHDG+360: "+round(updateHDG) at (5,6).
 
     
 

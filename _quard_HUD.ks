@@ -1,6 +1,6 @@
 // Print HUD.
 
-Declare function quard_HUD
+Declare function hud_Basic
 {
     Local Parameter hudATT.
     local Parameter hudControl.
@@ -10,5 +10,5 @@ Declare function quard_HUD
   
     print " Pitch : "+round(hudATT:pitch,1)+ +" [ "+Round(hudControl:Pitch)+ " ]    " at (0,2).
     print "  Bank : "+round(hudATT:bank,1)+" [ "+Round(hudControl:bank)+ " ]    " at (0,3).
-    print "   HDG : " +round(hudATT:HDG) +" [ "+Round(hudControl:HDG)+ " ]    "at (0,4).
+    print "   HDG : "+round(hudATT:HDG) +" [ "+Round(hudControl:HDG)+ " ]    "at (0,4).
 }
