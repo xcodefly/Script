@@ -46,10 +46,11 @@ Declare function _ALT
 {
    
     Parameter targetAlt.
-    set rpmPID:setPoint to targetAlt.
+    set rpmPID:setPoint to 0.
   //  set altError to altitude-targetAlt.
   //  set autoThrottle to climbPID:update(time:seconds,ship:VerticalSpeed).
-    set rpm to rpmPID:update(time:seconds,altitude).
+    local targetError to altitude-targetAlt.
+    set rpm to rpmPID:update(time:seconds,targetError).
     set mainRPM[0] to rpm.
     set mainRPM[1] to rpm.
     set mainRPM[2] to rpm.
@@ -87,7 +88,7 @@ declare function _HDG
     parameter currentHDG.
     parameter targetHDG.
     set hdgPID:setPoint to 360.
-    set updateHDG to currentHDG+360-targetHDG.
+    local updateHDG to currentHDG+360-targetHDG.
     if updateHDG>360+180
     {
         set updateHDG to updateHDG-360.
