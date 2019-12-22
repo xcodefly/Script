@@ -8,7 +8,7 @@ run "_hover.ks".
 
 // should be used when horizontal velocity is low. only vertial speed.  
 
-lock verticalStopDistance to 1.05*(ship:verticalspeed^2 / (2 * MaxLandingAcc)).	// 110% to compensate for error.
+lock verticalStopDistance to 1.05*(ship:verticalspeed^2 / (2 * MaxLandingAcc)).	// 105% to compensate for error.
 
 
 Declare function HoverSlam     // this is the basic hoverslam. 
