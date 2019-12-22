@@ -26,28 +26,37 @@ Declare function rotor_torque
     }
 }
 
-Declare function setPower
-{
-    engList[0]:getmodule("ModuleRoboticServoRotor"):setfield("rpm Limit",mainRPM[0]).
-    engList[1]:getmodule("ModuleRoboticServoRotor"):setfield("rpm Limit",mainRPM[1]).
-    engList[2]:getmodule("ModuleRoboticServoRotor"):setfield("rpm Limit",mainRPM[2]).
-    engList[3]:getmodule("ModuleRoboticServoRotor"):setfield("rpm Limit",mainRPM[3]).
-    pRINT " rpm set TO " + round(mainRPM[0],1) at (2,2).
-}
-
 Declare function quard_Power
 {
     Parameter _shipAtt.
     Parameter _shipControl.
+    _alt(_shipControl:Alt).
+    _bank(_shipATT:bank,_shipControl:bank).
+    _pitch(_shipATT:pitch,_shipControl:pitch).
+    _hdg(_shipATT:hdg,_shipControl:hdg).
+
+    set _shipControl:rpm to rpm.
+    engList[0]:getmodule("ModuleRoboticServoRotor"):setfield("rpm Limit",mainRPM[0]).
+    engList[1]:getmodule("ModuleRoboticServoRotor"):setfield("rpm Limit",mainRPM[1]).
+    engList[2]:getmodule("ModuleRoboticServoRotor"):setfield("rpm Limit",mainRPM[2]).
+    engList[3]:getmodule("ModuleRoboticServoRotor"):setfield("rpm Limit",mainRPM[3]).
+ //   pRINT " rpm set TO " + round(mainRPM[0],1) at (2,6).
+}
+
+Declare function _alt
+{
+   
+    Parameter targetALT.
     
-    set rpmPID:setPoint to _shipControl:alt.
-    set x to _shipControl:alt-ship:altitude.
+    set rpmPID:setPoint to 0.
+    set x to ship:altitude-targetALT.
   //  set autoThrottle to climbPID:update(time:seconds,ship:VerticalSpeed).
     set rpm to rpmPID:update(time:seconds,x).
     set mainRPM[0] to rpm.
     set mainRPM[1] to rpm.
     set mainRPM[2] to rpm.
     set mainRPM[3] to rpm.
+  //  print rpm.
     
  }
 
