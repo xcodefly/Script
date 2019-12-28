@@ -1,5 +1,5 @@
 // All the inputs are accpted here.
-run "_quard_input.ks".
+
 Declare Function userInput_Basic
 {
     Local Parameter inputControl.

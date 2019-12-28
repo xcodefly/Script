@@ -12,8 +12,8 @@ set rpm to 0.
 
 
 set rpmPID to pidLoop(15,	7,	    50,  0,460).
-set pitchPID to pidLoop(1.5,	0.2,	1,	-20,20).
-set bankPID to pidLoop(2,	0.2,	1,	-20,20).
+set pitchPID to pidLoop(1,	0.1,	0.5,	-20,20).
+set bankPID to pidLoop(1,	0.1,	0.5,	-20,20).
 set hdgPID to pidLoop(3,	0.2,	1,	-20,20).
 // PID loops to control Speed and attitude
 rotor_torque(20).
