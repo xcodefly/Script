@@ -16,9 +16,9 @@
     local hdgOffset to 0.
 
 // PID controller for controls.
-    set rpmPID to pidLoop(25,	5,	    60,  0,460).
-    set bankPID to pidLoop(1.1,	0.02,	0.85,	-10,10).
-    set pitchPID to pidLoop(5,	0.1 ,	3,	-50,50).
+    set rpmPID to pidLoop(25,	5,	    60,  0,440).
+    set bankPID to pidLoop(3,	0.5,	1.85,	-20,20).
+    set pitchPID to pidLoop(5,	1 ,	3,	-20,20).
     set hdgPID to pidLoop(0.8,	0.01,	0.7,	-10,10).
 
 // PID loops to control Speed and attitude
@@ -54,13 +54,13 @@ Declare function tri_Basic
     //   _hdg(_shipATT:hdg,_shipControl:hdg).
         _setRPM().
         set _shipControl:rpm to rpm.
-        hud_basic(shipAtt,shipTarget).
+        hud_basic(shipAtt,shipTarget,engList).
         
     //   pRINT " rpm set TO " + round(mainRPM[0],1) at (2,6).
     }
 Declare function _setRPM
     {
-        engList[0]:getmodule("ModuleRoboticServoRotor"):setfield("rpm Limit",rpm-bankoffset).
+        engList[0]:getmodule("ModuleRoboticServoRotor"):setfield("rpm Limit",rpm+bankoffset).
         engList[1]:getmodule("ModuleRoboticServoRotor"):setfield("rpm Limit",rpm-bankoffset).
         engList[2]:getmodule("ModuleRoboticServoRotor"):setfield("rpm Limit",rpm-pitchoffset).
     //  engList[3]:getmodule("ModuleRoboticServoRotor"):setfield("rpm Limit",rpm+bankoffset+pitchoffset+hdgOffset).
@@ -79,7 +79,7 @@ Declare function _alt
     //  set autoThrottle to climbPID:update(time:seconds,ship:VerticalSpeed).
         set rpm to rpmPID:update(time:seconds,altitude).
     
-        print round(x,1)+"    " at (0,8).
+      //  print round(x,1)+"    " at (0,8).
         
     }
 
