@@ -9,12 +9,20 @@ set engList to Engine_ClockWise().
 
 set mainRPM to list(0,0,0,0).
 set rpm to 0.
+set bankOffset to 0.
+set pitchOffset to 0.
+set hdgOffset to 0.
 
 
-set rpmPID to pidLoop(15,	7,	    50,  0,460).
-set pitchPID to pidLoop(1,	0.1,	0.5,	-20,20).
-set bankPID to pidLoop(1,	0.1,	0.5,	-20,20).
-set hdgPID to pidLoop(3,	0.2,	1,	-20,20).
+
+set rpmPID to pidLoop(25,	5,	    60,  0,460).
+
+
+set bankPID to pidLoop(1.1,	0.012,	0.85,	-10,10).
+
+set pitchPID to pidLoop(1.1,	0.012,	0.85,	-10,10).
+
+set hdgPID to pidLoop(0.8,	0.01,	0.7,	-10,10).
 // PID loops to control Speed and attitude
 rotor_torque(20).
 Declare function rotor_torque
@@ -34,15 +42,22 @@ Declare function quard_Basic
     _bank(_shipATT:bank,_shipControl:bank).
     _pitch(_shipATT:pitch,_shipControl:pitch).
     _hdg(_shipATT:hdg,_shipControl:hdg).
-
+    _setRPM().
     set _shipControl:rpm to rpm.
-    engList[0]:getmodule("ModuleRoboticServoRotor"):setfield("rpm Limit",mainRPM[0]).
-    engList[1]:getmodule("ModuleRoboticServoRotor"):setfield("rpm Limit",mainRPM[1]).
-    engList[2]:getmodule("ModuleRoboticServoRotor"):setfield("rpm Limit",mainRPM[2]).
-    engList[3]:getmodule("ModuleRoboticServoRotor"):setfield("rpm Limit",mainRPM[3]).
+    
  //   pRINT " rpm set TO " + round(mainRPM[0],1) at (2,6).
 }
-
+Declare function _setRPM
+{
+    engList[0]:getmodule("ModuleRoboticServoRotor"):setfield("rpm Limit",rpm-bankoffset+pitchoffset-hdgOffset).
+    engList[1]:getmodule("ModuleRoboticServoRotor"):setfield("rpm Limit",rpm-bankoffset-pitchoffset+hdgOffset).
+    engList[2]:getmodule("ModuleRoboticServoRotor"):setfield("rpm Limit",rpm+bankoffset-pitchoffset-hdgOffset).
+    engList[3]:getmodule("ModuleRoboticServoRotor"):setfield("rpm Limit",rpm+bankoffset+pitchoffset+hdgOffset).
+  //  engList[0]:getmodule("ModuleRoboticServoRotor"):setfield("rpm Limit",mainRPM[0]).
+   // engList[1]:getmodule("ModuleRoboticServoRotor"):setfield("rpm Limit",mainRPM[1]).
+  //  engList[2]:getmodule("ModuleRoboticServoRotor"):setfield("rpm Limit",mainRPM[2]).
+  //  engList[3]:getmodule("ModuleRoboticServoRotor"):setfield("rpm Limit",mainRPM[3]).
+}
 Declare function _alt
 {
    
@@ -52,11 +67,8 @@ Declare function _alt
     set x to min(1,max(-5,ship:altitude-targetALT)).
   //  set autoThrottle to climbPID:update(time:seconds,ship:VerticalSpeed).
     set rpm to rpmPID:update(time:seconds,altitude).
-    set mainRPM[0] to rpm.
-    set mainRPM[1] to rpm.
-    set mainRPM[2] to rpm.
-    set mainRPM[3] to rpm.
-   print round(x,1)+"    " at (0,8).
+   
+    print round(x,1)+"    " at (0,8).
     
  }
 
@@ -65,11 +77,8 @@ Declare function _Bank{
     parameter targetBank.
     set bankPID:setPoint to targetBank.
     set bankoffset to bankPID:update(time:seconds,currentBank).
-    set mainRPM[0] to mainRPM[0]-bankoffset.
-    set mainRPM[1] to mainRPM[1]-bankoffset.
-    set mainRPM[2] to mainRPM[2]+bankoffset.
-    set mainRPM[3] to mainRPM[3]+bankoffset.
-    print round(bankoffset,1)+ "    " at (4,4).
+    
+    print "Bank  Correction : " + round(Bankoffset,1)+"     " at (0,5).
     
 
 }
@@ -79,11 +88,8 @@ Declare function _Pitch
     parameter targetPitch.
     set pitchPID:setPoint to targetPitch.
     set pitchoffset to pitchPID:update(time:seconds,currentPitch).
-    set mainRPM[0] to mainRPM[0]+pitchoffset.
-    set mainRPM[1] to mainRPM[1]-pitchoffset.
-    set mainRPM[2] to mainRPM[2]-pitchoffset.
-    set mainRPM[3] to mainRPM[3]+pitchoffset.
-    print round(pitchoffset,1)+"     " at (5,5).
+  
+    print "Pitch Correction : " + round(pitchoffset,1)+"     " at (0,6).
 }
 declare function _HDG
 {
@@ -103,11 +109,8 @@ declare function _HDG
 
   //  print "targetHDG+360: "+round(updateHDG) at (5,6).
 
-    
+    print "  HDG Correction : " + round(HDGoffset,1)+"     " at (0,7).
 
     set hdgOffset to hdgPID:update(time:seconds,updateHDG).
-    set mainRPM[0] to mainRPM[0]-hdgOffset.
-    set mainRPM[1] to mainRPM[1]+hdgOffset.
-    set mainRPM[2] to mainRPM[2]-hdgOffset.
-    set mainRPM[3] to mainRPM[3]+hdgOffset.
+  
 }
