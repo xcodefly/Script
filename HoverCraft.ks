@@ -65,7 +65,7 @@
 	List Engines in Elist.
 
 // Detecting engines. 
-List Engines in EngineList.
+    List Engines in EngineList.
 	For E in enginelist
 	{
 		if vdot(front,e:position)>0.1 and vdot(e:position,ship:facing:rightvector)> 0.1
@@ -80,7 +80,7 @@ List Engines in EngineList.
 		
 		if vdot(front,e:position)<0.1 and vdot(e:position,ship:facing:rightvector)>0.1
 		{
-			set elist[2] to e..
+			set elist[2] to e.
 		}
 		
 		if vdot(front,e:position)<0.1 and vdot(e:position,ship:facing:rightvector)< 0.1
