@@ -1,5 +1,5 @@
 set athrottle to 1.
-Parameter tPitch to 3.
+Parameter tPitch to 4.
 lock steering to heading(90,tPitch).
 lock throttle to aThrottle.
 list engines in elist.
@@ -7,10 +7,10 @@ list engines in elist.
 // variables for different ships.
 
 set iniClimbMax to 29.
-set iniClimbMin to 3.
+set iniClimbMin to 8.
 set iniClimbAlt to 5500.
 set accAlt to 25000.
-set accClimbMin to 17.
+set accClimbMin to 14.
 set accClimbMax to 21.
 
 brakes off.
@@ -24,23 +24,23 @@ declare function hud
     Print "     Airspeed : " + Round(airspeed)+ "  " at (0,1).
     print "  Ship tPitch : " + round(tpitch,1) + "  " at (0,2).
     print "Engine Thurst : " +Round(Elist[0]:availableThrust) + "  "at (0,3).
-    print " target Speed : "+ round(200+ship:altitude*0.05)+ "  " at (0,4).
+    print " target Speed : "+ round(200+ship:altitude*0.03)+ "  " at (0,4).
 }
 
 
 declare function initialClimb
 {
     set pitchPID to pidLoop(0.4,0.001,1.7,0,iniClimbMax-iniClimbMin).
-    set pitchPID:setpoint to 200+ship:altitude*0.05.
+    set pitchPID:setpoint to 200+ship:altitude*0.03.
     until ship:altitude>iniClimbAlt
     {
         hud().
-        set pitchPID:setpoint to 200+ship:altitude*0.05.
-        if groundspeed >90
+        set pitchPID:setpoint to 200+ship:altitude*0.03.
+        if groundspeed >110
         {
             
         }
-        if alt:radar>50
+        if alt:radar>10
         {
             gear off.
             set tPitch to iniClimbMax-pitchPID:update(time:seconds,airspeed)-ship:altitude/iniClimbAlt*(iniClimbMax-accClimbMax).

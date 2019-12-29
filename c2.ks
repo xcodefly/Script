@@ -10,7 +10,7 @@ set iniClimbMax to 29.
 set iniClimbMin to 5.
 set iniClimbAlt to 5500.
 set accAlt to 25000.
-set accClimbMin to 17.
+set accClimbMin to 15.
 set accClimbMax to 21.
 
 brakes off.

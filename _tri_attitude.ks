@@ -1,4 +1,4 @@
-run "_quard_Input.ks".
+
 
 // Locks for ship attitude and directions.
 

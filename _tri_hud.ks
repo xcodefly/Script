@@ -11,4 +11,10 @@ Declare function hud_Basic
     print " Pitch : "+round(hudATT:pitch,1)+ +" [ "+Round(hudControl:Pitch)+ " ]    " at (0,2).
     print "  Bank : "+round(hudATT:bank,1)+" [ "+Round(hudControl:bank)+ " ]    " at (0,3).
     print "   HDG : "+round(hudATT:HDG) +" [ "+Round(hudControl:HDG)+ " ]    "at (0,4).
+
+    // Print the current RPM for engines.
+    Print " Left Front : Right Front " at  (0,5).
+    print " test." at (5,6).
+    print " right " at (2,6).
+    print " Back at " at (13,7).
 }

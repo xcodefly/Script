@@ -5,9 +5,10 @@
 
 run "_tri_control.ks".
 run "_tri_hud.ks".
+run "_tri_Input.ks".
 
 
-
+// initiate the lexicon so that the values can be used in all the function. Later, it will need to be passed on as the program gets more complex. 
 
 
 clearscreen.
@@ -34,7 +35,7 @@ shipAtt:add("HDG",0).
 Until gear
 {
     tri_Basic(shipAtt,shipTarget).
-    hud_basic(shipAtt,shipTarget).
+   
     update_Att().
 
 
