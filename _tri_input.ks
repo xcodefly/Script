@@ -22,11 +22,11 @@ Declare Function userInput_Basic
         {
             set inputControl:bank to  min(25,inputControl:bank+1).
 
-        }else if ch = "w"
+        }else if ch = "i"
         {
             set inputControl:pitch to  Max(-25,inputControl:pitch-1).
         } 
-        else if ch = "s"
+        else if ch = "k"
         {
             set inputControl:pitch to  min(25,inputControl:pitch+1).
         }else if ch = "a"

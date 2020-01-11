@@ -37,6 +37,7 @@ Until gear
     tri_Basic(shipAtt,shipTarget).
    
     update_Att().
+    userInput_Basic(shipTarget).
 
 
     

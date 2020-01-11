@@ -15,7 +15,7 @@ Declare function hud_Basic
 
     // Print the current RPM for engines.
     Print " Left Front : Right Front " at  (0,7).
-    print Round( eList[0]:getmodule("ModuleRoboticServoRotor"):getfield("rpm Limit")) at (3,8).
-    print " :    "+Round( eList[1]:getmodule("ModuleRoboticServoRotor"):getfield("rpm Limit")) at (11,8).
-    print Round( eList[2]:getmodule("ModuleRoboticServoRotor"):getfield("rpm Limit")) at (10,9).
+    print Round( eList[0]:getmodule("ModuleRoboticServoRotor"):getfield("rpm Limit"))+"   " at (3,8).
+    print " :    "+Round( eList[1]:getmodule("ModuleRoboticServoRotor"):getfield("rpm Limit"))+"   " at (11,8).
+    print Round( eList[2]:getmodule("ModuleRoboticServoRotor"):getfield("rpm Limit"))+"   " at (10,9).
 }

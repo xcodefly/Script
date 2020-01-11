@@ -37,3 +37,10 @@ declare function Engine_ClockWise
     return sortedList.
 }
 
+Declare function yaw_Controller
+{
+    local yawServo to ship:partstagged("yaw").
+
+
+    return yawServo.
+}

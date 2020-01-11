@@ -7,6 +7,7 @@
 
 // Initilliztion engines
     set engList to Engine_ClockWise().
+    set yawControl to yaw_Controller(). // Returns the servo that can me tilted. should be tagged "yaw".
 
 
 // Initilizng variables for this function. 
@@ -16,10 +17,10 @@
     local hdgOffset to 0.
 
 // PID controller for controls.
-    set rpmPID to pidLoop(25,	5,	    60,  0,440).
-    set bankPID to pidLoop(3,	0.5,	1.85,	-20,20).
-    set pitchPID to pidLoop(5,	1 ,	3,	-20,20).
-    set hdgPID to pidLoop(0.8,	0.01,	0.7,	-10,10).
+    set rpmPID to pidLoop(10,	5,	    60,  0,430).
+    set bankPID to pidLoop(0.5,	0.5,	1,	-20,20).
+    set pitchPID to pidLoop(2,	1.5 ,	2,	-80,40).
+    set hdgPID to pidLoop(0.45,	0.05,	0.6,	-20,20).
 
 // PID loops to control Speed and attitude
 
@@ -51,17 +52,25 @@ Declare function tri_Basic
         _alt(_shipControl:Alt).
         _bank(_shipATT:bank,_shipControl:bank).
         _pitch(_shipATT:pitch,_shipControl:pitch).
-    //   _hdg(_shipATT:hdg,_shipControl:hdg).
+        _hdg(_shipATT:hdg,_shipControl:hdg,_shipATT:bank).
         _setRPM().
+    //    test(_shipAtt:bank).
         set _shipControl:rpm to rpm.
         hud_basic(shipAtt,shipTarget,engList).
         
     //   pRINT " rpm set TO " + round(mainRPM[0],1) at (2,6).
     }
+Declare function test{
+        
+      
+        
+
+      //  engList[0]:getmodule("ModuleRoboticServoRotor"):setfield("rpm Limit",rpm).
+    }
 Declare function _setRPM
     {
-        engList[0]:getmodule("ModuleRoboticServoRotor"):setfield("rpm Limit",rpm+bankoffset).
-        engList[1]:getmodule("ModuleRoboticServoRotor"):setfield("rpm Limit",rpm-bankoffset).
+        engList[0]:getmodule("ModuleRoboticServoRotor"):setfield("rpm Limit",rpm+bankoffset+pitchOffset/2).
+        engList[1]:getmodule("ModuleRoboticServoRotor"):setfield("rpm Limit",rpm-bankoffset+pitchOffset/2).
         engList[2]:getmodule("ModuleRoboticServoRotor"):setfield("rpm Limit",rpm-pitchoffset).
     //  engList[3]:getmodule("ModuleRoboticServoRotor"):setfield("rpm Limit",rpm+bankoffset+pitchoffset+hdgOffset).
     //  engList[0]:getmodule("ModuleRoboticServoRotor"):setfield("rpm Limit",mainRPM[0]).
@@ -103,17 +112,18 @@ Declare function _Pitch
     }
 declare function _HDG
     {
-        parameter currentHDG.
-        parameter targetHDG.
+        local parameter currentHDG.
+        local parameter targetHDG.
+        local parameter l_bank.
         set hdgPID:setPoint to 360.
         local updateHDG to currentHDG+360-targetHDG.
         if updateHDG>360+180
-        {
-            set updateHDG to updateHDG-360.
-        } else if updateHDG<180
-        {
-            set updateHDG to updateHDG+360.
-        }
+            {
+                set updateHDG to updateHDG-360.
+            } else if updateHDG<180
+            {
+                set updateHDG to updateHDG+360.
+            }
         
     //  print "targetHDG+360: "+round(targetHDG+360,1)+" curr " + Round(currentHDG+360) at (5,5).
 
@@ -122,5 +132,6 @@ declare function _HDG
         print "  HDG Correction : " + round(HDGoffset,1)+"     " at (0,7).
 
         set hdgOffset to hdgPID:update(time:seconds,updateHDG).
+        yawControl[0]:getmodule("ModuleRoboticRotationServo"):setfield("target angle",-l_bank-hdgOffset).
     
     }
