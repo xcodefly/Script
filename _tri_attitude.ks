@@ -17,6 +17,8 @@ Declare Function update_Att
     set shipATT:bank to bank.
     set shipATT:pitch to pitch.
     set shipATT:HDG to hdg().
+    set shipAtt:speed to vdot(facing:FOREVECTOR,velocity:surface).
+    set shipAtt:yaw to vdot(facing:rightVector,velocity:surface).
 }
 
 Declare Function HDG
