@@ -16,11 +16,11 @@ Declare Function userInput_Basic
         }
         else if ch = "j"
         {
-            set inputControl:bank to  max(-25,inputControl:bank-1).
+            set inputControl:bank to  max(-15,inputControl:bank-1).
         } 
         else if ch = "l"
         {
-            set inputControl:bank to  min(25,inputControl:bank+1).
+            set inputControl:bank to  min(15,inputControl:bank+1).
 
         }else if ch = "i"
         {

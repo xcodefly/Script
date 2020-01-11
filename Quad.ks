@@ -12,7 +12,7 @@ lock frontHDGV to vxcl(up:vector,facing:vector).
 
 lock bank to vang(up:vector,facing:rightVector)-90.
 lock pitch to 90-vang(up:vector,facing:vector).
-
+set modeList to list("Raw","Speed").
 set shipATT to lexicon().
 set shipTarget to lexicon().
 gear off.

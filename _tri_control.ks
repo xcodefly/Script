@@ -20,7 +20,7 @@
     set rpmPID to pidLoop(10,	5,	    60,  0,430).
     set bankPID to pidLoop(0.5,	0.5,	1,	-20,20).
     set pitchPID to pidLoop(2,	1.5 ,	2,	-80,40).
-    set hdgPID to pidLoop(0.45,	0.05,	0.6,	-20,20).
+    set hdgPID to pidLoop(0.6,	0.02,	0.6,	-30,30).
 
 // PID loops to control Speed and attitude
 
@@ -107,7 +107,6 @@ Declare function _Pitch
         parameter targetPitch.
         set pitchPID:setPoint to targetPitch.
         set pitchoffset to pitchPID:update(time:seconds,currentPitch).
-    
         print "Pitch Correction : " + round(pitchoffset,1)+"     " at (0,6).
     }
 declare function _HDG
@@ -132,6 +131,7 @@ declare function _HDG
         print "  HDG Correction : " + round(HDGoffset,1)+"     " at (0,7).
 
         set hdgOffset to hdgPID:update(time:seconds,updateHDG).
+        set pitchOffset to pitchOffset/cos(hdgOffset).   // compensating for loss of lift. 
         yawControl[0]:getmodule("ModuleRoboticRotationServo"):setfield("target angle",-l_bank-hdgOffset).
     
     }
