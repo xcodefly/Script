@@ -12,8 +12,22 @@ lock frontHDGV to vxcl(up:vector,facing:vector).
 
 lock bank to vang(up:vector,facing:rightVector)-90.
 lock pitch to 90-vang(up:vector,facing:vector).
+set modeList to list("Raw","Speed").
+set shipATT to lexicon().
+set shipTarget to lexicon().
+gear off.
+shipTarget:add("RPM",100).
+shipTarget:add("ALT",altitude+5).
+shipTarget:add("Pitch",0).
+shipTarget:add("Bank",0).
+shipTarget:add("HDG",0).
+
+shipAtt:add("Pitch",-1).
+shipAtt:add("Bank",0).
+shipAtt:add("HDG",HDG).
 
 clearscreen.
+
 gear off.
 
 

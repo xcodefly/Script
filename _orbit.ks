@@ -179,10 +179,8 @@ Declare function Apoapsis_closedApp_Burn
     // Keplers third law P^2 pro to A^3
     adjust_periapsis(target:Periapsis).
     exenode.
-
-    
 }
-
+//This funciton will match the orbit periapsis and apoapsis. you will still have to match the lan.
 Declare function matchOrbit
 {
     if target:orbit:semiMajorAxis>ship:orbit:semiMajorAxis{
@@ -213,19 +211,25 @@ declare function match_Phase{
 
 }
 
-Declare function Match_inclination
+Declare function matchArgumentOfPeriapsis
 {
-    
+    // function to match the argument of periapsis
+
+    until gear
+    {
+        orbit_Hud().
+    }
 }
 
 Declare function orbit_Hud
 {
+    Print "               Ship  AoP : " + round(ship:orbit:ArgumentOfPeriapsis,1)   + "   " at (0,2).
+    Print "             Target  Aop : " + round(target:orbit:ArgumentOfPeriapsis,1)   + "   " at (0,3).
+    Print "               Ship  LAN : " + round(ship:orbit:lan,1)   + "   " at (0,4).
+    Print "             Target  LAN : " + round(target:orbit:lan,1)   + "   " at (0,5).
     
-    Print "  Target Semi Major Axis : " + Round(setSemiMajAxis) +"   " at (0,2).
-    Print " Current Semi Major Axis : " + Round(CurrentSemiMajAxis) +"   " at (0,3).
-    Print "               Ship  LAN : " + round(ship:orbit:lan,1) +"   "at (0,4).
-    Print "            Eccentricity : " + Round (ship:orbit:eccentricity,3) +"   "at (0,5).
-    print "           True Anomaly  : " + Round (ship:orbit:trueAnomaly,1) +"   " at (0,6).
+    Print "            Eccentricity : " + Round (ship:orbit:eccentricity,3) +"   "at (0,7).
+    print "           True Anomaly  : " + Round (ship:orbit:trueAnomaly,1) +"   " at (0,8).
 
     //print " ______________________________" at (0,7).
 
