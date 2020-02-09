@@ -103,6 +103,7 @@
         updateVnavMode().
         set RollPID:setPoint to 0.
         set elevatorALTPID:setpoint to 0.
+        SET PreviousTime TO TIME:SECONDS. WAIT 0.01.
     Until gear and Lights
         {
         
