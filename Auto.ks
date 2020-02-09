@@ -79,14 +79,14 @@
     Clearscreen.
         // PID
             // Heading PID
-            set AileronPID to pidLoop(.0186,0.0011,.0042,-.5,.5).
+            set AileronPID to pidLoop(.0186,0.0011,.0042,-0.5,0.5).
             set RollPID to pidloop(0.135,0,.24,-3,3).
             set Turnrate to 0.
             set DesiredTurnRate to 0.
         
             // Pitch PID
-            Set elevatorPitchPID to PIDLoop(.25,0.05,.12,-1,1). // -2,5 are relative to facing vector
-            Set elevatorVSPID to PIDLoop(.073,0.06,0.022,-1,1). // -2,5 are relative to facing vector
+            Set elevatorPitchPID to PIDLoop(.15,0.05,.02,-1,1). // -2,5 are relative to facing vector
+            Set elevatorVSPID to PIDLoop(.073,0.06,0.018,-1,1). // -2,5 are relative to facing vector
             Set throttlePID to PIDloop(.065,0.004,0.28,0.02,1).
             Set NavPID to pidLoop(4.5,0,3.5,-45,45).
             Set NavPID:setPoint to 0.
