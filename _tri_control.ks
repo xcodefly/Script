@@ -45,7 +45,7 @@ Declare function rotor_torque
         }
     }
 
-Declare function tri_0
+Declare function tri_Basic
     {
         Parameter _shipAtt.
         Parameter _shipControl.
@@ -56,25 +56,17 @@ Declare function tri_0
         _setRPM().
     //    test(_shipAtt:bank).
         set _shipControl:rpm to rpm.
-        hud_0(shipAtt,shipTarget,engList).
+        hud_basic(shipAtt,shipTarget,engList).
         
     //   pRINT " rpm set TO " + round(mainRPM[0],1) at (2,6).
     }
-Declare function tri_1
-    {
-        Parameter _shipAtt.
-        Parameter _shipControl.
-        _alt_1(_shipControl:Alt).
-        _bank_1(_shipATT:yaw,_shipControl:bank).
-        _pitch(_shipATT:pitch,_shipControl:pitch).
-        _hdg(_shipATT:hdg,_shipControl:hdg,_shipATT:bank).
-        _setRPM().
-        //    test(_shipAtt:bank).
-        set _shipControl:rpm to rpm.
-        hud_1(shipAtt,shipTarget,engList).
-    }   
+Declare function test{
+        
+      
+        
 
-
+      //  engList[0]:getmodule("ModuleRoboticServoRotor"):setfield("rpm Limit",rpm).
+    }
 Declare function _setRPM
     {
         engList[0]:getmodule("ModuleRoboticServoRotor"):setfield("rpm Limit",rpm+bankoffset+pitchOffset/2).
@@ -90,22 +82,15 @@ Declare function _alt
     {
     
         Parameter targetALT.
-         set rpmPID:setPoint to targetAlt+1.
-        set x to min(1,max(-5,ship:altitude-targetALT)).
-    //  set autoThrottle to climbPID:update(time:seconds,ship:VerticalSpeed).
-        set rpm to rpmPID:update(time:seconds,altitude).
-    
-        }
-Declare function _alt_1
-    {
-    
-        Parameter targetALT.
+        
         set rpmPID:setPoint to targetAlt+1.
         set x to min(1,max(-5,ship:altitude-targetALT)).
     //  set autoThrottle to climbPID:update(time:seconds,ship:VerticalSpeed).
         set rpm to rpmPID:update(time:seconds,altitude).
     
-        }
+      //  print round(x,1)+"    " at (0,8).
+        
+    }
 
 Declare function _Bank{
         parameter currentBank.
@@ -116,23 +101,13 @@ Declare function _Bank{
         print "Bank  Correction : " + round(Bankoffset,1)+"     " at (0,5).
     }
 
-
-Declare function _Bank_1{
-        parameter currentSpeed.
-        parameter targetspeed.
-        set bankPID:setPoint to targetspeed.
-        set bankoffset to bankPID:update(time:seconds,currentSpeed)/5.
-        
-        print "Bank  Correction : " + round(Bankoffset,1)+"     " at (0,5).
-    }
-
 Declare function _Pitch
     {
         parameter currentPitch.
         parameter targetPitch.
         set pitchPID:setPoint to targetPitch.
         set pitchoffset to pitchPID:update(time:seconds,currentPitch).
-   //     print "Pitch Correction : " + round(pitchoffset,1)+"     " at (0,6).
+        print "Pitch Correction : " + round(pitchoffset,1)+"     " at (0,6).
     }
 declare function _HDG
     {
@@ -153,7 +128,7 @@ declare function _HDG
 
     //  print "targetHDG+360: "+round(updateHDG) at (5,6).
 
-     //   print "  HDG Correction : " + round(HDGoffset,1)+"     " at (0,7).
+        print "  HDG Correction : " + round(HDGoffset,1)+"     " at (0,7).
 
         set hdgOffset to hdgPID:update(time:seconds,updateHDG).
         set pitchOffset to pitchOffset/cos(hdgOffset).   // compensating for loss of lift. 

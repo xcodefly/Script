@@ -20,15 +20,12 @@ shipTarget:add("ALT",altitude+5).
 shipTarget:add("Pitch",0).
 shipTarget:add("Bank",0).
 shipTarget:add("HDG",0).
-shipTarget:add("Mode",0).
 
-shipAtt:add("Pitch",0).
+shipAtt:add("Pitch",-1).
 shipAtt:add("Bank",0).
 shipAtt:add("HDG",0).
-shipAtt:add("yaw",0).
-shipAtt:add("speed",0).
 
-set modeList to List("Raw Control","Speed        ").
+
 
 
 
@@ -37,19 +34,14 @@ set modeList to List("Raw Control","Speed        ").
 // Main Loop
 Until gear
 {
-    if (shipTarget:Mode=0)
-    {
-        tri_0(shipAtt,shipTarget).
-    }else if (shipTarget:Mode=1)
-    {
-        tri_1(shipAtt,shipTarget).
-    }
+    tri_Basic(shipAtt,shipTarget).
+   
     update_Att().
     userInput_Basic(shipTarget).
 
-    print " MODE : " + shipTarget:mode at (1,12).
+
     
     
-    wait 0.01.
+    wait 0.04.
 }
 

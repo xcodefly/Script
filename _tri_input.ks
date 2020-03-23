@@ -25,10 +25,7 @@ Declare Function userInput_Basic
         }else if ch = "i"
         {
             set inputControl:pitch to  Max(-25,inputControl:pitch-1).
-        }else if ch = "y"
-        {
-            set inputControl:mode to  mod((inputControl:mode+1),2).
-        }
+        } 
         else if ch = "k"
         {
             set inputControl:pitch to  min(25,inputControl:pitch+1).
