@@ -114,7 +114,7 @@
             PitchControl().
             RollControl().
             userinput().
-            wait 0.04.
+            wait 0.01.
         }
 
 	Declare Function PitchControl
