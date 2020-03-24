@@ -54,7 +54,7 @@
         set apDisplayOffset to 4.
 
 	// Autopilot Control
-        set apPointer to 0.
+        set apPointer to 2.
         set TargetHDG to 0.
         set AP to False.
         set AT to False.
@@ -63,6 +63,9 @@
         set TargetPitch to 0.
         Set TargetVS to 0.
         set seekHDG to 0.
+        set altStep to 50.
+
+
 	// Landing and Approach variables
         Set GS to False. // GlideSlop Toggle
 		set vR to 60.    // Speed below which Pitch control doen't work for takeoff. Unless flying. 
@@ -79,18 +82,18 @@
     Clearscreen.
         // PID
             // Heading PID
-            set AileronPID to pidLoop(.0186,0.0011,.0042,-0.5,0.5).
-            set RollPID to pidloop(0.135,0,.24,-3,3).
+            set AileronPID to pidLoop(.186,0.0011,.0052,-0.5,0.5).
+            set RollPID to pidloop(0.4,0,2,-3,3).  //(0.135,0,.24,-3,3).
             set Turnrate to 0.
             set DesiredTurnRate to 0.
         
             // Pitch PID
             Set elevatorPitchPID to PIDLoop(.15,0.05,.02,-1,1). // -2,5 are relative to facing vector
-            Set elevatorVSPID to PIDLoop(.073,0.06,0.018,-1,1). // -2,5 are relative to facing vector
-            Set throttlePID to PIDloop(.065,0.004,0.28,0.02,1).
+            Set elevatorVSPID to PIDLoop(.04,0.03,0.018,-1,1). // -2,5 are relative to facing vector  ///(.065,0.06,0.033,-1,1) values produce occilation at higher speed
+            Set throttlePID to PIDloop(0.18,0.0075,0.10,0.02,1).  //(.065,0.004,0.28,0.02,1).
             Set NavPID to pidLoop(4.5,0,3.5,-45,45).
             Set NavPID:setPoint to 0.
-            Set elevatorALTPID to PIDLoop(.13,0,0.04,-20,20).
+            Set elevatorALTPID to PIDLoop(.30,0,0.045,-100,100).
 		
 		
     // Other Quick tweek variables
@@ -335,7 +338,7 @@
 		}
 	Declare Function updateVnavMode
         {
-			set counter to 0.
+			set counter to 2.
 			until counter>2
 			{
 				if VnavMode[counter]=1
@@ -354,6 +357,7 @@
 
     Declare Function UserInput
 		{
+            
 			if terminal:input:haschar 
 				{
 					set ch to terminal:input:getChar().
@@ -395,12 +399,38 @@
 						}
 					}
 					if ch = "q"
-					{
-						set targetAlt to Round(targetAlt/10)*10-10.
+					{   
+                         if alt:radar<30
+                        {
+                            set altStep to 1.
+                            set targetALT to round(TargetAlt).
+                        }else if alt:radar>1000
+                        {
+                            set altStep to 100.
+                            set targetALT to round(targetALT/100)*100.
+                        }else {
+                            set altStep to 20.
+                            set targetALT to round(targetALT/10)*10.
+                       
+                        }
+						set targetAlt to targetAlt-altStep.
 					}
 					if ch = "e"
-					{
-						set targetAlt to Round(targetAlt/10)*10+10.
+                    {
+                         if alt:radar<50
+                        {
+                            set altStep to 1.
+                            set targetALT to round(TargetAlt).
+                        }
+                        else if alt:radar>1000
+                        {
+                            set altStep to 100.
+                            set targetALT to round(targetALT/100)*100.
+                        }else {
+                            set altStep to 20.
+                            set targetALT to round(targetALT/10)*10.
+                        }
+						set targetAlt to targetAlt+altStep.
 					}
 					
 					if ch = "h"
