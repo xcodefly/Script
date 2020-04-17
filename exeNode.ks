@@ -61,11 +61,11 @@ until done
     }
 }
 unlock throttle.
-lock steering to north.   
-Print "Pointing north. (5s)".
+unlock steering. 
+SAS On.
 wait 5.
 
-unlock steering. 
+
 sas on.
 
 //we no longer need the maneuver node

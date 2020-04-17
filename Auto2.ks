@@ -244,7 +244,7 @@
 				if VnavMode[counter]=1
 				{
 					Print "[" at (4,3+counter).
-					Print "]" at (8,3+counter).
+		    		Print "]" at (8,3+counter).
 					
 				}else
 				{

@@ -11,10 +11,14 @@ set iniClimbMin to 10.
 set iniClimbAlt to 6500.
 
 brakes off.
-if availableThrust<1
+declare function autostage
+{
+    if availableThrust<1
 {
     stage.
 }
+}
+
 clearscreen.
 declare function hud
 {
@@ -27,6 +31,7 @@ set pitchPID to pidLoop(0.45,0.01,0.9,0,iniClimbMax-iniClimbMin).
 
 declare function initialClimb
 {
+    autostage().
     set pitchPID:setpoint to 200+ship:altitude*0.03.
        
     until ship:altitude>iniClimbAlt
@@ -36,11 +41,11 @@ declare function initialClimb
         {
             set tPitch to iniClimbMax-pitchPID:update(time:seconds,airspeed).
         }
-    when alt:radar>10 then
+    IF alt:radar>15 
     {
         gear off.
     }
-    wait 0.
+    wait 0.01.
     }
     
 }
@@ -48,11 +53,12 @@ declare function initialClimb
 declare function acceleratedClimb
 {
     set pitchPID:setPoint to 390.
+    autostage().
     until ship:apoapsis>75000
     {
         hud().
         set tPitch to 60-pitchPID:update(time:seconds,elist[0]:availableThrust).
-        wait 0.
+        wait 0.01.
     }
     lock steering to prograde.
 
@@ -69,13 +75,14 @@ Declare Function MonitorApoapsis
 
 		Print " Current Apoapsis : "+Round(ship:apoapsis)+ "  " at (0,2).
         Print " ETA apoapsis(30) : "+Round (eta:Apoapsis)+ "  " at (0,3).
-		Wait 0.1.
+		Wait 0.01.
 	}
 }
 
 
 
 Declare Function Circularize{
+    autostage().
 	set athrottle to 0.
 	set autoSteer to Heading(90,0).
 	
@@ -90,7 +97,8 @@ Declare Function Circularize{
 		set PitchPID to pidLoop(1,.01,.002,0,45).
 		set PitchPID:setpoint to 20.
 		if ship:verticalspeed<0
-			{	set etaApo to 0.	}
+			{	set etaApo to 5.	}
+            
 		set pOffset to pitchPID:update(time:seconds,etaApo).
 		set autoSteer to Heading(90,pOffset).
 		set athrottle to athrottlePID:update(time:seconds,etaApo).
