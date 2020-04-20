@@ -90,10 +90,8 @@ Declare Function Circularize{
 	{
 		
 		set etaApo to eta:apoapsis.
-		
 		set athrottlePID to PidLoop(0.1,.01,.01,0.01,1).
 		set athrottlePID:setpoint to 30.
-		
 		set PitchPID to pidLoop(1,.01,.002,0,45).
 		set PitchPID:setpoint to 20.
 		if ship:verticalspeed<0

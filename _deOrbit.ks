@@ -97,3 +97,4 @@ declare Function deorbitLoc_hud
     print "DeAcc Distance : "+Round(deAccDistance)+"    " at (0,12).
     print "Target Distance : "+Round(targetDistance)+"   " at (0,13).
 }
+

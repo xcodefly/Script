@@ -1,4 +1,7 @@
 
+
+
+
 // This scrip it used to find to fly the Quard Copter without any stabilization.
 
 // Find the engine at all for corners.
