@@ -1,7 +1,8 @@
 CORE:DOEVENT("Open Terminal").
-wait 5.
+print " Wait.".
+wait 2.
 
 switch to 0.
-wait 4.
+wait 0.5.
 
 run "0:/bridge.ks".

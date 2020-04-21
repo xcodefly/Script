@@ -2,19 +2,23 @@
 
 // help me with the speed control. 
 // nee help with altitude control. Because I am an Idiot. :(
-
+run "Navigation.ks".
 // constants
 Lock East to vCRS (up:vector,north:vector).
 Lock hdgVector to vxcl(up:vector,ship:facing:vector).
 lock bankAngle to vang(up:vector,ship:facing:rightvector)-90.
 // Variables
 
-set targetALT to 80.
-set targetHDG to 95.
+set targetALT to 200.
+set targetHDG to 90.
 set targetVS to 0.
-set targetSpeed to 50.
-
+set targetSpeed to 80.
+set targetBank to 0.
+set minSpeed to 60.  // used for takeoff and control senstiving dampning as speed builds up.
 set shihHDG to HDG_update().
+set hdgError to shipHDG-targetHDG.
+
+set aileron to 0.
 // PID's
 
 
@@ -22,15 +26,16 @@ set shihHDG to HDG_update().
 set throttlePID to pidLoop (0.048,0.007,0.38,0,1).
 set throttlePID:setpoint to targetSpeed.
 
-set altPID to pidloop(0.4,0.001,0.08,-15,20).
+set altPID to pidloop(0.35,0.001,0.08,-25,50).
 set altPID:setpoint to targetAlt.
 
 set vsPID to pidloop (.02,0.03,0.015,-1,1).
 set vsPID:setpoint to 0.
 
 
-set   bankPID to pidLoop(0.1,0.01,0.05,-30,30).
-set bankPID:setpoint to targetHDG.
+set hdgPID to pidLoop(3,0,0.055,-45,45).
+set hdgPID:setpoint to 0.
+set bankPID to pidloop(0.03,0.013,0.045,-.75,.75).
 // Stage if requried.
 
 
@@ -45,43 +50,60 @@ print "Auto Throttle = ON " at (0,0).
 
 until false
 {
-    hdg_update().
+   
     userINput().
     display().
     
     set auto_Throttle to throttlePID:update(time:seconds,airspeed).
     set ship:control:pitch to pitchControl().
+    set ship:control:roll to headingControl().
     
     wait 0.
 }
 unlock throttle.
 
 declare function display
-{
+    {
     print "                      " at (0,2).                   // Clear previous value
-    print " Ship HDG : "+round(shipHDG)+" [ "+targetHDG+" ]    " at (0,2).    
+    print " Ship HDG : "+round(shipHDG)+" [ "+targetHDG+" ]  " +"  "+round(hdgError)+"    "  at (0,2).    
     print " ship ALT : "+round(altitude)+" [ "+targetAlt+" ]    " at (0,3).
     print " ship VS  : "+round(VerticalSpeed)+" [ "+Round(targetVS)+" ]    " at (0,4).
-    print " Speed : "+round(groundspeed)+" [ "+Round(targetSpeed)+" ]    " at (0,5).
-    print "Press 'CTL+C' to exit " at (0,7).
+    print "    Speed : "+round(groundspeed)+" [ "+Round(targetSpeed)+" ]    " at (0,5).
+    print " target Bank : "+round(targetBank)+" | " +round(aileron,1) + "    "at (0,7).
+    print "Press 'CTL+C' to exit " at (0,9).
 
-    print " Bank Angle : "+ round(bankAngle)+"    " at (0,6).
+
+    print " Bank Angle : "+ round(bankAngle)+"    " at (0,8).
     
 }
 
-declare function headingControl
-{
+declare function headingControl 
+    {
+
+    HDG_update().
+    set TargetBank to -hdgPID:update(time:seconds,hdgError).
+    
+    set bankPID:setpoint to targetBank*groundspeed/120.
+    set aileron to bankPID:update(time:seconds,bankangle)*minSpeed/groundspeed.
     // heading will use bankangle to maintain target heading.
-    set targetBank to bankPID:update(time:seconds,shipHDG).
+  //  
 
-
+    return aileron.
 }
 
 declare function pitchControl
-{   
-    set targetVS to altPID:update(time:seconds,altitude).
+    {   
+    if groundspeed > minSpeed-15
+    {
+        set targetVS to min(groundspeed/5,altPID:update(time:seconds,altitude)).
+      
+    }else 
+    {
+        set targetVS to 0.
+    }
     set vsPID:setPoint to targetVS.
-    set elevator to vsPID:update(time:seconds,VerticalSpeed).
+   
+    set elevator to vsPID:update(time:seconds,VerticalSpeed)*minSpeed/groundspeed..
     return elevator.
 }
 
@@ -140,5 +162,26 @@ Declare function HDG_update
         {
             set shipHDG to  360-vang(hdgVector,north:vector).
         }
-      
+    
+    set hdgError to targetHDG-shipHDG.
+    if hdgError<-180
+    {
+        set hdgError to hdgError+360.
+    }
+    else if hdgError >180
+    {
+        set hdgError to hdgError-360.
+    }
 }
+
+declare function navigation
+{
+    // define a fix and go to that fix. 
+    set Navlist to List().
+    set targetLatLng to latlng
+    set targetInbound to 90.
+    set targetALT to 90. 
+    set 
+    
+}
+
