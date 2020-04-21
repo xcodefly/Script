@@ -2,62 +2,69 @@
 
 // help me with the speed control. 
 // nee help with altitude control. Because I am an Idiot. :(
-run "Navigation.ks".
+
+parameter filename to "Bridge1.json".
+Local activeplan to readjson(filename).
 // constants
 Lock East to vCRS (up:vector,north:vector).
 Lock hdgVector to vxcl(up:vector,ship:facing:vector).
 lock bankAngle to vang(up:vector,ship:facing:rightvector)-90.
 // Variables
 
-set targetALT to 200.
-set targetHDG to 90.
-set targetVS to 0.
-set targetSpeed to 80.
-set targetBank to 0.
-set minSpeed to 60.  // used for takeoff and control senstiving dampning as speed builds up.
-set shihHDG to HDG_update().
-set hdgError to shipHDG-targetHDG.
+    set targetALT to 200.
+    set targetHDG to 90.
+    set targetVS to 0.
+    set targetSpeed to 65.
+    set targetBank to 0.
+    set minSpeed to 60.  // used for takeoff and control senstiving dampning as speed builds up.
+    set shihHDG to HDG_update().
+    set hdgError to shipHDG-targetHDG.
+    set maxBank to 40.
+    set distTofix to 100.
+    set nextAngle to 0.
 
-set aileron to 0.
+    set aileron to 0.
 // PID's
 
 
 
-set throttlePID to pidLoop (0.048,0.007,0.38,0,1).
-set throttlePID:setpoint to targetSpeed.
+    set throttlePID to pidLoop (0.045,0.012,0.36,0,1).
+    set throttlePID:setpoint to targetSpeed.
 
-set altPID to pidloop(0.35,0.001,0.08,-25,50).
-set altPID:setpoint to targetAlt.
+    set altPID to pidloop(0.35,0.001,0.06,-25,50).
+    set altPID:setpoint to targetAlt.
 
-set vsPID to pidloop (.02,0.03,0.015,-1,1).
-set vsPID:setpoint to 0.
+    set vsPID to pidloop (.028,0.01,0.027,-0.5,1).
+    set vsPID:setpoint to 0.
 
 
-set hdgPID to pidLoop(3,0,0.055,-45,45).
-set hdgPID:setpoint to 0.
-set bankPID to pidloop(0.03,0.013,0.045,-.75,.75).
+    set hdgPID to pidLoop(2.3,0,0.08,-maxBank,maxBank).
+    set hdgPID:setpoint to 0.
+    set bankPID to pidloop(0.03,0.01,0.065,-.75,.75).
 // Stage if requried.
 
 
 if availablethrust<1
 {
- //   stage.
+    stage.
 }
 set auto_Throttle to 0.
 lock throttle to auto_Throttle.
 clearscreen.
 print "Auto Throttle = ON " at (0,0).
 
+set currentFix to 0.
+set nextfix to currentfix+1.
 until false
 {
    
     userINput().
     display().
-    
+    navDisplay().
+   
     set auto_Throttle to throttlePID:update(time:seconds,airspeed).
     set ship:control:pitch to pitchControl().
-    set ship:control:roll to headingControl().
-    
+    set ship:control:roll to headingControl(activePlan[currentFix]:pos:bearing).
     wait 0.
 }
 unlock throttle.
@@ -69,21 +76,48 @@ declare function display
     print " ship ALT : "+round(altitude)+" [ "+targetAlt+" ]    " at (0,3).
     print " ship VS  : "+round(VerticalSpeed)+" [ "+Round(targetVS)+" ]    " at (0,4).
     print "    Speed : "+round(groundspeed)+" [ "+Round(targetSpeed)+" ]    " at (0,5).
-    print " target Bank : "+round(targetBank)+" | " +round(aileron,1) + "    "at (0,7).
-    print "Press 'CTL+C' to exit " at (0,9).
+    print " Bank Angle : "+ round(bankAngle)+"    " at (0,6).
+    print "Press 'CTL+C' to exit " at (0,15).
 
 
-    print " Bank Angle : "+ round(bankAngle)+"    " at (0,8).
     
+    
+}
+declare function nextwayPoint{
+    if currentFix<activePlan:length-1
+    {
+        set nextfix to currentFix+1.
+    }else 
+    {
+        set nextFix to 0.
+    }
+    set distTofix to (activePlan[currentfix]:pos:position-ship:geoposition:position):mag.
+    set nextAngle to vang(activePlan[currentfix]:pos:position-ship:geoposition:position,activePlan[nextfix]:pos:position-activePlan[currentfix]:pos:position).
+    set radiusOfturn to groundspeed^2/(9.81*tan(maxBank)).
+    if (abs(activeplan[currentFix]:pos:bearing)>150 or distTofix < radiusOfturn)
+    {
+        set currentfix to nextFix.
+    }
+   
+}
+declare function NavDisplay{
+    print " *** Fix/Next : "+currentFix+"/"+nextfix+"  ***  " at (0,8).
+    print "Bearing/Distance  active Fix : "+round(activeplan[currentFix]:pos:bearing)+ " / " +round(distTofix)+ "   "at (0,9).
+    nextwayPoint().
+    print " Next Angle : " + Round(nextAngle)+"   "at (0,10).
+    // radius of turn
+
+    
+    print " radius of turn : " + round (radiusOfturn) at (0,11).
 }
 
 declare function headingControl 
     {
-
+    local parameter Error.
     HDG_update().
-    set TargetBank to -hdgPID:update(time:seconds,hdgError).
+    set TargetBank to -hdgPID:update(time:seconds,Error).
     
-    set bankPID:setpoint to targetBank*groundspeed/120.
+    set bankPID:setpoint to targetBank.
     set aileron to bankPID:update(time:seconds,bankangle)*minSpeed/groundspeed.
     // heading will use bankangle to maintain target heading.
   //  
@@ -174,14 +208,4 @@ Declare function HDG_update
     }
 }
 
-declare function navigation
-{
-    // define a fix and go to that fix. 
-    set Navlist to List().
-    set targetLatLng to latlng
-    set targetInbound to 90.
-    set targetALT to 90. 
-    set 
-    
-}
 
