@@ -1,6 +1,7 @@
-parameter useAsFunction to false.
+
 parameter filemode to "add".
 Parameter Filename to "bridge1.json".
+parameter useAsFunction to false.
 
 
 // for editing the file " really bad practice"
@@ -9,15 +10,20 @@ local selected to false.
 
 // Edit List, loaded at start to help with confustion.
 
-set editList to readjson(filename).
+if (exists(filename))
+    {
+        set editList to readjson(filename).
+    }
 
 declare function addWaypoint
     {
     set waypoint to lexicon().
     waypoint:add("pos",ship:geoposition).
     waypoint:add("info","Info"+waypoints:length).
-    waypoint:add("alt",90).
+    waypoint:add("alt",200).
+    waypoint:add("Speed",60).
     waypoint:add("inBound",90).
+
     waypoint:add("outBound",270).
     waypoint:add("vMode","pitch").
     waypoint:add("vModeValue",0).  
@@ -28,7 +34,7 @@ declare function addWaypoint
 set vMode to list("pitch","VS","ALT","IAS").
 set lMode to list("bank","HDG","WayPoint","ILS","ARC").
 
-declare function exeFlt
+declare function exeFlt 
     {
   //  parameter currentFix to 0.
     Parameter filename to "Bridge1.json".
@@ -55,14 +61,13 @@ declare function editFLT
 {
     
     print "File [ "+ exists(filename) +" ] :  "+ filename + "  " at (0,1).
-    
     print "    NO of fix : "+editList:length at (0,3).
     Print " Press 'D' to Select  " at (0,5).
     print " Press 'W' to Move up. " at (0,6).
     print " Press 'S' to Move down. " at (0,7).
     print " press 'A' to un-Select. " at (0,8).
     Print " Press 'Z' to Save. : "at (0,9).
-    print " Waypoint List : " +editList:length at (0,12).
+    print " Waypoint List : " +(editList:length+1) at (0,12).
     ListWaypoints(editList).
     editInput().
 }
@@ -131,6 +136,7 @@ declare function addInput
 
     if terminal:input:haschar 
     {
+        clearscreen.
         set ch to terminal:input:getChar().
         Terminal:input:clear.
         if ch = "n"
@@ -141,23 +147,27 @@ declare function addInput
 
             }
             else {
-                Print " No file " at (0,10).
+                Print " No file " at (20,0).
             }
+           
         }
         if ch = "a"
         {
             waypoints:add( addwaypoint()).
+            PRINT " Unsaved File " at (0,2).
         }
         if ch = "x"
         {
             waypoints:remove(closestPoint).
-            clearscreen.
+             PRINT " Unsaved File " at (0,2).
+           
         }
         if ch = "z"
         {
             if waypoints:length>0
             {
                 writejson(waypoints,filename).
+                PRINT "              " at (0,2).
             }
             else
             {
@@ -175,22 +185,12 @@ declare function addInput
 
 declare function addFLT{
     print "File [ "+ exists(filename) +" ] :  "+ filename + "  " at (0,1).
-    local temp to readjson(filename).
-    if (temp:length<>waypoints:length and waypoints:length>0)
-    {
-        print " ..  unsaved file .." at (0,2).
-    }
-    else 
-    {
-        Print "                    " at (0,2).
-    }
-    print "    NO of fix : "+temp:length at (0,3).
     Print " Press 'N' to Load file " at (0,5).
     print " Press 'A' to add current position as a waypoint. " at (0,6).
     print " Press 'X' to remove closest waypoint. " at (0,7).
     print " press 'Z' to save. " at (0,8).
     print " Waypoint List : " +waypoints:length at (0,12).
-    ListWaypoints(temp).
+    ListWaypoints(waypoints).
     addInput().
     
 }
@@ -209,6 +209,7 @@ until useAsFunction  = true
     {
 
         editFLT().
+        
        
     }
     
@@ -229,7 +230,7 @@ declare function ListWaypoints
         
         print "  Dis: " + round(showwaypoints[count]:pos:distance)+"  " at (2,14+count).
         print "bng: " + round(showwaypoints[count]:pos:bearing)+"  " at (16,14+count).
-        print "  <info> " + showwaypoints[count]:info+"  " at (23,14+count).
+        print "  <info> " + showwaypoints[count]:info+"  " at (25,14+count).
         if showwaypoints[count]:pos:distance<closedDistance
         {
             set closedDistance to showwaypoints[count]:pos:distance.

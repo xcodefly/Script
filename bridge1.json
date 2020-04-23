@@ -4,8 +4,8 @@
             "entries": [
                 "pos",
                 {
-                    "lat": 0.0844323935167879,
-                    "lng": -74.604642276415774,
+                    "lat": -0.049665902111262927,
+                    "lng": -74.568373242634237,
                     "body": {
                         "name": "Kerbin",
                         "$type": "kOS.Suffixed.BodyTarget"
@@ -13,9 +13,11 @@
                     "$type": "kOS.Suffixed.GeoCoordinates"
                 },
                 "info",
-                "Info5",
+                "Info0",
                 "alt",
-                90,
+                200,
+                "Speed",
+                70,
                 "inBound",
                 90,
                 "outBound",
@@ -35,8 +37,8 @@
             "entries": [
                 "pos",
                 {
-                    "lat": -0.08115325569475286,
-                    "lng": -74.731849737233574,
+                    "lat": 0.055030652727930285,
+                    "lng": -74.568496923641078,
                     "body": {
                         "name": "Kerbin",
                         "$type": "kOS.Suffixed.BodyTarget"
@@ -44,15 +46,116 @@
                     "$type": "kOS.Suffixed.GeoCoordinates"
                 },
                 "info",
-                "Info4",
+                "XWind",
                 "alt",
-                90,
+                200,
+                "Speed",
+                70,
+                "inBound",
+                360,
+                "outBound",
+                270,
+                "vMode",
+                "alt",
+                "vModeValue",
+                0,
+                "lMode",
+                "bank",
+                "lModeValue",
+                0
+            ],
+            "$type": "kOS.Safe.Encapsulation.Lexicon"
+        },
+        {
+            "entries": [
+                "pos",
+                {
+                    "lat": 0.0633885501758997,
+                    "lng": -74.679247610995418,
+                    "body": {
+                        "name": "Kerbin",
+                        "$type": "kOS.Suffixed.BodyTarget"
+                    },
+                    "$type": "kOS.Suffixed.GeoCoordinates"
+                },
+                "info",
+                "DWind",
+                "alt",
+                170,
+                "Speed",
+                70,
+                "inBound",
+                270,
+                "outBound",
+                270,
+                "vMode",
+                "vs",
+                "vModeValue",
+                0,
+                "lMode",
+                "bank",
+                "lModeValue",
+                0
+            ],
+            "$type": "kOS.Safe.Encapsulation.Lexicon"
+        },
+        {
+            "entries": [
+                "pos",
+                {
+                    "lat": -0.036339264727025748,
+                    "lng": -74.73325287820272,
+                    "body": {
+                        "name": "Kerbin",
+                        "$type": "kOS.Suffixed.BodyTarget"
+                    },
+                    "$type": "kOS.Suffixed.GeoCoordinates"
+                },
+                "info",
+                "Base ",
+                "alt",
+                150,
+                "Speed",
+                65,
+                "inBound",
+                210,
+                "outBound",
+                270,
+                "vMode",
+                "vs",
+                "vModeValue",
+                0,
+                "lMode",
+                "bank",
+                "lModeValue",
+                0
+            ],
+            "$type": "kOS.Safe.Encapsulation.Lexicon"
+        },
+        {
+            "entries": [
+                "pos",
+                {
+                    "lat": -0.084595161087723927,
+                    "lng": -74.73992800786867,
+                    "body": {
+                        "name": "Kerbin",
+                        "$type": "kOS.Suffixed.BodyTarget"
+                    },
+                    "$type": "kOS.Suffixed.GeoCoordinates"
+                },
+                "info",
+                "Base ",
+                "alt",
+                140,
+                "Speed",
+                60,
                 "inBound",
                 180,
                 "outBound",
                 270,
                 "vMode",
-                "pitch",
+                "alt",
                 "vModeValue",
                 0,
                 "lMode",
@@ -66,8 +169,8 @@
             "entries": [
                 "pos",
                 {
-                    "lat": -0.049261390766531271,
-                    "lng": -74.631435427604572,
+                    "lat": -0.10492867572096898,
+                    "lng": -74.63692455945808,
                     "body": {
                         "name": "Kerbin",
                         "$type": "kOS.Suffixed.BodyTarget"
@@ -75,15 +178,17 @@
                     "$type": "kOS.Suffixed.GeoCoordinates"
                 },
                 "info",
-                "Info1",
+                "Brg  ",
                 "alt",
-                100,
+                130,
+                "Speed",
+                55,
                 "inBound",
                 90,
                 "outBound",
                 270,
                 "vMode",
-                "pitch",
+                "vs",
                 "vModeValue",
                 0,
                 "lMode",
@@ -97,8 +202,8 @@
             "entries": [
                 "pos",
                 {
-                    "lat": -0.10489487875550828,
-                    "lng": -74.637640704392922,
+                    "lat": -0.11452503395897752,
+                    "lng": -74.610081156646075,
                     "body": {
                         "name": "Kerbin",
                         "$type": "kOS.Suffixed.BodyTarget"
@@ -106,73 +211,13 @@
                     "$type": "kOS.Suffixed.GeoCoordinates"
                 },
                 "info",
-                "Info5",
+                "GA   ",
                 "alt",
-                150,
+                160,
+                "Speed",
+                70,
                 "inBound",
-                90,
-                "outBound",
-                270,
-                "vMode",
-                "pitch",
-                "vModeValue",
-                0,
-                "lMode",
-                "bank",
-                "lModeValue",
-                0
-            ],
-            "$type": "kOS.Safe.Encapsulation.Lexicon"
-        },
-        {
-            "entries": [
-                "pos",
-                {
-                    "lat": -0.11119592257136217,
-                    "lng": -74.6209169193593,
-                    "body": {
-                        "name": "Kerbin",
-                        "$type": "kOS.Suffixed.BodyTarget"
-                    },
-                    "$type": "kOS.Suffixed.GeoCoordinates"
-                },
-                "info",
-                "Info6",
-                "alt",
-                200,
-                "inBound",
-                140,
-                "outBound",
-                270,
-                "vMode",
-                "pitch",
-                "vModeValue",
-                0,
-                "lMode",
-                "bank",
-                "lModeValue",
-                0
-            ],
-            "$type": "kOS.Safe.Encapsulation.Lexicon"
-        },
-        {
-            "entries": [
-                "pos",
-                {
-                    "lat": -0.048634901143559138,
-                    "lng": -74.722347036379276,
-                    "body": {
-                        "name": "Kerbin",
-                        "$type": "kOS.Suffixed.BodyTarget"
-                    },
-                    "$type": "kOS.Suffixed.GeoCoordinates"
-                },
-                "info",
-                "start",
-                "alt",
-                90,
-                "inBound",
-                90,
+                120,
                 "outBound",
                 270,
                 "vMode",
