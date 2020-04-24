@@ -15,9 +15,9 @@
                 "info",
                 "Info0",
                 "alt",
-                400,
+                300,
                 "Speed",
-                80,
+                65,
                 "inBound",
                 90,
                 "outBound",
@@ -27,7 +27,7 @@
                 "vModeValue",
                 15,
                 "lMode",
-                "bank",
+                "Dct",
                 "lModeValue",
                 0
             ],
@@ -60,7 +60,7 @@
                 "vModeValue",
                 0,
                 "lMode",
-                "bank",
+                "Leg",
                 "lModeValue",
                 0
             ],
@@ -93,7 +93,7 @@
                 "vModeValue",
                 -5,
                 "lMode",
-                "bank",
+                "Loc",
                 "lModeValue",
                 0
             ],
@@ -126,7 +126,7 @@
                 "vModeValue",
                 -5,
                 "lMode",
-                "bank",
+                "Dct",
                 "lModeValue",
                 0
             ],
@@ -178,7 +178,7 @@
                     "$type": "kOS.Suffixed.GeoCoordinates"
                 },
                 "info",
-                "Brg  ",
+                "Brg-XX ",
                 "alt",
                 130,
                 "Speed",
@@ -192,7 +192,7 @@
                 "vModeValue",
                 0,
                 "lMode",
-                "bank",
+                "Loc",
                 "lModeValue",
                 0
             ],
@@ -225,9 +225,9 @@
                 "vModeValue",
                 30,
                 "lMode",
-                "bank",
+                "Dct",
                 "lModeValue",
-                0
+                15
             ],
             "$type": "kOS.Safe.Encapsulation.Lexicon"
         }

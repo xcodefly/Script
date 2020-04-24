@@ -28,6 +28,8 @@ Local activeplan to readjson(filename).
 
 // Autopilot variables
     set autoSpeed to true.
+    set autoAlt to true.
+    set autoNav to true.
     set autoNavigate to false.
     set vMode to "Pitch".
     set lNav to "Roll".
@@ -38,7 +40,7 @@ Local activeplan to readjson(filename).
     set elevator to 0.
     set aileron to 0.
 
-    set throttlePID to pidLoop (0.065,0.006,0.33,0,1).
+    set throttlePID to pidLoop (0.065,0.006,0.25,0,1).
     set throttlePID:setpoint to targetSpeed.
 
     set altPID to pidloop(2.8,0.3,3,-10,20).
@@ -47,7 +49,7 @@ Local activeplan to readjson(filename).
     set vsPID to pidloop (.01,0.01,0.027,-0.5,1).
     set vsPID:setpoint to 0.
 
-    set pitchPID to pidLoop (.031,0.01,0.033,-0.5,0.5).
+    set pitchPID to pidLoop (.031,0.01,0.033,-0.5,1).
     set pitchPID:setpoint to 15.
 
     set elevatorPID to pidLoop(.031,0.01,0.027,-0.5,1).
@@ -77,20 +79,191 @@ updatePID().
 updateVmode().
 until false
 {
-    userINput().
     display().
-    navDisplay().
+    nextwayPoint().
+    userInput().
     set power to throttlePID:update(time:seconds,airspeed).
     elevatorControl().
-    set ship:control:roll to headingControl(activePlan[currentFix]:pos:bearing).
+    aileronControl().
+ //   set ship:control:roll to headingControl(activePlan[currentFix]:pos:bearing).
     wait 0.
 }
 unlock throttle.
 
+
+
+Declare function display
+    {
+        // print bassic airplane stats.
+        print " Auto Throttle(Z) : "+autoSpeed+"  " at (0,0).
+        print " Auto Altitude(X) : "+autoAlt+"  " at (0,1).
+        print " Auto Navigate(C)  : "+autoNav+"  " at (0,2).
+        print " _____________________________ " at (0,3).
+        Print "|  ALT   |   HDG   |  Speed   |   " at (0,4).
+        //  print "|--------|---------|----------|   " at (0,5).
+        print "|--------|---------|----------|   " at (0,6).
+        print "|--------|---------|----------|   " at (0,8).
+     //   print "|________|_________|__________|" at (0,8).
+        // can we make it one string. 
+        set currentValueStr to "|"+round(altitude):tostring:padLeft(5)+"   |"+(round(shipHDG)):tostring:padLeft(6)+"   |"+(round(groundspeed)):tostring:padLeft(6)+"    |".
+        print currentValueStr at (0,5).
+        set targetValueStr to "|"+targetALT:tostring:padLeft(5)+"   |"+ activePlan[currentFix]:info:padleft(7) +"  |"+(round(targetSpeed)):tostring:padLeft(6)+"    |".
+        print targetValueStr at (0,7).
+        set selectedModeStr to "|"+ vmode:padLeft(6)+"  |"+ activePlan[currentFix]:lMode:padleft(6).
+        print selectedModeStr at (0,9).
+        print " Track Inbound (Target) : " + Round(shipHDG + activePlan[currentfix]:pos:bearing) +" ( "+activePlan[currentfix]:inbound+" )   " at (0,10)..
+    //  print " _____________________________ " .
+        print " Distance to fix : " + Round(activePlan[currentFix]:pos:distance):tostring:padleft(5) at (0,13).
+        
+        print " Elevator " + Round(elevator,2) at (0,14).
+        print " Pitch/TG " + round(pitchAngle)+"/ " + round (targetPitch)+"  " at (0,15).
+     
+      
+    }
+declare function nextwayPoint
+    {
+        if currentFix<activePlan:length-1
+        {
+            set nextfix to currentFix+1.
+        }else 
+        {
+            set nextFix to 0.
+        }
+        set distTofix to (activePlan[currentfix]:pos:position-ship:geoposition:position):mag.
+        set nextAngle to vang(activePlan[currentfix]:pos:position-ship:geoposition:position,activePlan[nextfix]:pos:position-activePlan[currentfix]:pos:position).
+        set radiusOfturn to groundspeed^2/(9.81*tan(maxBank)).
+        if (activePlan[currentfix]:info:contains("XX"))
+        {
+            if (abs(activeplan[currentFix]:pos:bearing)>120 or distTofix <10+alt:radar)
+            {
+                set currentfix to nextFix.
+                print "                       " at (20,0).
+                updatePID().
+                updateVmode().
+            }
+           
+        } else if ((abs(activeplan[currentFix]:pos:bearing)>120 and distTofix<400) or distTofix < radiusOfturn/2 )
+        {
+            set currentfix to nextFix.
+            print "                       " at (20,0).
+            updateVmode().
+        }
+    }
+
+
+declare function headingControl 
+    {
+        local parameter Error.
+        HDG_update().
+        set targetBank to -hdgPID:update(time:seconds,Error).
+        
+        set bankPID:setpoint to targetBank.
+        set aileron to bankPID:update(time:seconds,bankangle)*minSpeed/groundspeed.
+        // heading will use bankangle to maintain target heading.
+    //  
+        if autoNav = true
+        {
+            set ship:control:roll to aileron.
+        }
+        
+    }
+declare function aileronControl
+    {
+        if activePlan[currentFix]:lMode:contains("DCT")
+        {
+            dctFix().
+        }
+        else if activePlan[currentFix]:lMode:contains("loc")
+        {   
+            locFix().
+        }else if activePlan[currentFix]:lMode:contains("leg")
+        {
+            legFix().
+            dctFix().
+        }
+
+    }
+declare function dctFix
+    {
+        headingControl(activePlan[currentFix]:pos:bearing).
+    }
+declare function locFix
+    {   // This should give to you the heading error to plug into the heading control. 
+        // had to use distance error instead of angle bearing. bearing was too slow to react. 
+        local bearing to activePlan[currentFix]:pos:bearing.
+        if bearing >180
+        {
+            set bearing to 360-bearing.
+        }
+        if abs(bearing > 10)
+        {
+            headingControl(activePlan[currentFix]:pos:bearing).
+        }
+        set xx to Round( max(-30,     min(30,(shipHDG+bearing-activePlan[currentFix]:inBound)*2))).
+        print xx+"   " at (0,14).
+        headingControl(xx).
+    }
+declare function legFix
+    {
+        // dont need now.
+    }   
+
+declare function elevatorControl
+    {
+        if abs(targetAlt-altitude)<20
+        
+        {
+            set vMode to "alt".
+       //     print "AAAAAA".
+        }
+       
+        if vMode="Pitch"
+        {
+            set elevator to pitchMode().
+        }else if vmode="vs"
+        {
+            set elevator to vsMode().
+        }else if vmode="Alt"
+        {
+            set elevator to altMode().
+        }
+        if autoALt=true{
+            set ship:control:pitch to elevator.
+        }
+    }
+declare function pitchMode
+    {   
+        
+        if groundspeed > minSpeed-15
+        {
+            set elevator to pitchPID:update(time:seconds,pitchAngle).
+        
+        }else 
+        {
+            set elevator to 0.
+        }
+      //  print "AA".
+        return elevator.
+        
+    }
+declare function vsMode
+    {
+        set elevator to vsPID:update(time:seconds,verticalSpeed).
+        return elevator.
+    }
+
+declare function altMode
+    {
+        set targetPitch to altPID:update(time:seconds,altitude).
+        set pitchPID:setPoint to targetPitch.
+        pitchMode().
+
+    }
 Declare function updateVmode
     {
         // read the navigation (json) file and determing the waypoint and type of navication.
         // auto navigation should be on to fly the nav file automaticall.
+        
         if activePLan[currentFix]:vmode:contains("pitch")
         {
             set vMode to "Pitch".
@@ -108,189 +281,102 @@ Declare function updateVmode
             set vMode to "Alt".
         }
         set targetAlt to activePlan[currentFix]:Alt.
+        set targetSpeed to activePlan[currentFix]:speed.
+        updatePID().
     }
-
-Declare function display
-    {
-        // print bassic airplane stats.
-        print " Auto Throttle(Z) : "+autoSpeed at (0,0).
-        print " Auto Navigate(N) : "+autoNavigate at (0,1).
-        print " _____________________________ " at (0,3).
-        Print "|  ALT   |   HDG   |  Speed   |   " at (0,4).
-        //  print "|--------|---------|----------|   " at (0,5).
-        print "|--------|---------|----------|   " at (0,6).
-        print "|________|_________|__________|" at (0,8).
-        // can we make it one string. 
-        set currentValueStr to "|"+round(altitude):tostring:padLeft(5)+"   |"+(round(shipHDG)):tostring:padLeft(6)+"   |"+(round(groundspeed)):tostring:padLeft(6)+"    |".
-        print currentValueStr at (0,5).
-        set targetValueStr to "|"+targetALT:tostring:padLeft(5)+"   |"+"  Auto   |"+(round(targetSpeed)):tostring:padLeft(6)+"    |".
-        print targetValueStr at (0,7).
-        set selectedModeStr to "|"+ vmode:padLeft(6).
-        print selectedModeStr at (0,9).
-        print " Elevator " + Round(elevator,2) at (0,10).
-        print " Pitch/TG " + round(pitchAngle)+"/ " + round (targetPitch)+"  " at (0,11).
-     
-      
-    }
-declare function nextwayPoint
-    {
-        if currentFix<activePlan:length-1
-        {
-            set nextfix to currentFix+1.
-        }else 
-        {
-            set nextFix to 0.
-        }
-        set distTofix to (activePlan[currentfix]:pos:position-ship:geoposition:position):mag.
-        set nextAngle to vang(activePlan[currentfix]:pos:position-ship:geoposition:position,activePlan[nextfix]:pos:position-activePlan[currentfix]:pos:position).
-        set radiusOfturn to groundspeed^2/(9.81*tan(maxBank)).
-        if (abs(activeplan[currentFix]:pos:bearing)>150 or distTofix < radiusOfturn/2)
-        {
-            set currentfix to nextFix.
-            print "                       " at (20,0).
-            
-           
-            updatePID().
-            updateVmode().
-        }
-    }
-declare function NavDisplay
-    {
-     //   print " Fix/Next : "+activeplan[currentfix]:info+" / "+activeplan[nextfix]:info +"   " at (0,13).
-     //   print "Bearing/Distance  active Fix : "+round(activeplan[currentFix]:pos:bearing)+ " / " +round(distTofix)+ "   "at (0,12).
-        nextwayPoint().
-     //   print " Inbound/ Next Angle : "  +activePLan[currentFix]:inbound+" / " +Round(nextAngle)+"   "at (0,11).
-        // radius of turn
-
-        print " radius of turn : " + round (radiusOfturn)  + "   " at (0,14).
-    }
-
-declare function headingControl 
-    {
-        local parameter Error.
-        HDG_update().
-        set targetBank to -hdgPID:update(time:seconds,Error).
-        
-        set bankPID:setpoint to targetBank.
-        set aileron to bankPID:update(time:seconds,bankangle)*minSpeed/groundspeed.
-        // heading will use bankangle to maintain target heading.
-    //  
-
-        return aileron.
-    }
-declare function elevatorControl
-    {
-        if abs(targetAlt-altitude)<20
-        
-        {
-            set vMode to "alt".
-       //     print "AAAAAA".
-        }
-       
-        if vMode="Pitch"
-        {
-            pitchMode().
-        }else if vmode="vs"
-        {
-            vsMode().
-        }else if vmode="Alt"
-        {
-            altMode().
-        }
-        
-    }
-declare function pitchMode
-    {   
-        
-        if groundspeed > minSpeed-15
-        {
-            set elevator to pitchPID:update(time:seconds,pitchAngle).
-        
-        }else 
-        {
-            set elevator to 0.
-        }
-      //  print "AA".
-        set ship:control:pitch to elevator.
-        
-    }
-declare function vsMode
-    {
-        set elevator to vsPID:update(time:seconds,verticalSpeed).
-        set ship:control:pitch to elevator.
-    }
-
-declare function altMode
-    {
-        set targetPitch to altPID:update(time:seconds,altitude).
-        set pitchPID:setPoint to targetPitch.
-        pitchMode().
-
-    }
-
 
 declare function userInput
     {
     if terminal:input:haschar 
-    {
-        set ch to terminal:input:getChar().
-        Terminal:input:clear.
-        if ch="e"
         {
-            set vmode to "alt".
-        }
-        if ch = "d"
-        {
-            set targetHDG to targetHDG+1.
-            if targetHDG>360
+            set ch to terminal:input:getChar().
+            Terminal:input:clear.
+        
+            if ch="e"
             {
-                set targetHDG to 1.
+                set vmode to "alt".
             }
-        }
-        if ch = "a"
-        {
-            set targetHDG to targetHDG-1.
-            if targetHDG<1
+            if ch = "d"
             {
-                set targetHDG to 360.
+                set targetHDG to targetHDG+1.
+                if targetHDG>360
+                {
+                    set targetHDG to 1.
+                }
             }
-        }
-        if ch = "q"
-        {
-            set targetAlt to targetAlt-1.
+            if ch = "a"
+            {
+                set targetHDG to targetHDG-1.
+                if targetHDG<1
+                {
+                    set targetHDG to 360.
+                }
+            }
+            if ch = "q"
+            {
+                set targetAlt to targetAlt-1.
+                
+            }
+            if ch = "e"
+            {
+                set targetAlt to targetAlt+1.
             
-        }
-        if ch = "e"
-        {
-            set targetAlt to targetAlt+1.
+                
+            }
+            if ch = "w"
+            {
+                set targetSpeed to targetSpeed+1.
             
+            }
+            if ch = "s"
+            {
+                set targetSpeed to targetSpeed-1.
+                
+            }
+            if ch = "z"
+            {
+            //   set targetSpeed to targetSpeed-1.
+                
+            }
+            if ch = "x"
+            {
+                // autoAlt to toggle.
+                  if autoAlt = false{
+                    set autoNav to true.
+                }else 
+                {
+                    set autoAlt to false.
+                    set ship:control:pitch to 0.
+                }
+            }
+            if ch = "c"
+            {
+                // Navigation Toggle.
+                if autoNav = false{
+                    set autoNav to true.
+                }else 
+                {
+                    set autoNav to false.
+                    set ship:control:roll to 0.
+                }
+                
+            }
+            if ch = "n"
+            {
+                set activeplan to readjson(filename).
+                print " Flight Plan refreshed " at (20,0).
+            }
+            updatePID().
         }
-         if ch = "w"
-        {
-            set targetSpeed to targetSpeed+1.
-           
-        }
-        if ch = "s"
-        {
-            set targetSpeed to targetSpeed-1.
-            
-        }
-        if ch = "n"
-        {
-            set activeplan to readjson(filename).
-            print " Flight Plan refreshed " at (20,0).
-        }
-        updatePID().
-     }
     }
 
 Declare function updatePID
     {
-        set targetALT to activePLan[currentFix]:alt.
-        set targetSpeed to activePlan[currentFix]:speed.
+     
          
         set throttlePID:setpoint to targetSpeed.
         set altPID:setpoint to targetAlt.
+       
     }
 Declare function HDG_update
     {
