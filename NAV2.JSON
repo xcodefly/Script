@@ -4,8 +4,8 @@
             "entries": [
                 "pos",
                 {
-                    "lat": -0.049665902111262927,
-                    "lng": -74.568373242634237,
+                    "lat": -0.050239927829880834,
+                    "lng": -74.505143666895933,
                     "body": {
                         "name": "Kerbin",
                         "$type": "kOS.Suffixed.BodyTarget"
@@ -15,6 +15,39 @@
                 "info",
                 "Info0",
                 "alt",
+                300,
+                "Speed",
+                75,
+                "inBound",
+                90,
+                "outBound",
+                270,
+                "vMode",
+                "pitch",
+                "vModeValue",
+                10,
+                "lMode",
+                "dct",
+                "lModeValue",
+                0
+            ],
+            "$type": "kOS.Safe.Encapsulation.Lexicon"
+        },
+        {
+            "entries": [
+                "pos",
+                {
+                    "lat": 0.10282203904334376,
+                    "lng": -74.558137949747731,
+                    "body": {
+                        "name": "Kerbin",
+                        "$type": "kOS.Suffixed.BodyTarget"
+                    },
+                    "$type": "kOS.Suffixed.GeoCoordinates"
+                },
+                "info",
+                "Info1",
+                "alt",
                 200,
                 "Speed",
                 65,
@@ -23,11 +56,11 @@
                 "outBound",
                 270,
                 "vMode",
-                " Pitch  ",
+                "alt",
                 "vModeValue",
-                15,
+                0,
                 "lMode",
-                "Dct",
+                "dct",
                 "lModeValue",
                 0
             ],
@@ -37,8 +70,8 @@
             "entries": [
                 "pos",
                 {
-                    "lat": 0.055030652727930285,
-                    "lng": -74.568496923641078,
+                    "lat": 0.10072487964775538,
+                    "lng": -74.846433176132919,
                     "body": {
                         "name": "Kerbin",
                         "$type": "kOS.Suffixed.BodyTarget"
@@ -46,23 +79,23 @@
                     "$type": "kOS.Suffixed.GeoCoordinates"
                 },
                 "info",
-                "XWind",
+                "Info2",
                 "alt",
                 200,
                 "Speed",
-                60,
+                75,
                 "inBound",
-                360,
+                270,
                 "outBound",
                 270,
                 "vMode",
-                "  Alt   ",
+                "alt",
                 "vModeValue",
                 0,
                 "lMode",
-                "Leg",
+                "loc",
                 "lModeValue",
-                0
+                270
             ],
             "$type": "kOS.Safe.Encapsulation.Lexicon"
         },
@@ -70,8 +103,8 @@
             "entries": [
                 "pos",
                 {
-                    "lat": 0.0633885501758997,
-                    "lng": -74.679247610995418,
+                    "lat": -0.038589748877551559,
+                    "lng": -74.908416110794349,
                     "body": {
                         "name": "Kerbin",
                         "$type": "kOS.Suffixed.BodyTarget"
@@ -79,87 +112,21 @@
                     "$type": "kOS.Suffixed.GeoCoordinates"
                 },
                 "info",
-                "DWind",
+                "Info3",
                 "alt",
-                175,
+                100,
                 "Speed",
-                60,
+                75,
                 "inBound",
-                270,
+                90,
                 "outBound",
                 270,
                 "vMode",
-                "   VS  ",
-                "vModeValue",
-                -5,
-                "lMode",
-                "Loc",
-                "lModeValue",
-                0
-            ],
-            "$type": "kOS.Safe.Encapsulation.Lexicon"
-        },
-        {
-            "entries": [
-                "pos",
-                {
-                    "lat": -0.036339264727025748,
-                    "lng": -74.73325287820272,
-                    "body": {
-                        "name": "Kerbin",
-                        "$type": "kOS.Suffixed.BodyTarget"
-                    },
-                    "$type": "kOS.Suffixed.GeoCoordinates"
-                },
-                "info",
-                "Base ",
                 "alt",
-                135,
-                "Speed",
-                65,
-                "inBound",
-                210,
-                "outBound",
-                270,
-                "vMode",
-                "   VS  ",
-                "vModeValue",
-                -5,
-                "lMode",
-                "Dct",
-                "lModeValue",
-                0
-            ],
-            "$type": "kOS.Safe.Encapsulation.Lexicon"
-        },
-        {
-            "entries": [
-                "pos",
-                {
-                    "lat": -0.084595161087723927,
-                    "lng": -74.73992800786867,
-                    "body": {
-                        "name": "Kerbin",
-                        "$type": "kOS.Suffixed.BodyTarget"
-                    },
-                    "$type": "kOS.Suffixed.GeoCoordinates"
-                },
-                "info",
-                "Base ",
-                "alt",
-                130,
-                "Speed",
-                60,
-                "inBound",
-                180,
-                "outBound",
-                270,
-                "vMode",
-                "   Alt  ",
                 "vModeValue",
                 0,
                 "lMode",
-                "bank",
+                "dct",
                 "lModeValue",
                 0
             ],
@@ -178,21 +145,21 @@
                     "$type": "kOS.Suffixed.GeoCoordinates"
                 },
                 "info",
-                "Brg-XX ",
+                "Brg-XX",
                 "alt",
-                130,
+                72,
                 "Speed",
-                60
+                60,
                 "inBound",
                 90,
                 "outBound",
                 270,
                 "vMode",
-                "   VS  ",
+                "alt",
                 "vModeValue",
                 0,
                 "lMode",
-                "Loc",
+                "loc",
                 "lModeValue",
                 0
             ],
@@ -202,8 +169,8 @@
             "entries": [
                 "pos",
                 {
-                    "lat": -0.11452503395897752,
-                    "lng": -74.610081156646075,
+                    "lat": -0.17082622879598361,
+                    "lng": -74.564815383868208,
                     "body": {
                         "name": "Kerbin",
                         "$type": "kOS.Suffixed.BodyTarget"
@@ -211,23 +178,23 @@
                     "$type": "kOS.Suffixed.GeoCoordinates"
                 },
                 "info",
-                "GA   ",
+                "Info6",
                 "alt",
-                300,
+                150,
                 "Speed",
                 70,
                 "inBound",
-                120,
+                90,
                 "outBound",
                 270,
                 "vMode",
-                "  Pitch  ",
+                "pitch",
                 "vModeValue",
-                45,
+                60,
                 "lMode",
-                "Dct",
+                "dct",
                 "lModeValue",
-                15
+                0
             ],
             "$type": "kOS.Safe.Encapsulation.Lexicon"
         }

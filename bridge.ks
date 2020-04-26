@@ -3,7 +3,7 @@
 // help me with the speed control. 
 // nee help with altitude control. Because I am an Idiot. :(
 
-parameter filename to "Bridge1.json".
+parameter filename to "Nav2.json".
 Local activeplan to readjson(filename).
 // Locks
     Lock East to vCRS (up:vector,north:vector).
@@ -15,12 +15,12 @@ Local activeplan to readjson(filename).
     set targetALT to 111.
     set targetHDG to 90.
     set targetVS to 0.
-    set targetSpeed to 65.
+    set targetSpeed to 70.
     set targetBank to 0.
     set minSpeed to 60.  // used for takeoff and control senstiving dampning as speed builds up.
     set shihHDG to HDG_update().
     set hdgError to shipHDG-targetHDG.
-    
+    set trackError to 0.
     set distTofix to 100.
 
     set nextAngle to 0.
@@ -34,6 +34,7 @@ Local activeplan to readjson(filename).
     set vMode to "Pitch".
     set lNav to "Roll".
     set targetPitch to 0.
+    set MaxIntercept to 25.
 
 // PID's
     set maxBank to 40.
@@ -43,7 +44,7 @@ Local activeplan to readjson(filename).
     set throttlePID to pidLoop (0.065,0.006,0.25,0,1).
     set throttlePID:setpoint to targetSpeed.
 
-    set altPID to pidloop(2.8,0.3,3,-10,20).
+    set altPID to pidloop(2.8,0.3,3,-5,20).
     set altPID:setpoint to targetAlt.
 
     set vsPID to pidloop (.01,0.01,0.027,-0.5,1).
@@ -55,11 +56,14 @@ Local activeplan to readjson(filename).
     set elevatorPID to pidLoop(.031,0.01,0.027,-0.5,1).
     set elevatorPID:setpoint to 0.
 
-    set hdgPID to pidLoop(2.5,0,0.10,-maxBank,maxBank).
+    set hdgPID to pidLoop(2.2,0,0.10,-maxBank,maxBank).
     set hdgPID:setpoint to 0.
 
-    set bankPID to pidloop(0.035,0.01,0.065,-.75,.75).
+    set bankPID to pidloop(0.045,0.0071,0.065,-.75,.75).
     set bankPID:setpoint to 0.
+
+    set locPID to pidLoop(0.35,0.03,0.7,-MaxIntercept,MaxIntercept).
+    set locPID:setPoint to 0.
 // Stage if requried.
 
 
@@ -111,7 +115,7 @@ Declare function display
         print targetValueStr at (0,7).
         set selectedModeStr to "|"+ vmode:padLeft(6)+"  |"+ activePlan[currentFix]:lMode:padleft(6).
         print selectedModeStr at (0,9).
-        print " Track Inbound (Target) : " + Round(shipHDG + activePlan[currentfix]:pos:bearing) +" ( "+activePlan[currentfix]:inbound+" )   " at (0,10)..
+     //   print " Track Inbound (Target) : " + Round(shipHDG + activePlan[currentfix]:pos:bearing) +" ( "+activePlan[currentfix]:inbound+" )   " at (0,10)..
     //  print " _____________________________ " .
         print " Distance to fix : " + Round(activePlan[currentFix]:pos:distance):tostring:padleft(5) at (0,13).
         
@@ -134,7 +138,7 @@ declare function nextwayPoint
         set radiusOfturn to groundspeed^2/(9.81*tan(maxBank)).
         if (activePlan[currentfix]:info:contains("XX"))
         {
-            if (abs(activeplan[currentFix]:pos:bearing)>120 or distTofix <10+alt:radar)
+            if (abs(activeplan[currentFix]:pos:bearing)>120 or distTofix <1+alt:radar)
             {
                 set currentfix to nextFix.
                 print "                       " at (20,0).
@@ -142,7 +146,7 @@ declare function nextwayPoint
                 updateVmode().
             }
            
-        } else if ((abs(activeplan[currentFix]:pos:bearing)>120 and distTofix<400) or distTofix < radiusOfturn/2 )
+        } else if ((abs(activeplan[currentFix]:pos:bearing)>120 and distTofix<400) or distTofix < radiusOfturn/3 )
         {
             set currentfix to nextFix.
             print "                       " at (20,0).
@@ -153,8 +157,9 @@ declare function nextwayPoint
 
 declare function headingControl 
     {
-        local parameter Error.
-        HDG_update().
+        local parameter error.
+       
+     
         set targetBank to -hdgPID:update(time:seconds,Error).
         
         set bankPID:setpoint to targetBank.
@@ -169,6 +174,9 @@ declare function headingControl
     }
 declare function aileronControl
     {
+        HDG_update().
+        
+
         if activePlan[currentFix]:lMode:contains("DCT")
         {
             dctFix().
@@ -190,18 +198,32 @@ declare function dctFix
 declare function locFix
     {   // This should give to you the heading error to plug into the heading control. 
         // had to use distance error instead of angle bearing. bearing was too slow to react. 
-        local bearing to activePlan[currentFix]:pos:bearing.
-        if bearing >180
-        {
-            set bearing to 360-bearing.
-        }
-        if abs(bearing > 10)
-        {
-            headingControl(activePlan[currentFix]:pos:bearing).
-        }
-        set xx to Round( max(-30,     min(30,(shipHDG+bearing-activePlan[currentFix]:inBound)*2))).
-        print xx+"   " at (0,14).
-        headingControl(xx).
+            
+            local toStation to shipHDG+activePlan[currentFix]:pos:bearing.
+            set trackError to (Sin(shipHDG+activePlan[CurrentFix]:pos:bearing-activePlan[CurrentFix]:INBOUND)*activePlan[CurrentFix]:pos:distance).
+            set trackError to (max(-100,Min(100,trackerror))).
+            set targetHDG to locPID:update(time:seconds,-trackerror)+activePlan[CurrentFix]:INBOUND.
+            temphdg().
+      //      set targetHDG to activePlan[CurrentFix]:INBOUND+trackError.
+      //      set targetHDG to max((activePlan[CurrentFix]:INBOUND-MaxIntercept),min((activePlan[CurrentFix]:INBOUND+MaxIntercept),targetHDG)).
+            Local seekHDG to targetHDG-shipHDG.
+            if seekHDG>180
+            {
+                set seekHDG to 360-seekHDG.
+            }else if seekHDG<-180
+            {
+                set seekHDG to seekHDG-360.
+            }
+            headingControl(targetHDG-shipHDG).
+            temphdg().
+       
+        
+    }
+    declare function temphdg{
+        print "Bearing to Stn   : " + Round(activePlan[CurrentFix]:pos:bearing)+"   " at (0,16).
+        print "HDG to Station   : " + round(shipHDG+activePlan[CurrentFix]:pos:bearing)+"   " at (0,17).
+        print "    targetHDG   : " + round(targetHDG)+"   " at (0,18).
+        print " Track Error to  : " + round(trackerror)+"   " at (0,19).
     }
 declare function legFix
     {
@@ -256,7 +278,7 @@ declare function altMode
     {
         set targetPitch to altPID:update(time:seconds,altitude).
         set pitchPID:setPoint to targetPitch.
-        pitchMode().
+        return pitchMode().
 
     }
 Declare function updateVmode
@@ -341,8 +363,9 @@ declare function userInput
             if ch = "x"
             {
                 // autoAlt to toggle.
-                  if autoAlt = false{
-                    set autoNav to true.
+                if autoAlt = false{
+                    set autoAlt to true.
+                    print " AAAA".
                 }else 
                 {
                     set autoAlt to false.
@@ -376,6 +399,7 @@ Declare function updatePID
          
         set throttlePID:setpoint to targetSpeed.
         set altPID:setpoint to targetAlt.
+       
        
     }
 Declare function HDG_update

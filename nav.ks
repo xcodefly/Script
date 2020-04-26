@@ -141,9 +141,9 @@ declare function addInput
         Terminal:input:clear.
         if ch = "n"
         {
-            if exists("bridge1.json")
+            if exists(filename)
             {
-                set waypoints to readjson("bridge1.json").
+                set waypoints to readjson(filename).
 
             }
             else {
