@@ -18,16 +18,24 @@ set AStageTrigger to true.
 set autoSteer to heading (hdg,90).
 Set athrottle to 0.
 
+set engineStart to time:seconds+2.
+
 Lock steering to autoSteer.
 Lock throttle to athrottle.      
 
 SAS off.
+// find it rockets have launch clamp.
+wait 2.
+set launchClamps to ship:partsdubbedpattern("Launch").
+print launchClamps.
+
 //autostage().
 accent().
 MonitorApoapsis().
 circularize().
 Declare Function AutoStage
 {
+   
 	if availablethrust < 1 or availablethrust<oldThrust*.95
 	{
         if AStageTrigger = true
@@ -40,11 +48,9 @@ Declare Function AutoStage
             wait 0.5.
             lock throttle to athrottle.
             set oldThrust to availablethrust.
-            
         }
         
-           
-	}
+    }
 }
 
 Declare Function HUD_accent
@@ -105,14 +111,36 @@ Declare Function userInput
             }    
     }
 
+
+
+declare function checkClamp
+{
+    
+    if launchClamps:length>0
+    {
+         
+        if time:seconds>engineStart
+        {
+     //       print launchClamps.
+            WAIT 0.5.
+            stage.
+            LAUNCHCLAMPS:CLEAR().
+     //       print " NO of clamps : "+launchClamps.
+        }
+        
+    }
+}
+
 Declare Function Accent
 {
 	
+    
+    
 	set tQ to 0.19.
 	SET SpeedOFFset TO 0.
     set pitchComp to 0.
 	set PitchOffset to 0.
-	set athrottle to 1.
+	set athrottle to 0.
 	set tPitch to 0.
 	set stageAttemp to 0.
 	set PitchTimeOFfset to 0.
@@ -121,12 +149,14 @@ Declare Function Accent
 	CLEARSCREEN.
 	set tPID to pidloop(0.4,0.007,0.01  ,0.2,1).
     set pitchComp to 0.
+   
 	until ship:apoapsis>iniApoapsis and Lights = false
 	{
 		
 		AutoStage().
         HUD_accent().
         userInput().
+         checkClamp().
         SET pitch to ((((ship:altitude)/1000)/(tApoapsis/1000))^0.48)*90.
       
      // 	print " Ship Q : "+Round(ship:q,2)+"   " at (0,1).
@@ -137,6 +167,7 @@ Declare Function Accent
         {
             set tPID:setpoint to .21*100.
             set athrottle to tpid:update(time:seconds,ship:q*100).
+            
         }else if Ship:altitude>12000
         {
             set tPID to pidloop(0.4,0.001,0.01  ,0.5,1).

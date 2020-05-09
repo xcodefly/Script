@@ -6,7 +6,7 @@
 
 
 Declare function sortNode
-{
+    {
     Parameter testCandidate to List().
     Local x to 0.
     until x=testCandidate:length
@@ -27,8 +27,9 @@ Declare function sortNode
     
     return testCandidate.
 }
+
 Declare function evaluateOrbit
-{
+    {
     parameter nodeList to List().
     parameter targetApoapsis to 0.
     parameter targetPeriapsis to 0.
@@ -50,8 +51,8 @@ Declare function evaluateOrbit
 }
 
 
-declare function PrintNode
-{
+declare function PrintNode  
+    {
     Parameter tNode TO list()..
     local x to 0.
     until x=tnode:length
@@ -62,8 +63,9 @@ declare function PrintNode
         set x to x+1.
     }
 }
+
 declare Function GaNode
-{
+    {
     Local candidateList to List().
     parameter poolsize to 20.
   
@@ -77,7 +79,7 @@ declare Function GaNode
 }
 
 declare Function evolveNode
-{
+    {
     parameter candidateList to list().
     Local x to 0.
     set listLength to candidateList:length.
