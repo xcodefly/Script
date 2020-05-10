@@ -1,13 +1,17 @@
 // Simplfied math for Pitch and better Apopsis function to make it faster and effecient. 
+run "_orbit.ks".  // This will add the munover node to circuilze at the apoapsis. 
+run "_exeNode.ks".  // This file will execude the next node in the orbit. 
+
 
 Print " Launch Profile 2. Uncrewwed. ".
-Wait 1.
+
 
 Parameter hdg to 90.
-Parameter autostageDelay to 0.5.
+Parameter autostageDelay to 0.1.
 Parameter autostageThrottle to 0.
-Parameter tApoapsis to 74000.
-Parameter tPeriaposis to 70500.
+Parameter tApoapsis to 80000.
+Parameter tPeriaposis to 79000.
+parameter targetQ to 0.3.
 
 // Common Vairables
 
@@ -23,16 +27,32 @@ set engineStart to time:seconds+2.
 Lock steering to autoSteer.
 Lock throttle to athrottle.      
 
-SAS off.
+
 // find it rockets have launch clamp.
-wait 2.
+wait 1.
 set launchClamps to ship:partsdubbedpattern("Launch").
-print launchClamps.
+set protectiveShell to ship:partsdubbedpattern("shell").
+
 
 //autostage().
-accent().
-MonitorApoapsis().
-circularize().
+//accent().
+//MonitorApoapsis().
+//circularize().
+
+declare function QuickStage
+{
+    set tempQuick to 0.
+    until availablethrust>1
+    {
+        wait autostageDelay.
+        stage.
+        wait autostageDelay.
+        set tempQuick to tempQuick+1.
+        PRINT "   Quick stage count " +tempQuick.
+    }
+    
+    
+}
 Declare Function AutoStage
 {
    
@@ -55,7 +75,7 @@ Declare Function AutoStage
 
 Declare Function HUD_accent
 {
-   
+    Print " Protective shell :"+protectiveShell:length  at (0,1).
     Print "           AutoStage (H) : " + AStageTrigger + "  "at (0,2).
     Print "    Target Apopsis (w/s) : " + tApoapsis+" " at (0,3).
        
@@ -114,7 +134,7 @@ Declare Function userInput
 
 
 declare function checkClamp
-{
+    {
     
     if launchClamps:length>0
     {
@@ -129,127 +149,102 @@ declare function checkClamp
         }
         
     }
-}
+    if protectiveShell:length>0 and altitude>70000
+    {
+        protectiveShell[0]:getmodule("moduleproceduralfairing"):doAction("Deploy",true).
+        Print " Shell on " at (0,10).
+    }
+    }
+
+
+
+
 
 Declare Function Accent
-{
-	
+    {
+        Set tQ to 0.19.
+        Set SpeedOFFset TO 0.
+        set pitchComp to 0.
+        set PitchOffset to 0.
+        set athrottle to 0.
+        set tPitch to 0.
+        set stageAttemp to 0.
+        set PitchTimeOFfset to 0.
+        set pitchTimePID to PIDLoop(0.1,    0.002,  .01,    -2, 15).
+        
+        CLEARSCREEN.
+        set tPID to pidloop(0.4,0.007,0.01  ,0.2,1).
+        set pitchComp to 0.
     
-    
-	set tQ to 0.19.
-	SET SpeedOFFset TO 0.
-    set pitchComp to 0.
-	set PitchOffset to 0.
-	set athrottle to 0.
-	set tPitch to 0.
-	set stageAttemp to 0.
-	set PitchTimeOFfset to 0.
-	set pitchTimePID to PIDLoop(0.1,    0.002,  .01,    -2, 15).
-	
-	CLEARSCREEN.
-	set tPID to pidloop(0.4,0.007,0.01  ,0.2,1).
-    set pitchComp to 0.
-   
-	until ship:apoapsis>iniApoapsis and Lights = false
-	{
-		
-		AutoStage().
-        HUD_accent().
-        userInput().
-         checkClamp().
-        SET pitch to ((((ship:altitude)/1000)/(tApoapsis/1000))^0.48)*90.
-      
-     // 	print " Ship Q : "+Round(ship:q,2)+"   " at (0,1).
-
-      
-        set autosteer to  heading (hdg,Max(5,90-pitch+pitchComp)).
-        if ship:altitude<12000
+        until ship:apoapsis>iniApoapsis and Lights = false
         {
-            set tPID:setpoint to .21*100.
-            set athrottle to tpid:update(time:seconds,ship:q*100).
             
-        }else if Ship:altitude>12000
-        {
-            set tPID to pidloop(0.4,0.001,0.01  ,0.5,1).
-            set tPID:setpoint TO 90.
-          //  set athrottle to 1.
-         
-          
-            SET athrottle to tpid:update(time:seconds,eta:apoapsis).
-            if (eta:apoapsis<30)
+            AutoStage().
+            HUD_accent().
+            userInput().
+            checkClamp().
+            SET pitch to ((((ship:altitude)/1000)/(tApoapsis/1000))^0.48)*90.
+        
+        // 	print " Ship Q : "+Round(ship:q,2)+"   " at (0,1).
+
+        
+            set autosteer to  heading (hdg,Max(5,90-pitch+pitchComp)).
+            if ship:altitude<12000
             {
-                set pitchComp to (30-eta:apoapsis)/3.
-            } else if eta:apoapsis>40
+                set tPID:setpoint to targetQ*100.
+                set athrottle to tpid:update(time:seconds,ship:q*100).
+                
+            }else if Ship:altitude>12000
             {
-                set pitchComp to Max(-4,(40-Eta:apoapsis)/3).
+                set tPID to pidloop(0.4,0.001,0.01  ,0.8,1).
+                set tPID:setpoint TO 90.
+                //  set athrottle to 1.
+                 SET athrottle to tpid:update(time:seconds,eta:apoapsis).
+                if (eta:apoapsis<30)
+                {
+                    set pitchComp to (30-eta:apoapsis)/3.
+                } else if eta:apoapsis>40
+                {
+                    set pitchComp to Max(-6,(40-Eta:apoapsis)/3).
+                }
             }
-           
+            wait 0.
+
         }
-        wait .01.
+        unlock steering.
+    }
 
-	
-	}
-}
-
-
+// function will wait until ship is out of the atmosphere. It will call circulize to do the circulizaiton part.
 Declare Function MonitorApoapsis
-{
-    warpto(time:seconds+eta:apoapsis-40).
-	until eta:apoapsis<30
-	{	
-		lock autoSteer to Prograde.
-		set athrottle to 0.
+    {
+    set kuniverse:timeWarp:mode to "Physics".
+    set kuniverse:timeWarp:rate to 4.
+    lock steering to Prograde.
+    clearscreen.
+    set athrottle to 0.
+    until altitude > 70400
+    {
+        Print " Monitoring Apoapsis " at (0,2).
+		Print " Current Apoapsis : "+Round(ship:apoapsis) + "  "at (0,3).
+        Print " ETA apoapsis(30) : "+Round (eta:Apoapsis)+ "  " at (0,4).
+      
+		
 		if Ship:apoapsis<iniApoapsis-1000
 		{
 			Accent().
 		}
-		Print " Monitoring Apoapsis ".
-		Print " Current Apoapsis : "+Round(ship:apoapsis).
-        Print " ETA apoapsis(30) : "+Round (eta:Apoapsis).
-        
-		Wait 0.1.
-		Clearscreen.
-	}
+    }
+    checkClamp().
 }
 
 
 
-Declare Function Circularize{
-	set athrottle to 0.
-	set autoSteer to Heading(hdg,0).
+
+Declare Function Circularize
+    {
 	
-	until ship:Periapsis>tPeriaposis
-	{
-		autostage().
-		set etaApo to eta:apoapsis.
-		
-		set athrottlePID to PidLoop(0.1,.01,.01,0.01,1).
-		set athrottlePID:setpoint to 30.
-		
-		set PitchPID to pidLoop(1,.01,.002,0,45).
-		set PitchPID:setpoint to 20.
-		if ship:verticalspeed<0
-			{	set etaApo to 0.	}
-		set pOffset to pitchPID:update(time:seconds,etaApo).
-		set autoSteer to Heading(hdg,pOffset).
-		set athrottle to athrottlePID:update(time:seconds,etaApo).
-		
-		Print " Lifting Periapsis out of Atmosphere ".
-		Print " ETA apoapsis : "+Round (etaApo,1).
-		Print " Eccentricity : "+Round (orbit:eccentricity,6).
-		Print "     Throttle : "+Round(athrottle,3).
-		Print "   Pitch Lift : "+round(pOffset,1).
-        print "     Apoapsis : "+Round(alt:apoapsis).
-        print "    Periapsis : "+Round(alt:Periapsis).
-        
-		wait .01.
-		Clearscreen.
-	}
-	// Need to work on lifting Apoapsis.
-
-
-
-    // need to find 
-	
-
+    kuniverse:timeWarp:cancelWarp().
+    adjust_Periapsis(tPeriaposis).    // Function from the _orbit.ks
+    exeNextNode().   
 }
+

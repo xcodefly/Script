@@ -1,4 +1,5 @@
 
+// This file has the following functions.
 set nd to nextnode.
 clearscreen.
 //print out node's basic parameters - ETA and deltaV

@@ -134,7 +134,7 @@ Declare function Periapsis_closedApp_Burn
     set next_semiMajorAxis to (current_SemiMajorAxis^3*((next_Period/current_period)^2))^(1/3).
     set Next_apoapsis to next_semiMajorAxis*2-(ship:periapsis+body:radius)-body:radius.
     print " Current Period "+ Round(current_Period).
-    print " NExt Period " +  Round(Next_Period).
+    print " Next Period " +  Round(Next_Period).
     print next_semiMajorAxis.
     print " Next Apoapsis " + next_apoapsis.
    

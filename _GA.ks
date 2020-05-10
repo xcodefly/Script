@@ -2,6 +2,9 @@
 set candidatePool to List().
 set candidateDistance to list().
 
+
+
+
 Declare function CreateGENE
 {
 
@@ -31,7 +34,7 @@ Declare function Eval_closed_App
     until count>candidatePool:length-1
     {
         add candidatePool[count].
-        set dvector to positionat(ship,)  
+     //   set dvector to positionat(ship,)  
         //print Round(candidatePool[count]:eta)+","+Round(candidatePool[count]:deltaV:mag,1).
         remove candidatePool[count].
         set count to count +1.

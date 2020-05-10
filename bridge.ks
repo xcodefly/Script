@@ -62,7 +62,7 @@ Local activeplan to readjson(filename).
     set bankPID to pidloop(0.045,0.0071,0.065,-.75,.75).
     set bankPID:setpoint to 0.
 
-    set locPID to pidLoop(0.35,0.03,0.7,-MaxIntercept,MaxIntercept).
+    set locPID to pidLoop(0.35,0.03,0.75,-MaxIntercept,MaxIntercept).
     set locPID:setPoint to 0.
 // Stage if requried.
 
