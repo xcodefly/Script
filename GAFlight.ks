@@ -1,22 +1,30 @@
 // The file to have all the launch function for GA.
 
-lazyglobal off.
+@lazyglobal off.
 // Accent
 // Monitor
 // Circulize.
-parameter tApoapsis to 80000.
-run "_GALKO.ks".
+parameter tApoapsis to 1000.
+
 
 
 Declare function AccentHUD
-    {
-
+    {   local parameter displayDNA,x.
+        print " Pointer : " + x at (0,1).
+        print " Heading : " +displayDNA[x]:heading at (0,2).
+        print " Heading : " +displayDNA[x]:pitch at (0,3).
+        print " Throttle : "+ displayDNA[x]:throttle at (0,4).
     }
 
 declare function checkStatus
 {
-    local flightstatus to true.
+    parameter lapstime.
+    local flightstatus to false.
     if ship:apoapsis>tApoapsis
+    {
+        set flightstatus to true.
+    }
+    if lapstime>3 and ( status="prelaunch" or status="landed")
     {
         set flightstatus to true.
     }
@@ -26,7 +34,9 @@ declare function checkStatus
 Declare function Accent_GA{  // function to create the automatic launch profile. 
     // have different alitutde for each 1000 feet step. and then follow that heading.   
         
-        Local Parameter waypoints.  // waypoint lexicon contains the following info  Altitude - index*1000, heading, pitch, maxQ, throttle, 
+        Local Parameter candidate.  // waypoint lexicon contains the following info  Altitude - index*1000, heading, pitch, maxQ, throttle, 
+        local cDNA to candidate:DNA.
+        local starttime to time:seconds.
         local nextStage to false.
         local pointer to Round(altitude/1000).
         sas off.
@@ -37,28 +47,21 @@ Declare function Accent_GA{  // function to create the automatic launch profile.
         }
         until nextstage
         {
-            set throttle to waypoints[pointer]:throttle.
-            set steering to heading(waypoints[pointer]:heading,waypoints[pointer]:pitch).
+            set throttle to cDNA[pointer]:throttle.
+            set steering to heading(cDNA[pointer]:heading,cDNA[pointer]:pitch).
             set pointer to Round(altitude/1000).
-            set status to checkStatus().
-           
-            print " Pointer : " + pointer at (0,1).
-            print " Heading : " +waypoints[pointer]:heading at (0,2).
-            print " Heading : " +waypoints[pointer]:pitch at (0,3).
-            print " Throttle : "+ waypoints[pointer]:throttle at (0,4).
 
+            set nextstage to checkStatus(round(time:seconds-starttime)).
+            accentHUD(candidate:DNA,pointer).
+         
             wait 0.
         
         }
-        print nextstage.
         set throttle to 0.
         unlock steering.
         sas on.
     }
 
-Clearscreen.
 
-Local testAccent to list().
-Set testAccent to accentGene().
 
-Accent_GA(testAccent).
+
