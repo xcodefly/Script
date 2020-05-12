@@ -1,0 +1,137 @@
+{
+    "entries": [
+        "Generation",
+        0,
+        "TestCandidate",
+        0,
+        "AIagentList",
+        {
+            "items": [
+                {
+                    "entries": [
+                        "DNA",
+                        {
+                            "items": [
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        90,
+                                        "throttle",
+                                        0.27
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                }
+                            ],
+                            "$type": "kOS.Safe.Encapsulation.ListValue"
+                        },
+                        "score",
+                        0
+                    ],
+                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                },
+                {
+                    "entries": [
+                        "DNA",
+                        {
+                            "items": [
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        90,
+                                        "throttle",
+                                        0.38
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                }
+                            ],
+                            "$type": "kOS.Safe.Encapsulation.ListValue"
+                        },
+                        "score",
+                        0
+                    ],
+                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                },
+                {
+                    "entries": [
+                        "DNA",
+                        {
+                            "items": [
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        90,
+                                        "throttle",
+                                        0.4
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                }
+                            ],
+                            "$type": "kOS.Safe.Encapsulation.ListValue"
+                        },
+                        "score",
+                        0
+                    ],
+                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                },
+                {
+                    "entries": [
+                        "DNA",
+                        {
+                            "items": [
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        90,
+                                        "throttle",
+                                        0.23
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                }
+                            ],
+                            "$type": "kOS.Safe.Encapsulation.ListValue"
+                        },
+                        "score",
+                        0
+                    ],
+                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                },
+                {
+                    "entries": [
+                        "DNA",
+                        {
+                            "items": [
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        90,
+                                        "throttle",
+                                        0.73
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                }
+                            ],
+                            "$type": "kOS.Safe.Encapsulation.ListValue"
+                        },
+                        "score",
+                        0
+                    ],
+                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                }
+            ],
+            "$type": "kOS.Safe.Encapsulation.ListValue"
+        },
+        "candidate",
+        0
+    ],
+    "$type": "kOS.Safe.Encapsulation.Lexicon"
+}

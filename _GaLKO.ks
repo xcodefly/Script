@@ -24,13 +24,22 @@ declare function newDNA
 declare function newCandidate
     {
         // this profile which holds the other helpful paramteers
-        local accentCandidate is Lexicon().
-        accentCandidate:add("DNA",newDNA).
-        accentCandidate:add("score",0).
-        return accentCandidate.
+        local parameter dnalength to 10.
+        local Candidate is Lexicon().
+        Candidate:add("DNA",newDNA(dnalength)).
+        Candidate:add("score",0).
+        return Candidate.
     }
 
-
+declare function newCandidateList{
+    local parameter listsize is 1,dnaLenght is 1.
+    local newList to list().
+    until newList:length=listsize
+    {   
+        newlist:add(newCandidate(dnaLenght)).
+    }
+    return newList.
+}
 
 // This function will slowly evolve the given gene profile. each geen will have
 declare function evolveCandidateDNA
