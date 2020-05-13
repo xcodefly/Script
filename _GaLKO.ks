@@ -5,7 +5,7 @@
 
 // Function that create basic gene to target Accent altitude.
 local mutationRate to 0.25.
-local dropoff to 0.25.
+local dropoff to 0.35.
 declare function new_DNA  
     {
         local Parameter geneLength to 3.
@@ -88,7 +88,7 @@ declare function mutate_Candidate
     {
         // need a better function but for now it is just chaning the values like a hill climb.
         local parameter generation.
-        local parameter evolvePoint to Round(generation[0]:dna:length*0.3).
+        local parameter evolvePoint to Round(generation[0]:dna:length*mutationRate).
         local x to 0.
         until x=generation:length
         {
@@ -100,7 +100,7 @@ declare function mutate_Candidate
                 {
                     if random()>mutationRate and evolvePoint > 0
                     {
-                        set generation[x]:dna[y]:throttle to generation[x]:dna[y]:throttle+(random()-0.5)*0.1. 
+                        set generation[x]:dna[y]:throttle to min(1,generation[x]:dna[y]:throttle+(random()-0.5)*0.15). 
                         set evolvePoint to evolvePoint -1.
                     }
                     set y to y+1.
