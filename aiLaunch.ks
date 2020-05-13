@@ -14,7 +14,7 @@ Local generation to 0.
 local generationMax to 500.
 Local agentNumber to 0.
 local aiFile to Lexicon().
-local poolsize to 25.
+local poolsize to 30.
 local AIagentList to list().
 local AIagent to lexicon().
 declare function easyLog{
@@ -109,14 +109,19 @@ declare function testAgentList
     
         until agentNumber=AIagentList:length
         {
+            clearscreen.
             agentHUD(agentNumber).
-           
             set AIagentList[agentNumber]:score to Launch_Agent(AIagentList[agentnumber]).
-            
             set agentNumber to agentNumber+1.
             updateAIfile().
-            kuniverse:reverttolaunch().
-           
+            if (status="landed" or status="preLaunch")
+            {
+
+            }else
+            {
+                kuniverse:quickload().
+            }
+            
             
             
             

@@ -4,8 +4,8 @@
 // use keyword candidate to help with the different files.
 
 // Function that create basic gene to target Accent altitude.
-local mutationRate to 0.2.
-local dropoff to 0.3.
+local mutationRate to 0.3.
+local dropoff to 0.15.
 declare function new_DNA  
     {
         local Parameter geneLength to 3.
@@ -37,7 +37,7 @@ declare function new_Candidate
     }
 
 declare function new_Generation{
-        local parameter listsize is 1,dnaLenght is 10.
+        local parameter listsize is 1,dnaLenght is 80.
         local newList to list().
         until newList:length=listsize
         {   
@@ -57,11 +57,11 @@ declare function next_Generation
             // remove the old generation 
             local parentA to generation[generation:length-x-1].
          //   local parentA to generation[0].
-            local parentBindex to generation:length-1-Round(random()*generation:length*.25).
+            local parentBindex to min(generation:length-1,generation:length-1-Round((random()-0.3)*generation:length*.25)).
             print "Parent B Index : "+parentBIndex.
             local parentB to generation[parentBindex].
          //   local parentB to generation[generation:length-1].
-          //  set generation[x]:dna to child_candidate(ParentA,ParentB).
+            set generation[x] to child_candidate(ParentA,ParentB).
           //  print generation:length.
             set x to x+1.
             wait 0.
@@ -75,7 +75,7 @@ declare function child_Candidate
     local xx to 0.
     until xx=p1:DNA:length{
         if random()<mutationRate{
-            set p1:dna[xx] to p2:dna[xx].
+            set p1:dna[xx]:throttle to p2:dna[xx]:throttle.
             set xx to xx+1.
         }
     }
@@ -88,19 +88,19 @@ declare function mutate_Candidate
     {
         // need a better function but for now it is just chaning the values like a hill climb.
         local parameter generation.
-        local parameter evolvePoint to Round(generation[0]:dna:length*0.1).
+        local parameter evolvePoint to Round(generation[0]:dna:length*0.3).
         local x to 0.
         until x=generation:length
         {
            
-            if random()>.15
+            if random()>.3
             {
                 local y to 0.
                  until y=generation[x]:dna:length
                 {
                     if random()>mutationRate and evolvePoint > 0
                     {
-                        set generation[x]:dna[y]:throttle to generation[x]:dna[y]:throttle+(random()-0.5)*0.05. 
+                        set generation[x]:dna[y]:throttle to generation[x]:dna[y]:throttle+(random()-0.5)*0.1. 
                         set evolvePoint to evolvePoint -1.
                     }
                     set y to y+1.
@@ -117,9 +117,6 @@ declare function mutate_Candidate
 
 declare function sort_Candidate
     {
-
-         
-
         // the score will be given here.
         local parameter aList.
         local x to 0.

@@ -4,13 +4,13 @@
 // Accent
 // Monitor
 // Circulize.
-parameter tApoapsis to 9.
+parameter tApoapsis to 70000.
 
 
 
 Declare function AccentHUD
     {   local parameter displayDNA,x.
-        print "  Agent NO : " + x at (0,5).
+        print "  index NO : " + x at (0,5).
         print "   Heading : " +displayDNA[x]:heading at (0,6).
         print "     pitch : " +displayDNA[x]:pitch at (0,7).
         print "  Throttle : "+ round(displayDNA[x]:throttle,3) at (0,8).
@@ -26,11 +26,11 @@ declare function checkStatus
         set flightstatus to true.
     }
     
-    if lapstime>10
+    if lapstime>5
     {
         set kuniverse:timewarp:mode to "Physics".
-        set kuniverse:timewarp:rate to 4.
-        if ( status="prelaunch" or status="landed" or verticalspeed<0)
+        set kuniverse:timewarp:rate to 2.
+        if ( status="prelaunch" or status="landed" or verticalspeed<1)
         {
             set flightstatus to true.
         }
@@ -56,6 +56,7 @@ declare function Launch_Agent
             break.
         }
     }
+    // clearscreen.
     local startFuel to shipFuel:amount.
     Accent_GA(dna).
     local altScore to altitude_Score().
