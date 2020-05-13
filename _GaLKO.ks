@@ -74,10 +74,12 @@ declare function child_Candidate
     Local parameter p1,p2.
     local xx to 0.
     until xx=p1:DNA:length{
-        if random()<mutationRate{
-            set p1:dna[xx]:throttle to p2:dna[xx]:throttle.
-            set xx to xx+1.
+        if random()<0.3
+        {
+            wait 0.
+            set p1:dna[xx] to min(1,p1:dna[xx]+(random()-0.5)*0.2).
         }
+        
     }
    
 
