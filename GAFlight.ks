@@ -29,7 +29,7 @@ declare function checkStatus
     if lapstime>5
     {
         set kuniverse:timewarp:mode to "Physics".
-        set kuniverse:timewarp:rate to 2.
+        set kuniverse:timewarp:rate to 4.
         if ( status="prelaunch" or status="landed" or verticalspeed<1)
         {
             set flightstatus to true.

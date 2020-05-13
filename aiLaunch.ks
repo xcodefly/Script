@@ -21,11 +21,27 @@ declare function easyLog{
     local x to 0.
    
     local scoreStr to "Gen"+generation+",".
+    local tbest to "Gen"+generation+",".
     until x=aiFile:aiAgentlist:length{
        set scorestr to scorestr+aiAgentList[x]:score+",".
         set x to x+1.
     }
-    log scorestr to "test1.csv".
+    set x to 0.
+    until x=aifile:aiAgentlist[poolsize-1]:DNA:length
+    {
+        set tbest to tbest+round(aiAgentlist[poolsize-1]:DNA[x]:throttle,2)+",".
+        set x to x+1.
+    }
+    log scorestr to "bestScore.csv".
+    log tbest to "bestThrottle.csv".
+    
+}
+declare function new_Gen_AI_File
+{
+    set aiFile:agentNumber to agentNumber.
+    set aiFile:generation to generation.
+    local tempname to "AIGen-"+generation+".json".
+    writeJson(aiFile,tempname).
 }
 declare function updateAIfile
 {
@@ -119,7 +135,7 @@ declare function testAgentList
 
             }else
             {
-                kuniverse:quickload().
+                kuniverse:reverttoLaunch().
             }
             
             
@@ -132,9 +148,10 @@ declare function testAgentList
         set aiAgentlist to mutate_Candidate(aiAgentList).
         set agentNumber to 0.
         set generation to generation +1.
+        new_Gen_AI_File().
         updateAIfile().
         
-      // kuniverse:reverttolaunch().
+        kuniverse:quickload().
         
     }
     print " End of File".

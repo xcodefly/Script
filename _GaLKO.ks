@@ -4,8 +4,8 @@
 // use keyword candidate to help with the different files.
 
 // Function that create basic gene to target Accent altitude.
-local mutationRate to 0.3.
-local dropoff to 0.15.
+local mutationRate to 0.25.
+local dropoff to 0.25.
 declare function new_DNA  
     {
         local Parameter geneLength to 3.
