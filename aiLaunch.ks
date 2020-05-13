@@ -11,18 +11,29 @@ runpath ("GAFlight.ks").
 
 // create a json file that has all the candidates.
 Local generation to 0.
+local generationMax to 500.
 Local agentNumber to 0.
 local aiFile to Lexicon().
-local poolsize to 6.
+local poolsize to 25.
 local AIagentList to list().
 local AIagent to lexicon().
-
+declare function easyLog{
+    local x to 0.
+   
+    local scoreStr to "Gen"+generation+",".
+    until x=aiFile:aiAgentlist:length{
+       set scorestr to scorestr+aiAgentList[x]:score+",".
+        set x to x+1.
+    }
+    log scorestr to "test1.csv".
+}
 declare function updateAIfile
 {
     deletepath(filename).
     set aiFile:agentNumber to agentNumber.
     set aiFile:generation to generation.
     writeJson(aiFile,filename).
+    
 
 }
 declare function checkAIfile
@@ -56,17 +67,15 @@ declare function checkAIfile
         local function openAIfile{
             if exists(filename){
                 set aiFile to readjson(filename).
-                set generation      to aiFile:generation.
-                set agentNumber   to aifile:agentNumber.
-                set AIagentList     to aifile:AIagentList.
+                
+                set AIagentList to aifile:AIagentList.
                 if poolsize<>aiagentlist:length or fileFlag = true
                 {
                     Print " file reset because no of Agents or file flag.".
                     resetAIFile(true).
-                    
-                   
-                  
                 }
+                set generation      to aiFile:generation.
+                set agentNumber   to aifile:agentNumber.
                 print " file exists, No of Agents in this file: " + aiagentlist:length.
 
             }else
@@ -94,30 +103,33 @@ checkAIfile().
 testAgentList().
 declare function testAgentList
 {
-    until generation = 4
+    until generation = generationMax
     {
 
     
         until agentNumber=AIagentList:length
         {
             agentHUD(agentNumber).
-            set kuniverse:timewarp:mode to "Physics".
-            set kuniverse:timewarp:rate to 4.
+           
             set AIagentList[agentNumber]:score to Launch_Agent(AIagentList[agentnumber]).
             
             set agentNumber to agentNumber+1.
             updateAIfile().
             kuniverse:reverttolaunch().
+           
+            
             
             
         }
         set AIagentList to sort_Candidate(aiAgentlist).
-        
+        easylog().
         set aiAgentList to next_generation(aiAgentlist).
+        set aiAgentlist to mutate_Candidate(aiAgentList).
         set agentNumber to 0.
         set generation to generation +1.
         updateAIfile().
-        kuniverse:reverttolaunch().
+        
+      // kuniverse:reverttolaunch().
         
     }
     print " End of File".

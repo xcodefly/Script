@@ -1,9 +1,9 @@
 {
     "entries": [
         "Generation",
-        4,
-        "agentNumber",
         0,
+        "agentNumber",
+        6,
         "AIagentList",
         {
             "items": [
@@ -19,7 +19,7 @@
                                         "Pitch",
                                         90,
                                         "throttle",
-                                        0.62
+                                        0.42
                                     ],
                                     "$type": "kOS.Safe.Encapsulation.Lexicon"
                                 },
@@ -30,7 +30,7 @@
                                         "Pitch",
                                         89,
                                         "throttle",
-                                        0.06
+                                        0.51
                                     ],
                                     "$type": "kOS.Safe.Encapsulation.Lexicon"
                                 },
@@ -41,7 +41,7 @@
                                         "Pitch",
                                         88,
                                         "throttle",
-                                        0.82
+                                        0.48
                                     ],
                                     "$type": "kOS.Safe.Encapsulation.Lexicon"
                                 },
@@ -52,7 +52,7 @@
                                         "Pitch",
                                         87,
                                         "throttle",
-                                        0.95
+                                        0.26
                                     ],
                                     "$type": "kOS.Safe.Encapsulation.Lexicon"
                                 },
@@ -63,31 +63,7 @@
                                         "Pitch",
                                         86,
                                         "throttle",
-                                        0.87
-                                    ],
-                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
-                                }
-                            ],
-                            "$type": "kOS.Safe.Encapsulation.ListValue"
-                        },
-                        "score",
-                        0.083
-                    ],
-                    "$type": "kOS.Safe.Encapsulation.Lexicon"
-                },
-                {
-                    "entries": [
-                        "DNA",
-                        {
-                            "items": [
-                                {
-                                    "entries": [
-                                        "heading",
-                                        90,
-                                        "Pitch",
-                                        90,
-                                        "throttle",
-                                        0.38
+                                        0.89
                                     ],
                                     "$type": "kOS.Safe.Encapsulation.Lexicon"
                                 },
@@ -96,64 +72,7 @@
                                         "heading",
                                         90,
                                         "Pitch",
-                                        89,
-                                        "throttle",
-                                        0.61
-                                    ],
-                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
-                                },
-                                {
-                                    "entries": [
-                                        "heading",
-                                        90,
-                                        "Pitch",
-                                        88,
-                                        "throttle",
-                                        0.5
-                                    ],
-                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
-                                },
-                                {
-                                    "entries": [
-                                        "heading",
-                                        90,
-                                        "Pitch",
-                                        87,
-                                        "throttle",
-                                        0.19
-                                    ],
-                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
-                                },
-                                {
-                                    "entries": [
-                                        "heading",
-                                        90,
-                                        "Pitch",
-                                        86,
-                                        "throttle",
-                                        0.38
-                                    ],
-                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
-                                }
-                            ],
-                            "$type": "kOS.Safe.Encapsulation.ListValue"
-                        },
-                        "score",
-                        0.084
-                    ],
-                    "$type": "kOS.Safe.Encapsulation.Lexicon"
-                },
-                {
-                    "entries": [
-                        "DNA",
-                        {
-                            "items": [
-                                {
-                                    "entries": [
-                                        "heading",
-                                        90,
-                                        "Pitch",
-                                        90,
+                                        85,
                                         "throttle",
                                         0.27
                                     ],
@@ -164,9 +83,9 @@
                                         "heading",
                                         90,
                                         "Pitch",
-                                        89,
+                                        84,
                                         "throttle",
-                                        0.19
+                                        0.71
                                     ],
                                     "$type": "kOS.Safe.Encapsulation.Lexicon"
                                 },
@@ -175,9 +94,9 @@
                                         "heading",
                                         90,
                                         "Pitch",
-                                        88,
+                                        83,
                                         "throttle",
-                                        0.56
+                                        0.94
                                     ],
                                     "$type": "kOS.Safe.Encapsulation.Lexicon"
                                 },
@@ -186,9 +105,9 @@
                                         "heading",
                                         90,
                                         "Pitch",
-                                        87,
+                                        82,
                                         "throttle",
-                                        0.22
+                                        0.23
                                     ],
                                     "$type": "kOS.Safe.Encapsulation.Lexicon"
                                 },
@@ -197,9 +116,9 @@
                                         "heading",
                                         90,
                                         "Pitch",
-                                        86,
+                                        81,
                                         "throttle",
-                                        0.3
+                                        0.45
                                     ],
                                     "$type": "kOS.Safe.Encapsulation.Lexicon"
                                 }
@@ -207,7 +126,7 @@
                             "$type": "kOS.Safe.Encapsulation.ListValue"
                         },
                         "score",
-                        0.084
+                        9.4809
                     ],
                     "$type": "kOS.Safe.Encapsulation.Lexicon"
                 },
@@ -223,7 +142,7 @@
                                         "Pitch",
                                         90,
                                         "throttle",
-                                        0.81
+                                        0.38
                                     ],
                                     "$type": "kOS.Safe.Encapsulation.Lexicon"
                                 },
@@ -234,7 +153,7 @@
                                         "Pitch",
                                         89,
                                         "throttle",
-                                        0.07
+                                        0.73
                                     ],
                                     "$type": "kOS.Safe.Encapsulation.Lexicon"
                                 },
@@ -245,7 +164,7 @@
                                         "Pitch",
                                         88,
                                         "throttle",
-                                        0.49
+                                        0.24
                                     ],
                                     "$type": "kOS.Safe.Encapsulation.Lexicon"
                                 },
@@ -256,7 +175,868 @@
                                         "Pitch",
                                         87,
                                         "throttle",
-                                        0.25
+                                        0.23
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        86,
+                                        "throttle",
+                                        0.67
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        85,
+                                        "throttle",
+                                        0.55
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        84,
+                                        "throttle",
+                                        0.39
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        83,
+                                        "throttle",
+                                        0.75
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        82,
+                                        "throttle",
+                                        0.29
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        81,
+                                        "throttle",
+                                        0.86
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                }
+                            ],
+                            "$type": "kOS.Safe.Encapsulation.ListValue"
+                        },
+                        "score",
+                        9.482
+                    ],
+                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                },
+                {
+                    "entries": [
+                        "DNA",
+                        {
+                            "items": [
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        90,
+                                        "throttle",
+                                        0.56
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        89,
+                                        "throttle",
+                                        0.42
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        88,
+                                        "throttle",
+                                        0.11
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        87,
+                                        "throttle",
+                                        0.97
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        86,
+                                        "throttle",
+                                        0.94
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        85,
+                                        "throttle",
+                                        0.78
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        84,
+                                        "throttle",
+                                        0.47
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        83,
+                                        "throttle",
+                                        0.33
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        82,
+                                        "throttle",
+                                        0.78
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        81,
+                                        "throttle",
+                                        0.6
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                }
+                            ],
+                            "$type": "kOS.Safe.Encapsulation.ListValue"
+                        },
+                        "score",
+                        9.4781
+                    ],
+                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                },
+                {
+                    "entries": [
+                        "DNA",
+                        {
+                            "items": [
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        90,
+                                        "throttle",
+                                        0.94
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        89,
+                                        "throttle",
+                                        0.72
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        88,
+                                        "throttle",
+                                        0.6
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        87,
+                                        "throttle",
+                                        0.58
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        86,
+                                        "throttle",
+                                        0.9
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        85,
+                                        "throttle",
+                                        0.36
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        84,
+                                        "throttle",
+                                        0.11
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        83,
+                                        "throttle",
+                                        0.54
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        82,
+                                        "throttle",
+                                        0.82
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        81,
+                                        "throttle",
+                                        0.92
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                }
+                            ],
+                            "$type": "kOS.Safe.Encapsulation.ListValue"
+                        },
+                        "score",
+                        9.4822
+                    ],
+                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                },
+                {
+                    "entries": [
+                        "DNA",
+                        {
+                            "items": [
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        90,
+                                        "throttle",
+                                        0.08
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        89,
+                                        "throttle",
+                                        0.99
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        88,
+                                        "throttle",
+                                        0.88
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        87,
+                                        "throttle",
+                                        0.43
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        86,
+                                        "throttle",
+                                        0.12
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        85,
+                                        "throttle",
+                                        0.08
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        84,
+                                        "throttle",
+                                        0.43
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        83,
+                                        "throttle",
+                                        0.98
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        82,
+                                        "throttle",
+                                        0.37
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        81,
+                                        "throttle",
+                                        0.42
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                }
+                            ],
+                            "$type": "kOS.Safe.Encapsulation.ListValue"
+                        },
+                        "score",
+                        9.484
+                    ],
+                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                },
+                {
+                    "entries": [
+                        "DNA",
+                        {
+                            "items": [
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        90,
+                                        "throttle",
+                                        0.18
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        89,
+                                        "throttle",
+                                        0.85
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        88,
+                                        "throttle",
+                                        0.66
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        87,
+                                        "throttle",
+                                        0.02
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        86,
+                                        "throttle",
+                                        0.52
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        85,
+                                        "throttle",
+                                        1
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        84,
+                                        "throttle",
+                                        0.4
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        83,
+                                        "throttle",
+                                        0.51
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        82,
+                                        "throttle",
+                                        0.32
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        81,
+                                        "throttle",
+                                        0.11
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                }
+                            ],
+                            "$type": "kOS.Safe.Encapsulation.ListValue"
+                        },
+                        "score",
+                        9.4842
+                    ],
+                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                },
+                {
+                    "entries": [
+                        "DNA",
+                        {
+                            "items": [
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        90,
+                                        "throttle",
+                                        0.8
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        89,
+                                        "throttle",
+                                        0.38
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        88,
+                                        "throttle",
+                                        0.16
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        87,
+                                        "throttle",
+                                        0.63
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        86,
+                                        "throttle",
+                                        0.5
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        85,
+                                        "throttle",
+                                        0.65
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        84,
+                                        "throttle",
+                                        0.13
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        83,
+                                        "throttle",
+                                        0.66
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        82,
+                                        "throttle",
+                                        0.33
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        81,
+                                        "throttle",
+                                        0.31
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                }
+                            ],
+                            "$type": "kOS.Safe.Encapsulation.ListValue"
+                        },
+                        "score",
+                        0
+                    ],
+                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                },
+                {
+                    "entries": [
+                        "DNA",
+                        {
+                            "items": [
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        90,
+                                        "throttle",
+                                        0.44
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        89,
+                                        "throttle",
+                                        0.85
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        88,
+                                        "throttle",
+                                        0.92
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        87,
+                                        "throttle",
+                                        0.37
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        86,
+                                        "throttle",
+                                        0.78
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        85,
+                                        "throttle",
+                                        0.57
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        84,
+                                        "throttle",
+                                        0.54
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        83,
+                                        "throttle",
+                                        0.68
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        82,
+                                        "throttle",
+                                        0.86
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        81,
+                                        "throttle",
+                                        0.87
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                }
+                            ],
+                            "$type": "kOS.Safe.Encapsulation.ListValue"
+                        },
+                        "score",
+                        0
+                    ],
+                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                },
+                {
+                    "entries": [
+                        "DNA",
+                        {
+                            "items": [
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        90,
+                                        "throttle",
+                                        0.35
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        89,
+                                        "throttle",
+                                        0.49
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        88,
+                                        "throttle",
+                                        0.96
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        87,
+                                        "throttle",
+                                        0.36
                                     ],
                                     "$type": "kOS.Safe.Encapsulation.Lexicon"
                                 },
@@ -270,12 +1050,67 @@
                                         0.42
                                     ],
                                     "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        85,
+                                        "throttle",
+                                        0.09
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        84,
+                                        "throttle",
+                                        0.07
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        83,
+                                        "throttle",
+                                        0.58
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        82,
+                                        "throttle",
+                                        0.06
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        81,
+                                        "throttle",
+                                        0.9
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
                                 }
                             ],
                             "$type": "kOS.Safe.Encapsulation.ListValue"
                         },
                         "score",
-                        0.595
+                        0
                     ],
                     "$type": "kOS.Safe.Encapsulation.Lexicon"
                 },
@@ -291,7 +1126,7 @@
                                         "Pitch",
                                         90,
                                         "throttle",
-                                        0.65
+                                        0.96
                                     ],
                                     "$type": "kOS.Safe.Encapsulation.Lexicon"
                                 },
@@ -302,7 +1137,868 @@
                                         "Pitch",
                                         89,
                                         "throttle",
+                                        0.6
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        88,
+                                        "throttle",
+                                        0.22
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        87,
+                                        "throttle",
                                         0.71
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        86,
+                                        "throttle",
+                                        0.12
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        85,
+                                        "throttle",
+                                        0.69
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        84,
+                                        "throttle",
+                                        0.83
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        83,
+                                        "throttle",
+                                        0.25
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        82,
+                                        "throttle",
+                                        0.93
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        81,
+                                        "throttle",
+                                        0.47
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                }
+                            ],
+                            "$type": "kOS.Safe.Encapsulation.ListValue"
+                        },
+                        "score",
+                        0
+                    ],
+                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                },
+                {
+                    "entries": [
+                        "DNA",
+                        {
+                            "items": [
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        90,
+                                        "throttle",
+                                        0.94
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        89,
+                                        "throttle",
+                                        0.76
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        88,
+                                        "throttle",
+                                        0.65
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        87,
+                                        "throttle",
+                                        0.06
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        86,
+                                        "throttle",
+                                        0.98
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        85,
+                                        "throttle",
+                                        0.33
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        84,
+                                        "throttle",
+                                        0.93
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        83,
+                                        "throttle",
+                                        0.29
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        82,
+                                        "throttle",
+                                        0.24
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        81,
+                                        "throttle",
+                                        0.96
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                }
+                            ],
+                            "$type": "kOS.Safe.Encapsulation.ListValue"
+                        },
+                        "score",
+                        0
+                    ],
+                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                },
+                {
+                    "entries": [
+                        "DNA",
+                        {
+                            "items": [
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        90,
+                                        "throttle",
+                                        0.45
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        89,
+                                        "throttle",
+                                        0.72
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        88,
+                                        "throttle",
+                                        0.65
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        87,
+                                        "throttle",
+                                        0.45
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        86,
+                                        "throttle",
+                                        0.76
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        85,
+                                        "throttle",
+                                        0.31
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        84,
+                                        "throttle",
+                                        0.43
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        83,
+                                        "throttle",
+                                        0.8
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        82,
+                                        "throttle",
+                                        0.21
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        81,
+                                        "throttle",
+                                        0.42
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                }
+                            ],
+                            "$type": "kOS.Safe.Encapsulation.ListValue"
+                        },
+                        "score",
+                        0
+                    ],
+                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                },
+                {
+                    "entries": [
+                        "DNA",
+                        {
+                            "items": [
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        90,
+                                        "throttle",
+                                        0.59
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        89,
+                                        "throttle",
+                                        0.55
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        88,
+                                        "throttle",
+                                        0.61
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        87,
+                                        "throttle",
+                                        0.43
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        86,
+                                        "throttle",
+                                        0.34
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        85,
+                                        "throttle",
+                                        0.83
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        84,
+                                        "throttle",
+                                        0.64
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        83,
+                                        "throttle",
+                                        0.21
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        82,
+                                        "throttle",
+                                        0.25
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        81,
+                                        "throttle",
+                                        0.09
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                }
+                            ],
+                            "$type": "kOS.Safe.Encapsulation.ListValue"
+                        },
+                        "score",
+                        0
+                    ],
+                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                },
+                {
+                    "entries": [
+                        "DNA",
+                        {
+                            "items": [
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        90,
+                                        "throttle",
+                                        0.74
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        89,
+                                        "throttle",
+                                        0.3
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        88,
+                                        "throttle",
+                                        0.75
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        87,
+                                        "throttle",
+                                        0.39
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        86,
+                                        "throttle",
+                                        0.92
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        85,
+                                        "throttle",
+                                        0.58
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        84,
+                                        "throttle",
+                                        0.85
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        83,
+                                        "throttle",
+                                        0.89
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        82,
+                                        "throttle",
+                                        0.38
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        81,
+                                        "throttle",
+                                        0.09
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                }
+                            ],
+                            "$type": "kOS.Safe.Encapsulation.ListValue"
+                        },
+                        "score",
+                        0
+                    ],
+                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                },
+                {
+                    "entries": [
+                        "DNA",
+                        {
+                            "items": [
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        90,
+                                        "throttle",
+                                        0.16
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        89,
+                                        "throttle",
+                                        0.78
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        88,
+                                        "throttle",
+                                        0.34
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        87,
+                                        "throttle",
+                                        0.1
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        86,
+                                        "throttle",
+                                        0.45
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        85,
+                                        "throttle",
+                                        0.25
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        84,
+                                        "throttle",
+                                        0.95
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        83,
+                                        "throttle",
+                                        0.76
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        82,
+                                        "throttle",
+                                        0.95
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        81,
+                                        "throttle",
+                                        0.81
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                }
+                            ],
+                            "$type": "kOS.Safe.Encapsulation.ListValue"
+                        },
+                        "score",
+                        0
+                    ],
+                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                },
+                {
+                    "entries": [
+                        "DNA",
+                        {
+                            "items": [
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        90,
+                                        "throttle",
+                                        0.26
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        89,
+                                        "throttle",
+                                        0.03
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        88,
+                                        "throttle",
+                                        0.03
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        87,
+                                        "throttle",
+                                        0.51
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        86,
+                                        "throttle",
+                                        0.88
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        85,
+                                        "throttle",
+                                        0.39
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        84,
+                                        "throttle",
+                                        0.15
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        83,
+                                        "throttle",
+                                        0.21
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        82,
+                                        "throttle",
+                                        0.72
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        81,
+                                        "throttle",
+                                        0.15
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                }
+                            ],
+                            "$type": "kOS.Safe.Encapsulation.ListValue"
+                        },
+                        "score",
+                        0
+                    ],
+                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                },
+                {
+                    "entries": [
+                        "DNA",
+                        {
+                            "items": [
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        90,
+                                        "throttle",
+                                        0.69
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        89,
+                                        "throttle",
+                                        0.72
                                     ],
                                     "$type": "kOS.Safe.Encapsulation.Lexicon"
                                 },
@@ -324,7 +2020,7 @@
                                         "Pitch",
                                         87,
                                         "throttle",
-                                        0.88
+                                        0.15
                                     ],
                                     "$type": "kOS.Safe.Encapsulation.Lexicon"
                                 },
@@ -335,7 +2031,62 @@
                                         "Pitch",
                                         86,
                                         "throttle",
-                                        0.87
+                                        0.22
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        85,
+                                        "throttle",
+                                        0.16
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        84,
+                                        "throttle",
+                                        0.96
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        83,
+                                        "throttle",
+                                        0.26
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        82,
+                                        "throttle",
+                                        0.53
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        81,
+                                        "throttle",
+                                        0.18
                                     ],
                                     "$type": "kOS.Safe.Encapsulation.Lexicon"
                                 }
@@ -343,7 +2094,7 @@
                             "$type": "kOS.Safe.Encapsulation.ListValue"
                         },
                         "score",
-                        0.655
+                        0
                     ],
                     "$type": "kOS.Safe.Encapsulation.Lexicon"
                 },
@@ -359,7 +2110,7 @@
                                         "Pitch",
                                         90,
                                         "throttle",
-                                        0.78
+                                        0.46
                                     ],
                                     "$type": "kOS.Safe.Encapsulation.Lexicon"
                                 },
@@ -370,7 +2121,7 @@
                                         "Pitch",
                                         89,
                                         "throttle",
-                                        0.58
+                                        0.53
                                     ],
                                     "$type": "kOS.Safe.Encapsulation.Lexicon"
                                 },
@@ -381,7 +2132,7 @@
                                         "Pitch",
                                         88,
                                         "throttle",
-                                        0.07
+                                        0.42
                                     ],
                                     "$type": "kOS.Safe.Encapsulation.Lexicon"
                                 },
@@ -392,7 +2143,7 @@
                                         "Pitch",
                                         87,
                                         "throttle",
-                                        0.76
+                                        0.12
                                     ],
                                     "$type": "kOS.Safe.Encapsulation.Lexicon"
                                 },
@@ -403,7 +2154,62 @@
                                         "Pitch",
                                         86,
                                         "throttle",
-                                        0.2
+                                        0.26
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        85,
+                                        "throttle",
+                                        0.81
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        84,
+                                        "throttle",
+                                        0.21
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        83,
+                                        "throttle",
+                                        0.51
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        82,
+                                        "throttle",
+                                        0.98
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        81,
+                                        "throttle",
+                                        0.1
                                     ],
                                     "$type": "kOS.Safe.Encapsulation.Lexicon"
                                 }
@@ -411,7 +2217,868 @@
                             "$type": "kOS.Safe.Encapsulation.ListValue"
                         },
                         "score",
-                        0.753
+                        0
+                    ],
+                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                },
+                {
+                    "entries": [
+                        "DNA",
+                        {
+                            "items": [
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        90,
+                                        "throttle",
+                                        0.88
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        89,
+                                        "throttle",
+                                        0.87
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        88,
+                                        "throttle",
+                                        0.26
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        87,
+                                        "throttle",
+                                        0.44
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        86,
+                                        "throttle",
+                                        0.82
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        85,
+                                        "throttle",
+                                        0.71
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        84,
+                                        "throttle",
+                                        0.26
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        83,
+                                        "throttle",
+                                        0.24
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        82,
+                                        "throttle",
+                                        0.51
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        81,
+                                        "throttle",
+                                        0.53
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                }
+                            ],
+                            "$type": "kOS.Safe.Encapsulation.ListValue"
+                        },
+                        "score",
+                        0
+                    ],
+                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                },
+                {
+                    "entries": [
+                        "DNA",
+                        {
+                            "items": [
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        90,
+                                        "throttle",
+                                        0.43
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        89,
+                                        "throttle",
+                                        0.63
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        88,
+                                        "throttle",
+                                        0.18
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        87,
+                                        "throttle",
+                                        0.24
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        86,
+                                        "throttle",
+                                        0.4
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        85,
+                                        "throttle",
+                                        0.44
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        84,
+                                        "throttle",
+                                        0.74
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        83,
+                                        "throttle",
+                                        0.19
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        82,
+                                        "throttle",
+                                        0.87
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        81,
+                                        "throttle",
+                                        0.29
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                }
+                            ],
+                            "$type": "kOS.Safe.Encapsulation.ListValue"
+                        },
+                        "score",
+                        0
+                    ],
+                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                },
+                {
+                    "entries": [
+                        "DNA",
+                        {
+                            "items": [
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        90,
+                                        "throttle",
+                                        0.28
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        89,
+                                        "throttle",
+                                        0.69
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        88,
+                                        "throttle",
+                                        0.23
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        87,
+                                        "throttle",
+                                        0.77
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        86,
+                                        "throttle",
+                                        0.35
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        85,
+                                        "throttle",
+                                        0.73
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        84,
+                                        "throttle",
+                                        0.61
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        83,
+                                        "throttle",
+                                        0.92
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        82,
+                                        "throttle",
+                                        0.25
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        81,
+                                        "throttle",
+                                        0.07
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                }
+                            ],
+                            "$type": "kOS.Safe.Encapsulation.ListValue"
+                        },
+                        "score",
+                        0
+                    ],
+                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                },
+                {
+                    "entries": [
+                        "DNA",
+                        {
+                            "items": [
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        90,
+                                        "throttle",
+                                        0.18
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        89,
+                                        "throttle",
+                                        0.64
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        88,
+                                        "throttle",
+                                        0.23
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        87,
+                                        "throttle",
+                                        0.62
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        86,
+                                        "throttle",
+                                        0.26
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        85,
+                                        "throttle",
+                                        0.82
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        84,
+                                        "throttle",
+                                        0.46
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        83,
+                                        "throttle",
+                                        0.6
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        82,
+                                        "throttle",
+                                        0.33
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        81,
+                                        "throttle",
+                                        0.52
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                }
+                            ],
+                            "$type": "kOS.Safe.Encapsulation.ListValue"
+                        },
+                        "score",
+                        0
+                    ],
+                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                },
+                {
+                    "entries": [
+                        "DNA",
+                        {
+                            "items": [
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        90,
+                                        "throttle",
+                                        0.9
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        89,
+                                        "throttle",
+                                        0.72
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        88,
+                                        "throttle",
+                                        0.75
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        87,
+                                        "throttle",
+                                        1
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        86,
+                                        "throttle",
+                                        0.75
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        85,
+                                        "throttle",
+                                        0.83
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        84,
+                                        "throttle",
+                                        0.36
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        83,
+                                        "throttle",
+                                        0.18
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        82,
+                                        "throttle",
+                                        0.71
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        81,
+                                        "throttle",
+                                        0.82
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                }
+                            ],
+                            "$type": "kOS.Safe.Encapsulation.ListValue"
+                        },
+                        "score",
+                        0
+                    ],
+                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                },
+                {
+                    "entries": [
+                        "DNA",
+                        {
+                            "items": [
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        90,
+                                        "throttle",
+                                        0.06
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        89,
+                                        "throttle",
+                                        0.02
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        88,
+                                        "throttle",
+                                        0.64
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        87,
+                                        "throttle",
+                                        0.69
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        86,
+                                        "throttle",
+                                        0.81
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        85,
+                                        "throttle",
+                                        0.2
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        84,
+                                        "throttle",
+                                        0.64
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        83,
+                                        "throttle",
+                                        0.48
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        82,
+                                        "throttle",
+                                        0.09
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        81,
+                                        "throttle",
+                                        0.09
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                }
+                            ],
+                            "$type": "kOS.Safe.Encapsulation.ListValue"
+                        },
+                        "score",
+                        0
+                    ],
+                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                },
+                {
+                    "entries": [
+                        "DNA",
+                        {
+                            "items": [
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        90,
+                                        "throttle",
+                                        0.1
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        89,
+                                        "throttle",
+                                        0.35
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        88,
+                                        "throttle",
+                                        0.99
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        87,
+                                        "throttle",
+                                        0.44
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        86,
+                                        "throttle",
+                                        0.35
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        85,
+                                        "throttle",
+                                        0.79
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        84,
+                                        "throttle",
+                                        0.4
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        83,
+                                        "throttle",
+                                        0.55
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        82,
+                                        "throttle",
+                                        0.98
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                },
+                                {
+                                    "entries": [
+                                        "heading",
+                                        90,
+                                        "Pitch",
+                                        81,
+                                        "throttle",
+                                        0.59
+                                    ],
+                                    "$type": "kOS.Safe.Encapsulation.Lexicon"
+                                }
+                            ],
+                            "$type": "kOS.Safe.Encapsulation.ListValue"
+                        },
+                        "score",
+                        0
                     ],
                     "$type": "kOS.Safe.Encapsulation.Lexicon"
                 }

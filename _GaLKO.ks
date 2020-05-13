@@ -4,7 +4,7 @@
 // use keyword candidate to help with the different files.
 
 // Function that create basic gene to target Accent altitude.
-local mutationRate to 0.1.
+local mutationRate to 0.2.
 local dropoff to 0.3.
 declare function new_DNA  
     {
@@ -37,7 +37,7 @@ declare function new_Candidate
     }
 
 declare function new_Generation{
-        local parameter listsize is 1,dnaLenght is 5.
+        local parameter listsize is 1,dnaLenght is 10.
         local newList to list().
         until newList:length=listsize
         {   
@@ -53,35 +53,64 @@ declare function next_Generation
         local bestscore to generation[generation:length-1]:score.
         
         local x to 0.
-        until x=generation:length{
+        until x>generation:length*dropoff{
             // remove the old generation 
-            
+            local parentA to generation[generation:length-x-1].
+         //   local parentA to generation[0].
+            local parentBindex to generation:length-1-Round(random()*generation:length*.25).
+            print "Parent B Index : "+parentBIndex.
+            local parentB to generation[parentBindex].
+         //   local parentB to generation[generation:length-1].
+          //  set generation[x]:dna to child_candidate(ParentA,ParentB).
+          //  print generation:length.
             set x to x+1.
             wait 0.
         }
         return Generation.
     }
 
-declare function child_generation
+declare function child_Candidate
 {
+    Local parameter p1,p2.
+    local xx to 0.
+    until xx=p1:DNA:length{
+        if random()<mutationRate{
+            set p1:dna[xx] to p2:dna[xx].
+            set xx to xx+1.
+        }
+    }
+   
 
+    return P1.
 }
 // This function will slowly evolve the given gene profile. each geen will have
-declare function mutate_Candidate_DNA
+declare function mutate_Candidate
     {
         // need a better function but for now it is just chaning the values like a hill climb.
-        local parameter eDNA.
-        local parameter evolvePoint to 5.
-        local count to 0.
-        until count=edna:length
+        local parameter generation.
+        local parameter evolvePoint to Round(generation[0]:dna:length*0.1).
+        local x to 0.
+        until x=generation:length
         {
-            if random()>mutationRate and evolvePoint > 0
+           
+            if random()>.15
             {
-                set eDNA[count]:throttle to eDNA[count]:throttle+(random()-0.5)*0.05. 
-                set evolvePoint to evolvePoint -1.
+                local y to 0.
+                 until y=generation[x]:dna:length
+                {
+                    if random()>mutationRate and evolvePoint > 0
+                    {
+                        set generation[x]:dna[y]:throttle to generation[x]:dna[y]:throttle+(random()-0.5)*0.05. 
+                        set evolvePoint to evolvePoint -1.
+                    }
+                    set y to y+1.
+                }
             }
+           
+            set x to x +1.
+                
         }
-        return eDNA.
+        return generation.
     }
 
 

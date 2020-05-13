@@ -4,7 +4,7 @@
 // Accent
 // Monitor
 // Circulize.
-parameter tApoapsis to 1000.
+parameter tApoapsis to 9.
 
 
 
@@ -12,8 +12,8 @@ Declare function AccentHUD
     {   local parameter displayDNA,x.
         print "  Agent NO : " + x at (0,5).
         print "   Heading : " +displayDNA[x]:heading at (0,6).
-        print "   Heading : " +displayDNA[x]:pitch at (0,7).
-        print "  Throttle : "+ displayDNA[x]:throttle at (0,8).
+        print "     pitch : " +displayDNA[x]:pitch at (0,7).
+        print "  Throttle : "+ round(displayDNA[x]:throttle,3) at (0,8).
         print "DNA length : "+displayDNA:length at (0,9).
     }
 
@@ -21,13 +21,21 @@ declare function checkStatus
 {
     parameter lapstime.
     local flightstatus to false.
-    if ship:apoapsis>tApoapsis or (verticalspeed<1 and lapstime>5)
+    if ship:apoapsis>tApoapsis 
     {
         set flightstatus to true.
     }
-    if lapstime>5 and ( status="prelaunch" or status="landed")
+    
+    if lapstime>10
     {
-        set flightstatus to true.
+        set kuniverse:timewarp:mode to "Physics".
+        set kuniverse:timewarp:rate to 4.
+        if ( status="prelaunch" or status="landed" or verticalspeed<0)
+        {
+            set flightstatus to true.
+        }
+        
+        
     }
     return flightstatus.
 }
@@ -57,7 +65,7 @@ declare function Launch_Agent
     local endfuel to shipFuel:amount.
 
     local fScore to  fuel_score(startfuel,endfuel).
-    return round(fscore*altScore,3).
+    return round(fscore*altScore,4).
     
 }
 declare function calc_Score{
