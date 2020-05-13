@@ -100,7 +100,7 @@ declare function mutate_Candidate
                 {
                     if random()>mutationRate and evolvePoint > 0
                     {
-                        set generation[x]:dna[y]:throttle to min(1,generation[x]:dna[y]:throttle+(random()-0.5)*0.15). 
+                        set generation[x]:dna[y]:throttle to min(1,generation[x]:dna[y]:throttle+(random()-0.5)*0.2). 
                         set evolvePoint to evolvePoint -1.
                     }
                     set y to y+1.
