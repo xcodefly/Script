@@ -3,7 +3,7 @@
         "Generation",
         13,
         "agentNumber",
-        2,
+        3,
         "AIagentList",
         {
             "items": [
@@ -2682,7 +2682,7 @@
                             "$type": "kOS.Safe.Encapsulation.ListValue"
                         },
                         "score",
-                        0.1096
+                        0.1092
                     ],
                     "$type": "kOS.Safe.Encapsulation.Lexicon"
                 },
