@@ -3,7 +3,7 @@
         "Generation",
         21,
         "agentNumber",
-        14,
+        0,
         "AIagentList",
         {
             "items": [
@@ -896,7 +896,7 @@
                             "$type": "kOS.Safe.Encapsulation.ListValue"
                         },
                         "score",
-                        0.1453
+                        0.1458
                     ],
                     "$type": "kOS.Safe.Encapsulation.Lexicon"
                 },
@@ -1789,7 +1789,7 @@
                             "$type": "kOS.Safe.Encapsulation.ListValue"
                         },
                         "score",
-                        0.1444
+                        0.1458
                     ],
                     "$type": "kOS.Safe.Encapsulation.Lexicon"
                 },
@@ -2682,7 +2682,7 @@
                             "$type": "kOS.Safe.Encapsulation.ListValue"
                         },
                         "score",
-                        0.1454
+                        0.1457
                     ],
                     "$type": "kOS.Safe.Encapsulation.Lexicon"
                 },
@@ -3575,7 +3575,7 @@
                             "$type": "kOS.Safe.Encapsulation.ListValue"
                         },
                         "score",
-                        0.1452
+                        0.1457
                     ],
                     "$type": "kOS.Safe.Encapsulation.Lexicon"
                 },
@@ -5361,7 +5361,7 @@
                             "$type": "kOS.Safe.Encapsulation.ListValue"
                         },
                         "score",
-                        0.1457
+                        0.1455
                     ],
                     "$type": "kOS.Safe.Encapsulation.Lexicon"
                 },
@@ -6254,7 +6254,7 @@
                             "$type": "kOS.Safe.Encapsulation.ListValue"
                         },
                         "score",
-                        0.1457
+                        0.1451
                     ],
                     "$type": "kOS.Safe.Encapsulation.Lexicon"
                 },
@@ -7147,7 +7147,7 @@
                             "$type": "kOS.Safe.Encapsulation.ListValue"
                         },
                         "score",
-                        0.1438
+                        0.1451
                     ],
                     "$type": "kOS.Safe.Encapsulation.Lexicon"
                 },
@@ -8040,7 +8040,7 @@
                             "$type": "kOS.Safe.Encapsulation.ListValue"
                         },
                         "score",
-                        0.1438
+                        0.1444
                     ],
                     "$type": "kOS.Safe.Encapsulation.Lexicon"
                 },
@@ -8933,7 +8933,7 @@
                             "$type": "kOS.Safe.Encapsulation.ListValue"
                         },
                         "score",
-                        0.1449
+                        0.1444
                     ],
                     "$type": "kOS.Safe.Encapsulation.Lexicon"
                 },
@@ -9826,7 +9826,7 @@
                             "$type": "kOS.Safe.Encapsulation.ListValue"
                         },
                         "score",
-                        0.1438
+                        0.1443
                     ],
                     "$type": "kOS.Safe.Encapsulation.Lexicon"
                 },

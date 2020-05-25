@@ -57,12 +57,10 @@ declare function next_Generation
             // remove the old generation 
             local parentA to generation[generation:length-x-1].
          //   local parentA to generation[0].
-            local parentBindex to min(generation:length-1,generation:length-1-Round((random()-0.3)*generation:length*.25)).
-            print "Parent B Index : "+parentBIndex.
-            local parentB to generation[parentBindex].
+           // no second parent for now.
          //   local parentB to generation[generation:length-1].
-            set generation[x] to child_candidate(ParentA,ParentB).
-          //  print generation:length.
+            set generation[x] to child_candidate(ParentA).
+            print " Creating new agents : "+x.
             set x to x+1.
             wait 0.
         }
@@ -71,13 +69,14 @@ declare function next_Generation
 
 declare function child_Candidate
 {
-    Local parameter p1,p2.
+    Local parameter p1,p2 is 0.
     local xx to 0.
     until xx=p1:DNA:length{
         if random()<0.3
         {
             wait 0.
-            set p1:dna[xx] to min(1,p1:dna[xx]+(random()-0.5)*0.2).
+            set p1:dna[xx]:throttle to min(1,p1:dna[xx]:throttle+(random()-0.5)*0.2).
+            set xx to xx+1.
         }
         
     }

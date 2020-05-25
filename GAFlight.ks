@@ -10,11 +10,11 @@ parameter tApoapsis to 70000.
 
 Declare function AccentHUD
     {   local parameter displayDNA,x.
-        print "  index NO : " + x at (0,5).
-        print "   Heading : " +displayDNA[x]:heading at (0,6).
-        print "     pitch : " +displayDNA[x]:pitch at (0,7).
-        print "  Throttle : "+ round(displayDNA[x]:throttle,3) at (0,8).
-        print "DNA length : "+displayDNA:length at (0,9).
+        print "  index NO : " + x+"    " at (0,5). 
+        print "   Heading : " +displayDNA[x]:heading+"    " at (0,6).
+        print "     pitch : " +displayDNA[x]:pitch+"    " at (0,7).
+        print "  Throttle : "+ round(displayDNA[x]:throttle,3)+"    " at (0,8).
+        print "DNA length : "+displayDNA:length+"    " at (0,9).
     }
 
 declare function checkStatus
@@ -102,8 +102,10 @@ Declare function Accent_GA{  // function to create the automatic launch profile.
         until nextstage
         {
             set throttle to dna[pointer]:throttle.
-            set steering to heading(DNA[pointer]:heading,DNA[pointer]:pitch).
-            set pointer to Round(altitude/1000).
+
+            local smoothPoint to ((pointer+1)*1000-altitude)/1000.
+            set steering to heading(DNA[pointer]:heading,(DNA[pointer]:pitch*smoothPoint+DNA[pointer+1]:pitch*(1-smoothPoint))).
+            local pointer to Round(altitude/1000).
 
             set nextstage to checkStatus(round(time:seconds-starttime)).
             accentHUD(DNA,pointer).
