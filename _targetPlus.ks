@@ -7,9 +7,9 @@ Declare function Target_anomalyAt
 
 Declare function target_periapsis_eta
 {
-    set v to target:orbit:trueanomaly.
-    set e to target:orbit:eccentricity.
-    set E_v to arccos((e+cos(v))/(1+e*cos(v))).
+    local v to target:orbit:trueanomaly.
+    local e to target:orbit:eccentricity.
+    local E_v to arccos((e+cos(v))/(1+e*cos(v))).
     if v<180
         {
             set M to (E_v*Constant:degToRad-e*Sin(E_v))*constant:radToDeg.

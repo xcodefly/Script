@@ -2682,7 +2682,11 @@
                             "$type": "kOS.Safe.Encapsulation.ListValue"
                         },
                         "score",
+<<<<<<< HEAD
                         0.1454
+=======
+                        0.1092
+>>>>>>> 6235ea48028fcfbae106c89e466ce0fc5de72426
                     ],
                     "$type": "kOS.Safe.Encapsulation.Lexicon"
                 },
