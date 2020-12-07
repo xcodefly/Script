@@ -7,11 +7,12 @@ Print " Launch Profile 2. Uncrewwed. ".
 
 
 Parameter hdg to 90.
-Parameter autostageDelay to 0.1.
-Parameter autostageThrottle to 0.
+
 Parameter tApoapsis to 80000.
 Parameter tPeriaposis to 79000.
 parameter targetQ to 0.3.
+Parameter autostageDelay to 0.1.
+Parameter autostageThrottle to 0.
 
 // Common Vairables
 
@@ -34,10 +35,10 @@ set launchClamps to ship:partsdubbedpattern("Launch").
 set protectiveShell to ship:partsdubbedpattern("shell").
 
 
-//autostage().
-//accent().
-//MonitorApoapsis().
-//circularize().
+
+accent().
+MonitorApoapsis().
+circularize().
 
 declare function QuickStage
 {
@@ -56,7 +57,7 @@ declare function QuickStage
 Declare Function AutoStage
 {
    
-	if availablethrust < 1 or availablethrust<oldThrust*.95
+	if availablethrust < 1 or availablethrust<oldThrust*.50
 	{
         if AStageTrigger = true
         {
@@ -182,7 +183,7 @@ Declare Function Accent
             AutoStage().
             HUD_accent().
             userInput().
-            checkClamp().
+            
             SET pitch to ((((ship:altitude)/1000)/(tApoapsis/1000))^0.48)*90.
         
         // 	print " Ship Q : "+Round(ship:q,2)+"   " at (0,1).
@@ -234,7 +235,7 @@ Declare Function MonitorApoapsis
 			Accent().
 		}
     }
-    checkClamp().
+ 
 }
 
 

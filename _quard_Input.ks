@@ -1,5 +1,44 @@
 // All the inputs are accpted here.
+Declare function userInput_JoyStick
+{
+    Local Parameter inputControl.
+    set inputControl:HDG to inputControl:HDG+SHIP:CONTROL:pilotyaw.
+    set inputControl:Bank to inputControl:Bank+SHIP:CONTROL:pilotroll.
+    set inputControl:Pitch to inputControl:Pitch+SHIP:CONTROL:pilotPitch.
+    set inputControl:Alt to inputControl:Alt+SHIP:CONTROL:pilotmainthrottle-0.5.
+    set inputControl:Alt to Max(inputControl:alt,ship:Altitude-5).
+    if inputControl:HDG<0
+    {
+                set inputControl:HDG to inputControl:HDG +360.
+    }else if (inputControl:hdg>360)
+    {
+        set inputControl:HDG to inputControl:Hdg-360.
+    }
+    
 
+   // print "input :"+SHIP:CONTROL:pilotyaw at (0,15).
+}
+
+
+Declare function userInput_Raw
+{
+    Local Parameter inputControl.
+    set inputControl:HDG to inputControl:HDG+SHIP:CONTROL:pilotyaw*3.
+    set inputControl:Bank to SHIP:CONTROL:pilotroll*15.
+    set inputControl:Pitch to SHIP:CONTROL:pilotPitch*15.
+    set inputControl:Alt to ship:altitude+(ship:control:Pilotmainthrottle-0.2)*15.
+  //  set inputControl:Alt to Max(inputControl:alt,ship:Altitude-5).
+    if inputControl:HDG<0
+    {
+                set inputControl:HDG to inputControl:HDG +360.
+    }else if (inputControl:hdg>360)
+    {
+        set inputControl:HDG to inputControl:Hdg-360.
+    }
+    
+
+    print "Alt :"+ship:control:PilotMainthrottle*5 at (0,15).
+}
 Declare Function userInput_Basic
 {
     Local Parameter inputControl.

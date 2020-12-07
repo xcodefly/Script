@@ -17,7 +17,7 @@ set shipATT to lexicon().
 set shipTarget to lexicon().
 gear off.
 shipTarget:add("RPM",100).
-shipTarget:add("ALT",altitude+5).
+shipTarget:add("ALT",altitude-1).
 shipTarget:add("Pitch",0).
 shipTarget:add("Bank",0).
 shipTarget:add("HDG",0).
@@ -40,7 +40,8 @@ gear off.
 Until gear
 {
     quard_Basic(shipAtt,shipTarget).
-    userInput_Basic(shipTarget).
+    userInput_Raw(shipTarget).
+//    userInput_Basic(shipTarget).
     hud_Basic(shipATT,shipTarget).
 
 

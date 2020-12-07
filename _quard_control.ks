@@ -15,14 +15,14 @@ set hdgOffset to 0.
 
 
 
-set rpmPID to pidLoop(25,	5,	    60,  0,440).
+set rpmPID to pidLoop(22,	2,	    60,  0 ,  440).
 
 
-set bankPID to pidLoop(1.1,	0.05,	0.65,	-10,10).
+set bankPID to pidLoop(0.3,	0.02,	0.35,	-7,7).
 
-set pitchPID to pidLoop(1.1,	0.052,	0.65,	-10,10).
+set pitchPID to pidLoop(0.3,	0.02,	0.35,	-7,7).
 
-set hdgPID to pidLoop(0.6,	0.01,	0.7,	-10,10).
+set hdgPID to pidLoop(0.4,	0.005,	0.3,	-15,15).
 // PID loops to control Speed and attitude
 rotor_torque(20).
 Declare function rotor_torque
