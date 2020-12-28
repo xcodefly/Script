@@ -13,23 +13,23 @@ declare local airspeed to 0.
 
 
 // List of PID loops to control the aircraft. 
-declare local rollPID to  pidLoop(0.0151,0.011,0.02,-0.3,0.3).
+declare local rollPID to  pidLoop(0.02,0.003,0.026,-0.5,0.5).
 declare local hdgPID to pidLoop(2,0.01,0.1,-45,45).  // This should give to turn rate base on how quickly you are turing. 
 declare local deltaHDG to 0.
 declare local pitchPID to  pidLoop(0.1,0.02,0.01,-1,1).
-declare local altPID to  pidLoop(0.25,0.03,0.5,-20,20).
-declare local iasPID to pidLoop(1.2,0.1,0.4,-20,20).
+declare local altPID to  pidLoop(0.23,0.06,0.6,-20,20).
+declare local iasPID to pidLoop(2,0.15,0.4,-20,20).
 declare local targetIAS to 70.
 
-declare local targetRoll to 10.
+declare local targetRoll to 0.
 declare local targetHDG to 90.
-declare local targetpitch to 2.
+declare local targetpitch to 1.
 declare local targetAlt to ship:altitude.
 
 // AutoPilot Modes
-declare local pitchList to List("Pit"," VS","Alt","IAS").
-declare local pitchMode to 3.
-declare Local rollList to List("Roll"," HDG"," NAV").
+declare local pitchList to List("Pit","IAS","Alt").
+declare local pitchMode to 1.
+declare Local rollList to List("Roll","HDG","NAV").
 declare local rollMode to 0.
 declare local alt to 0.
 
@@ -68,15 +68,15 @@ function Hud
 //    print "   HDG : "+ round(hdg)       +"    " at (pad,5+offset).
 //   print "   ALT : "+ round(altitude) + "     "  at (pad,6+offset).
 
-    if (pitchMode=2)
+    if ( Pitchlist[pitchmode]="Alt")
     {
         print   " ALT : "+ round(altitude)+" [" +round(targetAlt/10)*10 +"]    "  at (0,2+offset).
     }
-    else if pitchMode=0
+    else if (Pitchlist[pitchmode]="Pit")
     {
         print   " PIT : "+ round(pitch,1)+" [" +round(targetPitch,1) +"]    "   at (0,2+offset).
     }
-    else if pitchMode=3
+    else if (Pitchlist[pitchmode]="IAS")
     {
         print   " IAS : "+ round(pitch,1)+" [" +round(targetIAS) +"]    "   at (0,2+offset).
     }
@@ -117,7 +117,7 @@ function Attitude
 function AutoPilot
 {
     // AutoPilot AG
-    print " AG1 (Pit, VS,ALT,ISA)/  AG2 (Roll, HDG)" at (0,0).
+    print "Pit,IAS,Alt / (Roll, HDG)" at (0,0).
     print "     Mode: " +pitchList[pitchMode] + "   "+rollList[rollMode] +"   " at (0,1).
     
     
@@ -130,13 +130,13 @@ function UserInput
 {
     if abs(ship:control:pilotpitch)>0.05
     {
-        if (pitchmode=0)
+        if (Pitchlist[pitchmode]="PIT")
         {
             set targetpitch to targetpitch+ ship:control:pilotpitch*0.5.
-        }else if  (pitchmode=2)
+        }else if  (Pitchlist[pitchmode]="ALT")
         {
             set targetAlt to targetAlt + ship:control:pilotpitch*10.
-        }else if  (pitchmode=3)
+        }else if  (Pitchlist[pitchmode]="IAS")
         {
             set targetIAS to targetIAs - ship:control:pilotpitch*1.
         }
@@ -152,7 +152,7 @@ function UserInput
         {
             set pitchMode to 0.
         }
-        if (pitchMode = 3)
+        if (Pitchlist[pitchmode]="IAS")
         {
             set targetias to ship:airspeed.
             set iasPID:setpoint to targetIAS.
@@ -200,19 +200,19 @@ function UserInput
 
 Function PitchControl
 {
-    if (pitchmode=0)
+    if (Pitchlist[pitchmode]="PIT")
     {
        
         
     }
-    else if (pitchmode=2)
+    else if (Pitchlist[pitchmode]="Alt")
     {
         set altPID:setpoint to round(targetAlt/10)*10.
         set targetPitch to altPID:update(Time:seconds,altitude).
        
       //  PRINT (" Values : "+Round(altPID:iterm,2) at (25,6).
     }
-    else if(pitchmode=3)
+    else if(Pitchlist[pitchmode]="IAS")
     {
         set iasPID:setpoint to Round(targetIAS).
         set targetPitch to -iasPID:update(Time:seconds,airspeed).
