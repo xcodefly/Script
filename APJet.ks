@@ -13,37 +13,64 @@ declare local airspeed to 0.
 
 
 // List of PID loops to control the aircraft. 
-declare local rollPID to  pidLoop(0.02,0.003,0.026,-0.5,0.5).
-declare local hdgPID to pidLoop(2,0.01,0.1,-45,45).  // This should give to turn rate base on how quickly you are turing. 
+declare local rollPID to  pidLoop(0.02,0.01,0.020,-0.2,0.2).
+declare local hdgPID to pidLoop(1.0,0.005,0.2,-30,30).  // This should give to turn rate base on how quickly you are turing. 
 declare local deltaHDG to 0.
 declare local pitchPID to  pidLoop(0.1,0.02,0.01,-1,1).
-declare local altPID to  pidLoop(0.23,0.06,0.6,-20,20).
-declare local iasPID to pidLoop(2,0.15,0.4,-20,20).
-declare local targetIAS to 70.
+declare local altPID to  pidLoop(0.25,0.04,0.65,-20,20).
+declare local iasPID to pidLoop(1.0,0.2,0.35,-30,30).
 
-declare local targetRoll to 0.
-declare local targetHDG to 90.
-declare local targetpitch to 1.
+declare local targetIAS to 200.
+declare local targetRoll to 30.
+declare local targetHDG to 10.
+declare local targetpitch to 5.
+declare local alt to 0.
 declare local targetAlt to ship:altitude.
+
 
 // AutoPilot Modes
 declare local pitchList to List("Pit","IAS","Alt").
-declare local pitchMode to 1.
+
 declare Local rollList to List("Roll","HDG","NAV").
-declare local rollMode to 0.
-declare local alt to 0.
 
 
+declare local pitchMode to 1.
+declare local rollMode to 2.
+
+declare local NavList to list().
+declare Local FullNavList to List().
+declare local AirportList to list().
+declare local AllResource to list().
+declare local LiquidFuel to 0.
+
+
+declare local FuelFlow to 0.
+declare Local FuelEndurance to 0.
+declare local NavDistance to 0.
+declare local TimeStep to Time:Seconds.
+declare local FuelStep to 0.
+declare local loop to true.
+
+list resources in AllResource.
+for r in AllResource
+{
+    if r:name="LiquidFuel"
+    {
+        set LiquidFuel to r.
+    }
+}
+set fuelStep to LiquidFuel:amount.
 
 // Lock 
 
 lock east to vcrs(up:vector,north:vector).
+declare local APList to pitchList:join(",").
+set APList to apList+" /  "+rolllist:join(",").
 
-
-
+set FullNavList to allwaypoints().
 
 // Main Loop.
-until(false)
+until(not loop)
 {
 
 
@@ -51,13 +78,35 @@ until(false)
  //  EngineController ().
    // Help().
     Hud(2,10).
-
+    FuelManager().
 
     AutoPilot().
     UserInput().
+    
     wait(0).
 }
+clearscreen.
+toggle rcs.
+Print " Manual Control, AP Off.".
+SET SHIP:CONTROL:NEUTRALIZE to True.
 
+function FuelManager
+{
+    if (round(time:seconds)>timeStep)
+    {   
+        set FuelFlow to Round(fuelStep-LiquidFuel:amount,4).
+        set timeStep to round(time:seconds).
+        set fuelStep to LiquidFuel:amount.
+    }
+
+    if FuelFlow>0
+    {
+       set  FuelEndurance to LiquidFuel:amount/FuelFlow.
+    }
+
+
+
+}
 function Hud
 {
     parameter offset.
@@ -74,24 +123,32 @@ function Hud
     }
     else if (Pitchlist[pitchmode]="Pit")
     {
-        print   " PIT : "+ round(pitch,1)+" [" +round(targetPitch,1) +"]    "   at (0,2+offset).
+        print   " PIT : "+ round(pitch,1)+" [" +round(targetPitch,1) +"]  "   at (0,2+offset).
     }
     else if (Pitchlist[pitchmode]="IAS")
     {
-        print   " IAS : "+ round(pitch,1)+" [" +round(targetIAS) +"]    "   at (0,2+offset).
+        print   " IAS : "+ round(pitch)+" [" +round(targetIAS) +"]   "   at (0,2+offset).
     }
 
+    print "Target Roll : "+round(targetRoll,2)+ "    " at(0,8).
+    
 
-
-
-    if (rollMode=0)
+    if (RollList[rollMode]="Roll")
     {
-        print   "ROll : "+ round(roll)+" [" +round(targetRoll) +"]    "  at (20,2+offset).
+        print   "ROll : "+ round(roll)+" [" +round(targetRoll) +"]        "  at (20,2+offset).
     }
-    else{
-        print   "HDG : "+ round(hdg)+" [" +round(targetHDG) +"]    "  at (20,2+offset).
+    else if (RollList[rollMode]="HDG")
+    {
+        print   "HDG : "+ round(hdg)+" [" +round(targetHDG) +"] DeltaHDG : ["+Round(deltaHDG,1)+"]      "  at (20,2+offset).
+    }else if (RollList[rollMode]="NAV")
+    {
+        print   "NAV : "+ round(hdg)+" [" +round(targetHDG) +"] DeltaHDG : ["+Round(deltaHDG,1)+"]      "  at (20,2+offset).
     }
   
+    print "Fuel : " + Round(LiquidFuel:amount/LiquidFuel:Capacity*100,1)+"%  " at (0,5).
+    print "FuelFlow : " +   round (FuelFlow,4) at (0,6).
+    print "Fuel Endurance/ Time : " +   round (FuelEndurance/60)+" Min / "+Round(NavDistance/1000/airspeed*60) +"   "   at (0,7).
+    
 
 }
 
@@ -101,7 +158,7 @@ function Attitude
     set roll to vang(up:vector,ship:facing:rightvector)-90.
     set alt to ship:altitude.
     set airspeed to ship:velocity:Surface:mag.
-    local tempHDG to vang(north:vector,ship:facing:vector).
+    local tempHDG to vang(north:vector,vxcl(up:vector, ship:facing:vector)).
     local temp to vang(east,ship:facing:vector).
     if abs(temp)<90
     {
@@ -117,8 +174,11 @@ function Attitude
 function AutoPilot
 {
     // AutoPilot AG
-    print "Pit,IAS,Alt / (Roll, HDG)" at (0,0).
-    print "     Mode: " +pitchList[pitchMode] + "   "+rollList[rollMode] +"   " at (0,1).
+  //  print "Pit,IAS,Alt / (Roll, HDG)" at (0,0).
+    print APList at (0,0).
+    print " Airport/Nav : "+AirportList:length+"/"+NavList:length at (0,1).
+
+    print "     Mode: " +pitchList[pitchMode] + "   "+rollList[rollMode] +"   " at (0,2).
     
     
     PitchControl().
@@ -157,7 +217,12 @@ function UserInput
             set targetias to ship:airspeed.
             set iasPID:setpoint to targetIAS.
         }
-
+        if (Pitchlist[pitchmode]="ALT")
+        {
+            set targetALt to ship:altitude.
+            set altPID:setpoint to targetALt.
+        }
+      
 
 
     }
@@ -168,23 +233,25 @@ function UserInput
         {
             set rollMode to 0.
         }
-        if rollMode=1
+        if (Rolllist[rollmode]="HDG")
         {
             set targetHDG to hdg.
+            print " HDG HDG" at (0,4).
         }
+        
     }
-    if (pitchMode <>2)
-    {
-        set targetAlt to round(ship:altitude/100)*100.
+   
+    if RCS{
+        set loop to false.
     }
-
-
+    
+   
     if abs(ship:control:pilotRoll)>0.05
     {
-        if (rollMode=0)
+        if (Rolllist[rollmode]="Roll")
         {
             set targetRoll to targetRoll+ ship:control:pilotRoll*1.
-        }else if rollmode=1
+        }else if (Rolllist[rollmode]="HDG")
         {
             set targetHdg to targethdg+ ship:control:pilotRoll*1.
             if targetHDG<0
@@ -229,29 +296,59 @@ function ElevatorControl
 }
 
 function RollControl{
-    if rollMode=0
+    if Rolllist[rollmode]="Roll"
     {
         SetRoll().
-    }else if rollMode=1
+    }else if Rolllist[rollmode]="HDG"
     {
+        HdgControl().
+    }else if Rolllist[rollmode]="NAV"
+    {
+        
+        FindActiveWaypoint().
         HdgControl().
     }
     
 }
 
+function FindActiveWaypoint
+{
+    for point in FullNavList
+    {
+        if point:isSelected
+        {
+            set targetHDG to point:Geoposition:heading.
+            set NavDistance to point:Geoposition:Distance.
+        }
+    }
+}
 function HdgControl
 {
     set hdgPid:setpoint  to 0.
-    set deltaHDG to hdg-targetHDG.
-    if deltaHDG>180
+    set deltaHDG to (targethdg-hdg).
+    if (SIN(DELTAHDG)>0)
     {
-        set deltaHDG to 360-deltaHDG.
-    }else if deltaHDG<-180
+        if(abs(deltaHDG)>180)
+        {
+            set  deltaHDG to abs(deltaHDG+360).
+        }else
+        {
+            set  deltaHDG to abs(deltaHDG).
+        }
+        
+    }else
     {
-        set deltaHDG to deltaHDG+360.
-    }
 
-    set targetroll to hdgPID:update(Time:seconds, deltaHDG).
+        if(abs(deltaHDG)>180)
+        {
+            set  deltaHDG to -abs(360-deltaHDG).
+        }else
+        {
+            set  deltaHDG to -abs(deltaHDG).
+        }
+       
+    }
+    set targetroll to hdgPID:update(Time:seconds, -deltaHDG).
     SetRoll().
 }
 
@@ -259,7 +356,7 @@ function SetRoll
 {
     set rollPID:setpoint to targetRoll.
   
-    set SHIP:CONTROL:ROLL to rollPID:update(Time:seconds,roll).
+    set SHIP:CONTROL:ROLL to rollPID:update(Time:seconds,roll)*(min(altitude,4000)+2000)/7000.
 }
 
 
