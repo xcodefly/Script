@@ -14,7 +14,7 @@ declare local airspeed to 0.
 
 // List of PID loops to control the aircraft. 
 declare local rollPID to  pidLoop(0.02,0.01,0.020,-0.2,0.2).
-declare local hdgPID to pidLoop(1.0,0.005,0.2,-30,30).  // This should give to turn rate base on how quickly you are turing. 
+declare local hdgPID to pidLoop(3,0.01,0.15,-30,30).  // This should give to turn rate base on how quickly you are turing. 
 declare local deltaHDG to 0.
 declare local pitchPID to  pidLoop(0.1,0.02,0.01,-1,1).
 declare local altPID to  pidLoop(0.25,0.04,0.65,-20,20).
@@ -34,8 +34,8 @@ declare local pitchList to List("Pit","IAS","Alt").
 declare Local rollList to List("Roll","HDG","NAV").
 
 
-declare local pitchMode to 1.
-declare local rollMode to 2.
+declare local pitchMode to 2.
+declare local rollMode to 1.
 
 declare local NavList to list().
 declare Local FullNavList to List().
@@ -64,8 +64,7 @@ set fuelStep to LiquidFuel:amount.
 // Lock 
 
 lock east to vcrs(up:vector,north:vector).
-declare local APList to pitchList:join(",").
-set APList to apList+" /  "+rolllist:join(",").
+
 
 set FullNavList to allwaypoints().
 
@@ -77,7 +76,7 @@ until(not loop)
     attitude().
  //  EngineController ().
    // Help().
-    Hud(2,10).
+    Hud().
     FuelManager().
 
     AutoPilot().
@@ -107,10 +106,28 @@ function FuelManager
 
 
 }
+
+
+function Hud1
+{
+    Parameter offset Is 0.
+    Print "     AP Mode <AG1/AG2 to change mode>." (0,0+offset).
+    Print " PITCH Mode : " + pitchlist[pitchMode] at (0,2).
+
+    
+    
+    
+} 
+
+function ActiveMode
+{
+    
+}
 function Hud
 {
-    parameter offset.
-    parameter pad to 5.
+
+    local Offset to 0.
+  
 //    print " Pitch : "+ round(pitch,1)   +"    " at (pad,2+offset).
 //    print "  Roll : "+ round (roll,1 )  +"    " at (pad,3+offset).
 //    print " Speed : "+ round(airspeed)  +"    " at (pad,4+offset).
@@ -175,10 +192,10 @@ function AutoPilot
 {
     // AutoPilot AG
   //  print "Pit,IAS,Alt / (Roll, HDG)" at (0,0).
-    print APList at (0,0).
-    print " Airport/Nav : "+AirportList:length+"/"+NavList:length at (0,1).
+    
+    print " Airport/Nav : "+AirportList:length+"/"+NavList:length at (0,8).
 
-    print "     Mode: " +pitchList[pitchMode] + "   "+rollList[rollMode] +"   " at (0,2).
+    print "     Mode: " +pitchList[pitchMode] + "   "+rollList[rollMode] +"   " at (0,9).
     
     
     PitchControl().
